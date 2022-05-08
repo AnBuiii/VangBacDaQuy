@@ -46,14 +46,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="form\Form1.cs">
+    <Compile Include="form\Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\Form1.Designer.cs">
-      <DependentUpon>Form1.cs</DependentUpon>
+    <Compile Include="form\Main.Designer.cs">
+      <DependentUpon>Main.cs</DependentUpon>
     </Compile>
+    <Compile Include="models\ChiTietPhieuBanHang.cs" />
+    <Compile Include="models\ChiTietPhieuBaoCaoTonKho.cs" />
+    <Compile Include="models\ChiTietPhieuDichVu.cs" />
+    <Compile Include="models\ChiTietPhieuMuaHang.cs" />
+    <Compile Include="models\DichVu.cs" />
+    <Compile Include="models\KhachHang.cs" />
+    <Compile Include="models\LoaiSanPham.cs" />
+    <Compile Include="models\PhieuBanHang.cs" />
+    <Compile Include="models\PhieuBaoCaoTonKho.cs" />
+    <Compile Include="models\PhieuDichVu.cs" />
+    <Compile Include="models\PhieuMuaHang.cs" />
+    <Compile Include="models\SanPham.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form\Main.resx">
+      <DependentUpon>Main.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,8 +91,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
