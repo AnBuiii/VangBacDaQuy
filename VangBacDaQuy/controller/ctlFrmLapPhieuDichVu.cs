@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace VangBacDaQuy.controller
 {
-    internal class ctlFrmLapPhieuDichVuController
+    internal class ctlFrmLapPhieuDichVu
     {
     }
 }

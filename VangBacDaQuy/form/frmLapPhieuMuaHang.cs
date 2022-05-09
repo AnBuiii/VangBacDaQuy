@@ -13,7 +13,7 @@ namespace VangBacDaQuy.form
 {
     public partial class frmLapPhieuMuaHang : Form
     {
-        ctlFrmLapPhieuDichVuController controller = new ctlFrmLapPhieuDichVuController();
+        ctlFrmLapPhieuMuaHang controller = new ctlFrmLapPhieuMuaHang();
         public frmLapPhieuMuaHang()
         {
             InitializeComponent();

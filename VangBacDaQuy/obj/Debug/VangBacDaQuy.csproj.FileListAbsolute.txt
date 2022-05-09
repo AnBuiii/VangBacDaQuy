@@ -14,3 +14,5 @@ C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmLapPhieuBanHang.resources
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmLapPhieuDichVu.resources
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmTraCuuPhieuDichVu.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ.mdf
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ_log.ldf
