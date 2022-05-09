@@ -1,0 +1,16 @@
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.exe.config
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.exe
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.pdb
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.csproj.AssemblyReference.cache
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.csproj.SuggestedBindingRedirects.cache
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.Main.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.Properties.Resources.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.csproj.GenerateResource.cache
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.csproj.CoreCompileInputs.cache
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.exe
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.pdb
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmLapPhieuMuaHang.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmLapBaoCaoTonKho.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmLapPhieuBanHang.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmLapPhieuDichVu.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmTraCuuPhieuDichVu.resources

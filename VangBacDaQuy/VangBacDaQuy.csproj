@@ -46,11 +46,47 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="controller\ctlFrmLapBaoCaoTonKho.cs" />
+    <Compile Include="controller\MainFormController.cs" />
+    <Compile Include="controller\ctlFrmLapPhieuBanHang.cs" />
+    <Compile Include="controller\ctlFrmLapPhieuDichVu.cs" />
+    <Compile Include="controller\ctlFrmLapPhieuMuaHang.cs" />
+    <Compile Include="controller\ctlFrmTraCuuPhieuDichVu.cs" />
+    <Compile Include="form\frmLapBaoCaoTonKho.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmLapBaoCaoTonKho.Designer.cs">
+      <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="form\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmLapPhieuBanHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmLapPhieuBanHang.Designer.cs">
+      <DependentUpon>frmLapPhieuBanHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmLapPhieuDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmLapPhieuDichVu.Designer.cs">
+      <DependentUpon>frmLapPhieuDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmLapPhieuMuaHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmLapPhieuMuaHang.Designer.cs">
+      <DependentUpon>frmLapPhieuMuaHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmTraCuuPhieuDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmTraCuuPhieuDichVu.Designer.cs">
+      <DependentUpon>frmTraCuuPhieuDichVu.cs</DependentUpon>
     </Compile>
     <Compile Include="models\ChiTietPhieuBanHang.cs" />
     <Compile Include="models\ChiTietPhieuBaoCaoTonKho.cs" />
@@ -66,6 +102,21 @@
     <Compile Include="models\SanPham.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form\frmLapBaoCaoTonKho.resx">
+      <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmLapPhieuBanHang.resx">
+      <DependentUpon>frmLapPhieuBanHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmLapPhieuDichVu.resx">
+      <DependentUpon>frmLapPhieuDichVu.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmLapPhieuMuaHang.resx">
+      <DependentUpon>frmLapPhieuMuaHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmTraCuuPhieuDichVu.resx">
+      <DependentUpon>frmTraCuuPhieuDichVu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\Main.resx">
       <DependentUpon>Main.cs</DependentUpon>
     </EmbeddedResource>
@@ -91,6 +142,8 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="data\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
