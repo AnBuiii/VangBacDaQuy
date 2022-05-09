@@ -61,11 +61,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Class\Functions.cs" />
     <Compile Include="controller\ctlFrmLapBaoCaoTonKho.cs" />
     <Compile Include="controller\MainFormController.cs" />
-    <Compile Include="controller\ctlFrmLapPhieuBanHang.cs" />
-    <Compile Include="controller\ctlFrmLapPhieuDichVu.cs" />
-    <Compile Include="controller\ctlFrmLapPhieuMuaHang.cs" />
+    <Compile Include="controller\ctlFrmPhieuBanHang.cs" />
+    <Compile Include="controller\ctlFrmPhieuDichVu.cs" />
+    <Compile Include="controller\ctlFrmPhieuMuaHang.cs" />
     <Compile Include="controller\ctlFrmTraCuuPhieuDichVu.cs" />
     <Compile Include="form\frmLapBaoCaoTonKho.cs">
       <SubType>Form</SubType>
@@ -73,29 +74,35 @@
     <Compile Include="form\frmLapBaoCaoTonKho.Designer.cs">
       <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\frmSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmSanPham.Designer.cs">
+      <DependentUpon>frmSanPham.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\Main.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="form\Main.Designer.cs">
       <DependentUpon>Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\frmLapPhieuBanHang.cs">
+    <Compile Include="form\frmPhieuBanHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\frmLapPhieuBanHang.Designer.cs">
-      <DependentUpon>frmLapPhieuBanHang.cs</DependentUpon>
+    <Compile Include="form\frmPhieuBanHang.Designer.cs">
+      <DependentUpon>frmPhieuBanHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\frmLapPhieuDichVu.cs">
+    <Compile Include="form\frmPhieuDichVu.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\frmLapPhieuDichVu.Designer.cs">
-      <DependentUpon>frmLapPhieuDichVu.cs</DependentUpon>
+    <Compile Include="form\frmPhieuDichVu.Designer.cs">
+      <DependentUpon>frmPhieuDichVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\frmLapPhieuMuaHang.cs">
+    <Compile Include="form\frmPhieuMuaHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="form\frmLapPhieuMuaHang.Designer.cs">
-      <DependentUpon>frmLapPhieuMuaHang.cs</DependentUpon>
+    <Compile Include="form\frmPhieuMuaHang.Designer.cs">
+      <DependentUpon>frmPhieuMuaHang.cs</DependentUpon>
     </Compile>
     <Compile Include="form\frmTraCuuPhieuDichVu.cs">
       <SubType>Form</SubType>
@@ -121,14 +128,17 @@
     <EmbeddedResource Include="form\frmLapBaoCaoTonKho.resx">
       <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\frmLapPhieuBanHang.resx">
-      <DependentUpon>frmLapPhieuBanHang.cs</DependentUpon>
+    <EmbeddedResource Include="form\frmPhieuBanHang.resx">
+      <DependentUpon>frmPhieuBanHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\frmLapPhieuDichVu.resx">
-      <DependentUpon>frmLapPhieuDichVu.cs</DependentUpon>
+    <EmbeddedResource Include="form\frmPhieuDichVu.resx">
+      <DependentUpon>frmPhieuDichVu.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="form\frmLapPhieuMuaHang.resx">
-      <DependentUpon>frmLapPhieuMuaHang.cs</DependentUpon>
+    <EmbeddedResource Include="form\frmPhieuMuaHang.resx">
+      <DependentUpon>frmPhieuMuaHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmSanPham.resx">
+      <DependentUpon>frmSanPham.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\frmTraCuuPhieuDichVu.resx">
       <DependentUpon>frmTraCuuPhieuDichVu.cs</DependentUpon>
@@ -163,11 +173,11 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="VBDQ.mdf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="VBDQ_log.ldf">
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>VBDQ.mdf</DependentUpon>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
   <ItemGroup>

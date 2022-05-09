@@ -1,15 +1,17 @@
 ﻿create table LOAISANPHAM
 (
 	MALOAISP char(4) not null primary key,
-	TENLOAISP	char(20)	not null,
+	TENLOAISP	nvarchar(20)	not null,
 	DONVITINH	char(20)	not null,
-	PHANTRAMLOINHUAN	decimal(2,2)	not null
+	PHANTRAMLOINHUAN	decimal(4,2)	not null
 )
+
+
 create table SANPHAM 
 (
 	MASP	char(4)	 not null primary key,
 	MALOAISP	char(4)	 not null,
-	TENSP	char(20)	not null,
+	TENSP	nvarchar(20)	not null,
 	DONGIA	money	not null
 
 )
@@ -44,9 +46,10 @@ create table CHITIETPHIEUMUAHANG
 create table DICHVU
 (
 	MADV	char(4)	 not null primary key,
-	TENDV	char(20)	not null,
+	TENDV	nvarchar(20)	not null,
 	ĐONGIA	money	not null
 )
+
 create table PHIEUDICHVU
 (
 	SOPHIEU	char(4)	 not null primary key,
@@ -86,13 +89,13 @@ create table CHITIETPHIEUBAOCAOTONKHO
 create table NHACUNGCAP
 (
 	MANCC	char(4)	 not null primary key,
-	DIACHI	varchar(50)	not null,
+	DIACHI	nvarchar(50)	not null,
 	SODT	varchar(10)	not null
 )
 create table KHACHHANG
 (
 	MAKH	char(4)	 not null primary key,
-	TENKH	char(20)	not null
+	TENKH	nvarchar(20)	not null
 )
 alter table sanpham add foreign key (maloaisp) references loaisanpham(maloaisp)
 alter table chitietphieubanhang add foreign key (masp) references sanpham(masp)
