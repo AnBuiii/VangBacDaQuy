@@ -190,5 +190,16 @@ namespace VangBacDaQuy.form
             LoadDataGridView();
             ResetValue();
         }
+
+        private void btnHuy_Click(object sender, EventArgs e)
+        {
+            ResetValue();
+            btnHuy.Enabled = false;
+            btnThem.Enabled = true;
+            btnXoa.Enabled = true;
+            btnSua.Enabled = true;
+            btnLuu.Enabled = false;
+            txbMaSp.Enabled = false;
+        }
     }
 }
