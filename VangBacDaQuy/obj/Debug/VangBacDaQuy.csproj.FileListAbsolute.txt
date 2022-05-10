@@ -38,3 +38,5 @@ C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.exe
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.pdb
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\QuanLyVangBacDaQuy.mdf
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\QuanLyVangBacDaQuy_log.ldf
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\QuanLyVangBacDaQuy.mdf
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\QuanLyVangBacDaQuy_log.ldf
