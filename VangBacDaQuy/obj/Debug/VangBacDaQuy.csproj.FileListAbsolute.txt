@@ -17,7 +17,6 @@ C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmSanPham.resources
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ.mdf
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ_log.ldf
-<<<<<<< Updated upstream
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ.mdf
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ_log.ldf
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.exe.config
@@ -41,6 +40,3 @@ C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\QuanLyVangBacDaQuy.mdf
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\QuanLyVangBacDaQuy_log.ldf
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\QuanLyVangBacDaQuy.mdf
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\QuanLyVangBacDaQuy_log.ldf
-=======
-C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.csproj.ResolveComReference.cache
->>>>>>> Stashed changes
