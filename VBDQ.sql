@@ -2,7 +2,7 @@
 (
 	MALOAISP char(4) not null primary key,
 	TENLOAISP	nvarchar(20)	not null,
-	DONVITINH	char(20)	not null,
+	DONVITINH	nvarchar(20)	not null,
 	PHANTRAMLOINHUAN	decimal(4,2)	not null
 )
 
@@ -68,7 +68,7 @@ create table CHITIETPHIEUDICHVU
 	TIENTRATRUOC	money	not null,
 	TIENCONLAI	money	not null,
 	NGAYGIAO	smalldatetime	not null,
-	TINHTRANG	char(10)	not null,
+	TINHTRANG	nvarchar(10)	not null,
 	primary key (madv,sophieu)
 )
 create table PHIEUBAOCAOTONKHO
