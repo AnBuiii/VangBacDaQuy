@@ -62,6 +62,7 @@ namespace VangBacDaQuy.Class
             cmd.Dispose();
             cmd = null;
         }
+        //Kiểm tra khóa chính
         public static bool CheckKey(string sql)
         {
             SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
@@ -69,6 +70,35 @@ namespace VangBacDaQuy.Class
             adapter.Fill(dt);
             if (dt.Rows.Count > 0) return true;
             else return false;
+        }
+        //Fill Combobox
+        public static void FillCombo(string sql, ComboBox cb, string ma, string ten)
+        {
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+            DataTable table = new DataTable();
+            adapter.Fill(table);
+            cb.DataSource = table;
+            cb.ValueMember = ma;
+            cb.DisplayMember = ten;
+        }
+        //Định dạng ngày
+        public static string ConvertDateTime(string date)
+        {
+            string[] elements = date.Split('/');
+            string dt = string.Format("{0}/{1}/{2}", elements[0], elements[1], elements[2]);
+            return dt;
+        }
+        //Lấy dữ liệu từ lệnh sql
+        public static string GetFieldValues(string sql)
+        {
+            string ma = "";
+            SqlCommand cmd = new SqlCommand(sql, con);
+            SqlDataReader reader;
+            reader = cmd.ExecuteReader();
+            while (reader.Read())
+                ma = reader.GetValue(0).ToString();
+            reader.Close();
+            return ma;
         }
     }
 }
