@@ -7,7 +7,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using VangBacDaQuy.controller;
 using COMExcel = Microsoft.Office.Interop.Excel;
 
 namespace VangBacDaQuy.form
@@ -15,7 +14,6 @@ namespace VangBacDaQuy.form
     public partial class frmPhieuBanHang : Form
     {
         DataTable dtChiTietPhieuBanHang;
-        ctlFrmPhieuBanHang controller = new ctlFrmPhieuBanHang();
         public frmPhieuBanHang()
         {
             InitializeComponent();

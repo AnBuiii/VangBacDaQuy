@@ -62,12 +62,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Functions.cs" />
-    <Compile Include="controller\ctlFrmLapBaoCaoTonKho.cs" />
-    <Compile Include="controller\MainFormController.cs" />
-    <Compile Include="controller\ctlFrmPhieuBanHang.cs" />
-    <Compile Include="controller\ctlFrmPhieuDichVu.cs" />
-    <Compile Include="controller\ctlFrmPhieuMuaHang.cs" />
-    <Compile Include="controller\ctlFrmTraCuuPhieuDichVu.cs" />
     <Compile Include="form\frmLapBaoCaoTonKho.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,19 +104,6 @@
     <Compile Include="form\frmTraCuuPhieuDichVu.Designer.cs">
       <DependentUpon>frmTraCuuPhieuDichVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="models\ChiTietPhieuBanHang.cs" />
-    <Compile Include="models\ChiTietPhieuBaoCaoTonKho.cs" />
-    <Compile Include="models\ChiTietPhieuDichVu.cs" />
-    <Compile Include="models\ChiTietPhieuMuaHang.cs" />
-    <Compile Include="models\DichVu.cs" />
-    <Compile Include="models\KhachHang.cs" />
-    <Compile Include="models\LoaiSanPham.cs" />
-    <Compile Include="models\NhaCungCap.cs" />
-    <Compile Include="models\PhieuBanHang.cs" />
-    <Compile Include="models\PhieuBaoCaoTonKho.cs" />
-    <Compile Include="models\PhieuDichVu.cs" />
-    <Compile Include="models\PhieuMuaHang.cs" />
-    <Compile Include="models\SanPham.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="form\frmLapBaoCaoTonKho.resx">
