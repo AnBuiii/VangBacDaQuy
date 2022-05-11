@@ -81,13 +81,6 @@ namespace VangBacDaQuy.Class
             cb.ValueMember = ma;
             cb.DisplayMember = ten;
         }
-        //Định dạng ngày
-        public static string ConvertDateTime(string date)
-        {
-            string[] elements = date.Split('/');
-            string dt = string.Format("{0}/{1}/{2}", elements[0], elements[1], elements[2]);
-            return dt;
-        }
         //Lấy dữ liệu từ lệnh sql
         public static string GetFieldValues(string sql)
         {
@@ -100,5 +93,6 @@ namespace VangBacDaQuy.Class
             reader.Close();
             return ma;
         }
+        
     }
 }

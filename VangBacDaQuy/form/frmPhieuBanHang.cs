@@ -33,19 +33,113 @@ namespace VangBacDaQuy.form
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            btnXoa.Enabled = false;
+            btnLuu.Enabled = true;
+            btnIn.Enabled = false;
+            btnThem.Enabled = false;
+            ResetValues();
+            txbSoPhieu.Enabled = true;
+            txbSoPhieu.Text = "PH";
+            LoadDataGridView();
 
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
+            string sql;
+            int sl, slcon;
+            double tong;
+            //nếu mã phiếu chưa tồn tại -> tạo mới 
+            sql = "SELECT SOPHIEU FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
+            if (!Class.Functions.CheckKey(sql))
+            {
+                if(cbMaKH.Text.Length == 0)
+                {
+                    MessageBox.Show("Bạn phải nhập khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    cbMaKH.Focus();
+                    return;
+                }
+
+                sql = "INSERT INTO PHIEUBANHANG VALUES('" + txbSoPhieu.Text + "', '" + cbMaKH.Text + "', '" + dtpNgaylap.Value.ToString("dd/MM/yyyy") +"'," + txbTongtien.Text + ")" ;
+                
+                Class.Functions.RunSQL(sql);
+                MessageBox.Show("insert phieubanhang");
+            }
+            //insert sản phẩm
+            if(cbMaSP.Text.Trim().Length == 0)
+            {
+                MessageBox.Show("Bạn phải nhập mã sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                cbMaSP.Focus();
+                return;
+            }
+            if(txbSL.Text.Trim().Length == 0 || txbSL.Text == "0")
+            {
+                MessageBox.Show("Bạn phải nhập số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txbSL.Text = "";
+                txbSL.Focus();
+                return;
+            }
+            sql = "SELECT MASP FROM CHITIETPHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "' AND MASP = '" + cbMaSP.Text.Trim() + "'";
+            if (Class.Functions.CheckKey(sql))
+            {
+                MessageBox.Show("Sản phẩm này đã có, bạn phải nhập sản phẩm khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetValuesHang();
+                cbMaSP.Focus();
+
+                MessageBox.Show("Check masp");
+                return;
+            }
+            sql = "SELECT SOLUONG FROM SANPHAM WHERE MASP = '" + cbMaSP.SelectedValue + "'";
+            sl = Convert.ToInt32(Class.Functions.GetFieldValues(sql));
+            if (sl < Convert.ToInt32(txbSL.Text))
+            {
+                MessageBox.Show("Số lượng mặt hàng này chỉ còn " + sl, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txbSL.Text = "";
+                txbSL.Focus();
+
+                MessageBox.Show("Check soluong");
+                return;
+            }
+            sql = "INSERT INTO CHITIETPHIEUBANHANG VALUES ('" + cbMaSP.SelectedValue + "','" + txbSoPhieu.Text + "'," + txbSL.Text + ")";
+            Class.Functions.RunSQL(sql);
+
+            MessageBox.Show("insert chitietphieubanhang");
+            LoadDataGridView();
+            //update số lượng còn lại của sản phẩm
+            slcon = sl - Convert.ToInt32(txbSL.Text);
+            sql = "UPDATE SANPHAM SET SOLUONG  = " + slcon + "WHERE MASP = '" + cbMaSP.SelectedValue + "'";
+            Class.Functions.RunSQL(sql);
+
+            MessageBox.Show("update soluong");
+            //update tổng tiền
+            sql = "SELECT TONGTIEN FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
+            tong = Convert.ToDouble(Class.Functions.GetFieldValues(sql));
+            tong += Convert.ToDouble(txbThanhtien.Text);
+            sql = "UPDATE PHIEUBANHANG SET TONGTIEN = " + tong + " WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
+            Class.Functions.RunSQL(sql);
+
+            MessageBox.Show("Update tong tien");
+            txbTongtien.Text = tong.ToString();
+            ResetValuesHang();
+            btnXoa.Enabled = true;
+            btnThem.Enabled = true;
+            btnIn.Enabled = true;
 
         }
+
+        private void ResetValuesHang()
+        {
+            cbMaSP.Text = "";
+            txbSL.Text = "";
+            txbThanhtien.Text = "0";
+        }
+
         private void LoadDataGridView()
         {
             string sql;
-            sql = "SELECT SANPHAM.MASP, TENSP, TENLOAISP, DONGIA, SOLUONG, SOLUONG*DONGIA AS THANHTIEN" +
+            sql = "SELECT SANPHAM.MASP, TENSP, TENLOAISP, DONGIA, CHITIETPHIEUBANHANG.SOLUONG, CHITIETPHIEUBANHANG.SOLUONG*DONGIA AS THANHTIEN" +
                    " FROM SANPHAM, CHITIETPHIEUBANHANG, LOAISANPHAM" +
-                    " WHERE SANPHAM.MASP = CHITIETPHIEUBANHANG.MASP AND SANPHAM.MALOAISP = LOAISANPHAM.MALOAISP ";
+                    " WHERE SANPHAM.MASP = CHITIETPHIEUBANHANG.MASP AND SANPHAM.MALOAISP = LOAISANPHAM.MALOAISP AND SOPHIEU = '" + txbSoPhieu.Text + "'";
             //sql = "SELECT MASP, TENSP, MALOAISP, DONGIA FROM SANPHAM";
             dtChiTietPhieuBanHang = Class.Functions.GetDataToDataTable(sql);
             dgvPhieuBanHang.DataSource = dtChiTietPhieuBanHang;
@@ -65,7 +159,7 @@ namespace VangBacDaQuy.form
             btnLuu.Enabled = false;
             btnXoa.Enabled = false;
             btnIn.Enabled = false;
-            txbMaPhieu.ReadOnly = true;
+            txbSoPhieu.Enabled = false;
             txbTenKH.ReadOnly = true;
             txbTenSP.ReadOnly = true;
             txbDongia.ReadOnly = true;
@@ -73,7 +167,7 @@ namespace VangBacDaQuy.form
             txbTongtien.Text = "0";
             Class.Functions.FillCombo("SELECT MAKH, TENKH FROM KHACHHANG", cbMaKH, "MAKH", "MAKH");
             Class.Functions.FillCombo("SELECT MASP, TENSP FROM SANPHAM", cbMaSP, "MASP", "MASP");
-            if(txbMaPhieu.Text != "")
+            if(txbSoPhieu.Text != "")
             {
                 LoadInfoHoaDon();
                 btnXoa.Enabled=true;
@@ -85,12 +179,22 @@ namespace VangBacDaQuy.form
         private void LoadInfoHoaDon()
         {
             string sql;
-            sql = "SELECT NGAYLAP FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbMaPhieu.Text + "'";
+            sql = "SELECT NGAYLAP FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
             dtpNgaylap.Value = DateTime.Parse(Class.Functions.GetFieldValues(sql));
-            sql = "SELECT MAKH FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbMaPhieu.Text + "'";
+            sql = "SELECT MAKH FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
             cbMaKH.Text = Class.Functions.GetFieldValues(sql);
-            sql = "SELECT TONGTIEN FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbMaPhieu.Text + "'";
+            sql = "SELECT TONGTIEN FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
             txbTongtien.Text = Class.Functions.GetFieldValues(sql);
+        }
+        private void ResetValues()
+        {
+            txbSoPhieu.Text = "";
+            dtpNgaylap.Value = DateTime.Now;
+            cbMaKH.Text = "";
+            txbTongtien.Text = "0";
+            cbMaSP.Text = "";
+            txbSL.Text = "";
+            txbThanhtien.Text = "0";
         }
     }
 }

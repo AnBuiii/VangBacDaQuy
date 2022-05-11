@@ -12,7 +12,8 @@ create table SANPHAM
 	MASP	char(4)	 not null primary key,
 	MALOAISP	char(4)	 not null,
 	TENSP	nvarchar(20)	not null,
-	DONGIA	money	not null
+	DONGIA	money	not null.
+	SOLUONG int not null
 
 )
 create table PHIEUBANHANG
