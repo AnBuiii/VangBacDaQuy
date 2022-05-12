@@ -68,6 +68,12 @@
     <Compile Include="form\frmLapBaoCaoTonKho.Designer.cs">
       <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\frmPhieuMuaHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmPhieuMuaHang.Designer.cs">
+      <DependentUpon>frmPhieuMuaHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\frmSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,12 +98,6 @@
     <Compile Include="form\frmPhieuDichVu.Designer.cs">
       <DependentUpon>frmPhieuDichVu.cs</DependentUpon>
     </Compile>
-    <Compile Include="form\frmPhieuMuaHang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\frmPhieuMuaHang.Designer.cs">
-      <DependentUpon>frmPhieuMuaHang.cs</DependentUpon>
-    </Compile>
     <Compile Include="form\frmTraCuuPhieuDichVu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -109,14 +109,14 @@
     <EmbeddedResource Include="form\frmLapBaoCaoTonKho.resx">
       <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="form\frmPhieuMuaHang.resx">
+      <DependentUpon>frmPhieuMuaHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\frmPhieuBanHang.resx">
       <DependentUpon>frmPhieuBanHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\frmPhieuDichVu.resx">
       <DependentUpon>frmPhieuDichVu.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="form\frmPhieuMuaHang.resx">
-      <DependentUpon>frmPhieuMuaHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\frmSanPham.resx">
       <DependentUpon>frmSanPham.cs</DependentUpon>
