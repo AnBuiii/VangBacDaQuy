@@ -259,6 +259,7 @@
             this.dgvPhieuBanHang.RowTemplate.Height = 24;
             this.dgvPhieuBanHang.Size = new System.Drawing.Size(950, 291);
             this.dgvPhieuBanHang.TabIndex = 2;
+            this.dgvPhieuBanHang.DoubleClick += new System.EventHandler(this.dgvPhieuBanHang_DoubleClick);
             // 
             // panel3
             // 

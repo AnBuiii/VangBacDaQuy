@@ -26,7 +26,36 @@ namespace VangBacDaQuy.form
 
         private void btnHuy_Click(object sender, EventArgs e)
         {
+            int sl, slxoa;
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes) 
+            {
+                string sql = "SELECT MASP, SOLUONG FROM CHITIETPHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
+                DataTable tbSP = Class.Functions.GetDataToDataTable(sql);
+                for (int row = 0; row <  tbSP.Rows.Count ; row++)
+                {
+                    // Cập nhật số lượng
+                    sql = "SELECT SOLUONG FROM SANPHAM WHERE MASP = '" + tbSP.Rows[row][0].ToString() + "'";
+                    sl = Convert.ToInt32(Class.Functions.GetFieldValues(sql));
+                    MessageBox.Show("SELECT SL");
+                    slxoa = Convert.ToInt32(tbSP.Rows[row][1].ToString());
+                    sl += slxoa;
+                    sql = "UPDATE SANPHAM SET SOLUONG = " + sl + " WHERE MASP = '" + tbSP.Rows[row][0].ToString() + "'";
+                    Class.Functions.RunSQL(sql);
+                    MessageBox.Show("UPDATE SL");
+                }
 
+                //Xóa chi tiết phiếu
+                sql = "DELETE CHITIETPHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
+                Class.Functions.RunSQL(sql);
+
+                //Xóa phiếu bán hàng
+                sql = "DELETE PHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
+                Class.Functions.RunSQL(sql);
+                ResetValues();
+                LoadDataGridView();
+                btnXoa.Enabled = false;
+                btnIn.Enabled = false;
+            }
         }
 
       
@@ -63,7 +92,6 @@ namespace VangBacDaQuy.form
                 sql = "INSERT INTO PHIEUBANHANG VALUES('" + txbSoPhieu.Text + "', '" + cbMaKH.Text + "', '" + dtpNgaylap.Value.ToString("dd/MM/yyyy") +"'," + txbTongtien.Text + ")" ;
                 
                 Class.Functions.RunSQL(sql);
-                MessageBox.Show("insert phieubanhang");
             }
             //insert sản phẩm
             if(cbMaSP.Text.Trim().Length == 0)
@@ -85,8 +113,6 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Sản phẩm này đã có, bạn phải nhập sản phẩm khác", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 ResetValuesHang();
                 cbMaSP.Focus();
-
-                MessageBox.Show("Check masp");
                 return;
             }
             sql = "SELECT SOLUONG FROM SANPHAM WHERE MASP = '" + cbMaSP.SelectedValue + "'";
@@ -96,29 +122,21 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Số lượng mặt hàng này chỉ còn " + sl, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txbSL.Text = "";
                 txbSL.Focus();
-
-                MessageBox.Show("Check soluong");
                 return;
             }
             sql = "INSERT INTO CHITIETPHIEUBANHANG VALUES ('" + cbMaSP.SelectedValue + "','" + txbSoPhieu.Text + "'," + txbSL.Text + ")";
             Class.Functions.RunSQL(sql);
-
-            MessageBox.Show("insert chitietphieubanhang");
             LoadDataGridView();
             //update số lượng còn lại của sản phẩm
             slcon = sl - Convert.ToInt32(txbSL.Text);
             sql = "UPDATE SANPHAM SET SOLUONG  = " + slcon + "WHERE MASP = '" + cbMaSP.SelectedValue + "'";
             Class.Functions.RunSQL(sql);
-
-            MessageBox.Show("update soluong");
             //update tổng tiền
             sql = "SELECT TONGTIEN FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
             tong = Convert.ToDouble(Class.Functions.GetFieldValues(sql));
             tong += Convert.ToDouble(txbThanhtien.Text);
             sql = "UPDATE PHIEUBANHANG SET TONGTIEN = " + tong + " WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
             Class.Functions.RunSQL(sql);
-
-            MessageBox.Show("Update tong tien");
             txbTongtien.Text = tong.ToString();
             ResetValuesHang();
             btnXoa.Enabled = true;
@@ -195,6 +213,41 @@ namespace VangBacDaQuy.form
             cbMaSP.Text = "";
             txbSL.Text = "";
             txbThanhtien.Text = "0";
+        }
+
+        private void dgvPhieuBanHang_DoubleClick(object sender, EventArgs e)
+        {
+            string masp, sql;
+            Double ThanhTienxoa, tong;
+            int slXoa, sl;
+            if (dtChiTietPhieuBanHang.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if ((MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+            {
+                //Xóa hàng 
+                masp = dgvPhieuBanHang.CurrentRow.Cells["MASP"].Value.ToString();
+                slXoa = Convert.ToInt32(dgvPhieuBanHang.CurrentRow.Cells["SOLUONG"].Value.ToString());
+                ThanhTienxoa = Convert.ToDouble(dgvPhieuBanHang.CurrentRow.Cells["THANHTIEN"].Value.ToString());
+                sql = "DELETE CHITIETPHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "' AND MASP = '" + masp + "'";
+                Class.Functions.RunSQL(sql);
+                // Cập nhật số lượng
+                sql = "SELECT SOLUONG FROM SANPHAM WHERE MASP = '" + masp + "'";
+                sl = Convert.ToInt32(Class.Functions.GetFieldValues(sql));
+                sl+= slXoa;
+                sql = "UPDATE SANPHAM SET SOLUONG =" + sl + " WHERE MASP = '" + masp + "'";
+                Class.Functions.RunSQL(sql);
+                sql = "SELECT TONGTIEN FROM PHIEUBANHANG WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
+                // Cập nhật lại tổng tiền cho hóa đơn bán
+                tong = Convert.ToDouble(Class.Functions.GetFieldValues(sql));
+                tong -= ThanhTienxoa;
+                sql = "UPDATE PHIEUBANHANG SET TONGTIEN =" + tong + " WHERE SOPHIEU = '" + txbSoPhieu.Text + "'";
+                Class.Functions.RunSQL(sql);
+                txbTongtien.Text = tong.ToString();
+                LoadDataGridView();
+            }
         }
     }
 }
