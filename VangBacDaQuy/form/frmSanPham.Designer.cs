@@ -46,6 +46,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
+            this.label6 = new System.Windows.Forms.Label();
+            this.txbSL = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
@@ -60,9 +62,9 @@
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 361);
+            this.panel1.Location = new System.Drawing.Point(0, 360);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 89);
+            this.panel1.Size = new System.Drawing.Size(800, 90);
             this.panel1.TabIndex = 2;
             // 
             // btnHuy
@@ -126,6 +128,8 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.txbSL);
+            this.panel2.Controls.Add(this.label6);
             this.panel2.Controls.Add(this.txbDongia);
             this.panel2.Controls.Add(this.txbMaLoaiSp);
             this.panel2.Controls.Add(this.txbTenSp);
@@ -138,7 +142,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 140);
+            this.panel2.Size = new System.Drawing.Size(800, 179);
             this.panel2.TabIndex = 0;
             // 
             // txbDongia
@@ -219,13 +223,29 @@
             // 
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvSanPham.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvSanPham.Location = new System.Drawing.Point(0, 140);
+            this.dgvSanPham.Location = new System.Drawing.Point(0, 179);
             this.dgvSanPham.Name = "dgvSanPham";
             this.dgvSanPham.RowHeadersWidth = 51;
             this.dgvSanPham.RowTemplate.Height = 24;
-            this.dgvSanPham.Size = new System.Drawing.Size(800, 221);
+            this.dgvSanPham.Size = new System.Drawing.Size(800, 181);
             this.dgvSanPham.TabIndex = 1;
             this.dgvSanPham.Click += new System.EventHandler(this.dgvSanPham_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(401, 136);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(60, 16);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Số lượng";
+            // 
+            // txbSL
+            // 
+            this.txbSL.Location = new System.Drawing.Point(556, 136);
+            this.txbSL.Name = "txbSL";
+            this.txbSL.Size = new System.Drawing.Size(166, 22);
+            this.txbSL.TabIndex = 6;
             // 
             // frmSanPham
             // 
@@ -266,5 +286,7 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnHuy;
+        private System.Windows.Forms.TextBox txbSL;
+        private System.Windows.Forms.Label label6;
     }
 }

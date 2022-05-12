@@ -27,13 +27,14 @@ namespace VangBacDaQuy.form
         private void LoadDataGridView()
         {
             string sql;
-            sql = "SELECT MASP, TENSP, MALOAISP, DONGIA FROM SANPHAM";
+            sql = "SELECT MASP, TENSP, MALOAISP, DONGIA, SOLUONG FROM SANPHAM";
             dtSanPham = Class.Functions.GetDataToDataTable(sql);
             dgvSanPham.DataSource = dtSanPham;
             dgvSanPham.Columns[0].HeaderText = "Mã sản phẩm";
             dgvSanPham.Columns[1].HeaderText = "Tên sản phẩm";
             dgvSanPham.Columns[2].HeaderText = "Mã loại sản phẩm";
             dgvSanPham.Columns[3].HeaderText = "Đơn giá";
+            dgvSanPham.Columns[4].HeaderText = "Số lượng";
             /*dgvSanPham.Columns[0].Width = 100;
             dgvSanPham.Columns[1].Width = 300;
             dgvSanPham.Columns[2].Width = 300;
@@ -61,6 +62,7 @@ namespace VangBacDaQuy.form
             txbTenSp.Text = dgvSanPham.CurrentRow.Cells["TENSP"].Value.ToString();
             txbMaLoaiSp.Text = dgvSanPham.CurrentRow.Cells["MALOAISP"].Value.ToString();
             txbDongia.Text = dgvSanPham.CurrentRow.Cells["DONGIA"].Value.ToString();
+            txbSL.Text = dgvSanPham.CurrentRow.Cells["SOLUONG"].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnHuy.Enabled = true;
@@ -84,6 +86,7 @@ namespace VangBacDaQuy.form
             txbMaLoaiSp.Text = "";
             txbMaSp.Text = "";
             txbTenSp.Text = "";
+            txbSL.Text = "";
         }
 
         private void btnLuu_Click(object sender, EventArgs e)
@@ -113,6 +116,12 @@ namespace VangBacDaQuy.form
                 txbDongia.Focus();
                 return;
             }
+            if (txbSL.Text.Trim().Length == 0) //Nếu chưa nhập mã chất liệu
+            {
+                MessageBox.Show("Bạn phải nhập số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txbSL.Focus();
+                return;
+            }
 
             sql = "Select MASP From SANPHAM where MASP='" + txbMaSp.Text.Trim() + "'";
             if (Class.Functions.CheckKey(sql))
@@ -122,7 +131,7 @@ namespace VangBacDaQuy.form
                 return;
             }
             
-            sql = "INSERT INTO SANPHAM VALUES('" + txbMaSp.Text + "','" + txbMaLoaiSp.Text + "',N'" + txbTenSp.Text + "'," + Convert.ToDouble( txbDongia.Text.ToString()) +")";
+            sql = "INSERT INTO SANPHAM VALUES('" + txbMaSp.Text + "','" + txbMaLoaiSp.Text + "',N'" + txbTenSp.Text + "'," + Convert.ToDouble( txbDongia.Text.ToString()) + ","+Convert.ToInt32(txbSL.Text.ToString()) + ")";
             Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
             LoadDataGridView(); //Nạp lại DataGridView
             ResetValue();
@@ -165,7 +174,14 @@ namespace VangBacDaQuy.form
                 txbDongia.Focus();
                 return;
             }
-            sql = "UPDATE SANPHAM SET TENSP = N'" + txbTenSp.Text + "', MALOAISP = '" + txbMaLoaiSp.Text + "', DONGIA = " + Convert.ToDouble(txbDongia.Text.ToString()) + " WHERE MASP = '" + txbMaSp.Text + "'";
+            if (txbSL.Text.Trim().Length == 0) //Nếu chưa nhập mã chất liệu
+            {
+                MessageBox.Show("Bạn phải nhập số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                txbSL.Focus();
+                return;
+            }
+
+            sql = "UPDATE SANPHAM SET TENSP = N'" + txbTenSp.Text + "', MALOAISP = '" + txbMaLoaiSp.Text + "', DONGIA = " + Convert.ToDouble(txbDongia.Text) + ", SOLUONG = " + Convert.ToInt32(txbSL.Text)+ " WHERE MASP = '" + txbMaSp.Text + "'";
             Class.Functions.RunSQL(sql);
             LoadDataGridView();
             ResetValue();
