@@ -56,7 +56,6 @@
             this.panel4 = new System.Windows.Forms.Panel();
             this.txbTongtien = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
-            this.label13 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.txbLoaiSP = new System.Windows.Forms.TextBox();
@@ -105,6 +104,7 @@
             this.btnTimkiem.TabIndex = 2;
             this.btnTimkiem.Text = "Tìm kiếm";
             this.btnTimkiem.UseVisualStyleBackColor = true;
+            this.btnTimkiem.Click += new System.EventHandler(this.btnTimkiem_Click);
             // 
             // cbSophieu
             // 
@@ -113,6 +113,7 @@
             this.cbSophieu.Name = "cbSophieu";
             this.cbSophieu.Size = new System.Drawing.Size(172, 24);
             this.cbSophieu.TabIndex = 1;
+            this.cbSophieu.DropDown += new System.EventHandler(this.cbSophieu_DropDown);
             // 
             // label1
             // 
@@ -174,6 +175,7 @@
             this.cbMaKH.Name = "cbMaKH";
             this.cbMaKH.Size = new System.Drawing.Size(167, 24);
             this.cbMaKH.TabIndex = 6;
+            this.cbMaKH.TextChanged += new System.EventHandler(this.cbMaKH_TextChanged);
             // 
             // dtpNgaylap
             // 
@@ -275,9 +277,9 @@
             // 
             this.panel5.Controls.Add(this.panel6);
             this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel5.Location = new System.Drawing.Point(0, 53);
+            this.panel5.Location = new System.Drawing.Point(0, 47);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(950, 54);
+            this.panel5.Size = new System.Drawing.Size(950, 60);
             this.panel5.TabIndex = 1;
             // 
             // panel6
@@ -288,7 +290,7 @@
             this.panel6.Controls.Add(this.btnIn);
             this.panel6.Controls.Add(this.btnThem);
             this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel6.Location = new System.Drawing.Point(0, -35);
+            this.panel6.Location = new System.Drawing.Point(0, -29);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(950, 89);
             this.panel6.TabIndex = 3;
@@ -331,6 +333,7 @@
             this.btnIn.TabIndex = 2;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
+            this.btnIn.Click += new System.EventHandler(this.btnIn_Click);
             // 
             // btnThem
             // 
@@ -346,17 +349,16 @@
             // 
             this.panel4.Controls.Add(this.txbTongtien);
             this.panel4.Controls.Add(this.label14);
-            this.panel4.Controls.Add(this.label13);
             this.panel4.Controls.Add(this.label12);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(950, 53);
+            this.panel4.Size = new System.Drawing.Size(950, 47);
             this.panel4.TabIndex = 0;
             // 
             // txbTongtien
             // 
-            this.txbTongtien.Location = new System.Drawing.Point(742, 7);
+            this.txbTongtien.Location = new System.Drawing.Point(731, 13);
             this.txbTongtien.Name = "txbTongtien";
             this.txbTongtien.Size = new System.Drawing.Size(187, 22);
             this.txbTongtien.TabIndex = 3;
@@ -364,25 +366,16 @@
             // label14
             // 
             this.label14.AutoSize = true;
-            this.label14.Location = new System.Drawing.Point(597, 7);
+            this.label14.Location = new System.Drawing.Point(580, 13);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(63, 16);
             this.label14.TabIndex = 2;
             this.label14.Text = "Tổng tiền";
             // 
-            // label13
-            // 
-            this.label13.AutoSize = true;
-            this.label13.Location = new System.Drawing.Point(9, 34);
-            this.label13.Name = "label13";
-            this.label13.Size = new System.Drawing.Size(63, 16);
-            this.label13.TabIndex = 1;
-            this.label13.Text = "Bằng chữ";
-            // 
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(9, 3);
+            this.label12.Location = new System.Drawing.Point(9, 7);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(153, 16);
             this.label12.TabIndex = 0;
@@ -437,6 +430,8 @@
             this.txbSL.Name = "txbSL";
             this.txbSL.Size = new System.Drawing.Size(102, 22);
             this.txbSL.TabIndex = 8;
+            this.txbSL.TextChanged += new System.EventHandler(this.txbSL_TextChanged);
+            this.txbSL.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSL_KeyPress);
             // 
             // txbDongia
             // 
@@ -459,6 +454,7 @@
             this.cbMaSP.Name = "cbMaSP";
             this.cbMaSP.Size = new System.Drawing.Size(121, 24);
             this.cbMaSP.TabIndex = 5;
+            this.cbMaSP.TextChanged += new System.EventHandler(this.cbMaSP_TextChanged);
             // 
             // label11
             // 
@@ -563,7 +559,6 @@
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.TextBox txbTongtien;
         private System.Windows.Forms.Label label14;
-        private System.Windows.Forms.Label label13;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox txbThanhtien;
         private System.Windows.Forms.TextBox txbSL;

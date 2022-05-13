@@ -15,8 +15,6 @@ C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmPhieuDichVu.resources
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmPhieuMuaHang.resources
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmSanPham.resources
-C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ.mdf
-C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ_log.ldf
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ.mdf
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ_log.ldf
 C:\CNPM\DoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.exe.config
