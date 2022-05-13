@@ -30,6 +30,7 @@
         {
             this.dgvBaoCaoTonKho = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboThang = new System.Windows.Forms.ComboBox();
             this.txbNam = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -38,7 +39,6 @@
             this.btnDong = new System.Windows.Forms.Button();
             this.btnInBaoCao = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.cboThang = new System.Windows.Forms.ComboBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaoCaoTonKho)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -54,6 +54,7 @@
             this.dgvBaoCaoTonKho.RowTemplate.Height = 24;
             this.dgvBaoCaoTonKho.Size = new System.Drawing.Size(800, 249);
             this.dgvBaoCaoTonKho.TabIndex = 4;
+            this.dgvBaoCaoTonKho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBaoCaoTonKho_CellContentClick);
             // 
             // panel2
             // 
@@ -66,8 +67,29 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 111);
-            this.panel2.TabIndex = 3;
+            this.panel2.TabIndex = 0;
             this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            // 
+            // cboThang
+            // 
+            this.cboThang.FormattingEnabled = true;
+            this.cboThang.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4",
+            "5",
+            "6",
+            "7",
+            "8",
+            "9",
+            "10",
+            "11",
+            "12"});
+            this.cboThang.Location = new System.Drawing.Point(116, 62);
+            this.cboThang.Name = "cboThang";
+            this.cboThang.Size = new System.Drawing.Size(143, 24);
+            this.cboThang.TabIndex = 1;
             // 
             // txbNam
             // 
@@ -122,6 +144,7 @@
             this.btnDong.TabIndex = 4;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
+            this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // btnInBaoCao
             // 
@@ -143,27 +166,6 @@
             this.panel1.Size = new System.Drawing.Size(800, 90);
             this.panel1.TabIndex = 5;
             // 
-            // cboThang
-            // 
-            this.cboThang.FormattingEnabled = true;
-            this.cboThang.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4",
-            "5",
-            "6",
-            "7",
-            "8",
-            "9",
-            "10",
-            "11",
-            "12"});
-            this.cboThang.Location = new System.Drawing.Point(116, 62);
-            this.cboThang.Name = "cboThang";
-            this.cboThang.Size = new System.Drawing.Size(143, 24);
-            this.cboThang.TabIndex = 4;
-            // 
             // frmLapBaoCaoTonKho
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -175,6 +177,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmLapBaoCaoTonKho";
             this.Text = "BaoCaoTonKho";
+            this.Load += new System.EventHandler(this.frmLapBaoCaoTonKho_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvBaoCaoTonKho)).EndInit();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
