@@ -68,6 +68,12 @@
     <Compile Include="form\frmLapBaoCaoTonKho.Designer.cs">
       <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
     </Compile>
+    <Compile Include="form\frmPhieuMuaHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmPhieuMuaHang.Designer.cs">
+      <DependentUpon>frmPhieuMuaHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\frmSanPham.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -91,12 +97,6 @@
     </Compile>
     <Compile Include="form\frmPhieuDichVu.Designer.cs">
       <DependentUpon>frmPhieuDichVu.cs</DependentUpon>
-    </Compile>
-    <Compile Include="form\frmPhieuMuaHang.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="form\frmPhieuMuaHang.Designer.cs">
-      <DependentUpon>frmPhieuMuaHang.cs</DependentUpon>
     </Compile>
     <Compile Include="form\frmTraCuuPhieuDichVu.cs">
       <SubType>Form</SubType>
