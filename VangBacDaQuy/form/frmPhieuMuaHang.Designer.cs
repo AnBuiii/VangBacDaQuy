@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox_SearchID = new System.Windows.Forms.TextBox();
             this.button_Search = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -71,7 +72,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox_SearchID = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -98,6 +98,15 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(717, 40);
             this.panel1.TabIndex = 0;
+            // 
+            // textBox_SearchID
+            // 
+            this.textBox_SearchID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_SearchID.Location = new System.Drawing.Point(97, 10);
+            this.textBox_SearchID.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_SearchID.Name = "textBox_SearchID";
+            this.textBox_SearchID.Size = new System.Drawing.Size(160, 20);
+            this.textBox_SearchID.TabIndex = 12;
             // 
             // button_Search
             // 
@@ -203,6 +212,7 @@
             // 
             // dateTimePicker_date
             // 
+            this.dateTimePicker_date.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker_date.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dateTimePicker_date.Location = new System.Drawing.Point(116, 58);
             this.dateTimePicker_date.Margin = new System.Windows.Forms.Padding(2);
@@ -363,12 +373,12 @@
             // 
             // button_Save
             // 
-            this.button_Save.Location = new System.Drawing.Point(197, 41);
+            this.button_Save.Location = new System.Drawing.Point(62, 41);
             this.button_Save.Margin = new System.Windows.Forms.Padding(2);
             this.button_Save.Name = "button_Save";
             this.button_Save.Size = new System.Drawing.Size(68, 19);
             this.button_Save.TabIndex = 3;
-            this.button_Save.Text = "Lưu";
+            this.button_Save.Text = "Tạo phiếu";
             this.button_Save.UseVisualStyleBackColor = true;
             this.button_Save.Click += new System.EventHandler(this.button_Save_Click);
             // 
@@ -384,7 +394,7 @@
             // 
             // button_Add
             // 
-            this.button_Add.Location = new System.Drawing.Point(84, 41);
+            this.button_Add.Location = new System.Drawing.Point(187, 41);
             this.button_Add.Margin = new System.Windows.Forms.Padding(2);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(68, 19);
@@ -484,6 +494,7 @@
             this.textBox_totalPrice.ReadOnly = true;
             this.textBox_totalPrice.Size = new System.Drawing.Size(109, 20);
             this.textBox_totalPrice.TabIndex = 9;
+            this.textBox_totalPrice.TextChanged += new System.EventHandler(this.textBox_totalPrice_TextChanged);
             // 
             // textBox_quantity
             // 
@@ -574,15 +585,6 @@
             this.label7.Size = new System.Drawing.Size(74, 13);
             this.label7.TabIndex = 0;
             this.label7.Text = "Mã sản phẩm:";
-            // 
-            // textBox_SearchID
-            // 
-            this.textBox_SearchID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_SearchID.Location = new System.Drawing.Point(97, 10);
-            this.textBox_SearchID.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_SearchID.Name = "textBox_SearchID";
-            this.textBox_SearchID.Size = new System.Drawing.Size(160, 20);
-            this.textBox_SearchID.TabIndex = 12;
             // 
             // frmPhieuMuaHang
             // 

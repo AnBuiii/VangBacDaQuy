@@ -50,27 +50,33 @@ namespace VangBacDaQuy.form
         {
             string sql;
             sql = "select SOPHIEU from PHIEUMUAHANG where SOPHIEU='" + text + "'";
-            if(Class.Functions.CheckKey(sql))
+            if (Class.Functions.CheckKey(sql))
             {
                 textBox_ID.Text = text;
-                sql= "select NGAYLAP from PHIEUMUAHANG where SOPHIEU='" + textBox_ID.Text + "'";
+                sql = "select NGAYLAP from PHIEUMUAHANG where SOPHIEU='" + textBox_ID.Text + "'";
                 dateTimePicker_date.Value = Convert.ToDateTime(Class.Functions.GetFieldValues(sql));
                 sql = "select MANCC from PHIEUMUAHANG where SOPHIEU='" + textBox_ID.Text + "'";
-                textBox_NCC.Text= Class.Functions.GetFieldValues(sql);
+                textBox_NCC.Text = Class.Functions.GetFieldValues(sql);
                 sql = "select DIACHI from NHACUNGCAP where MANCC='" + textBox_NCC.Text + "'";
-                textBox_Address.Text= Class.Functions.GetFieldValues(sql);
+                textBox_Address.Text = Class.Functions.GetFieldValues(sql);
                 sql = "select SODT from NHACUNGCAP where MANCC='" + textBox_NCC.Text + "'";
                 textBox_SDT.Text = Class.Functions.GetFieldValues(sql);
                 sql = "select TONGTIEN from PHIEUMUAHANG where SOPHIEU='" + textBox_ID.Text + "'";
-                textBox_Total.Text= Class.Functions.GetFieldValues(sql).Remove(Class.Functions.GetFieldValues(sql).Length-6,5);
+                textBox_Total.Text = Class.Functions.GetFieldValues(sql).Remove(Class.Functions.GetFieldValues(sql).Length - 6, 5);
                 LoadDataGridView();
-                button_Save.Enabled = true;
+                button_Save.Text = "Cập nhật";
                 button_Delete.Enabled = true;
+            }
+            else
+            {
+                ResetFormState();
+                LoadDataGridView();
             }
         }
 
         private void LoadDataGridView()
-        { 
+        {
+            dataGridView_List.Refresh();
             string sql;
             sql = "SELECT SANPHAM.MASP, TENSP, TENLOAISP, REPLACE(CAST(DONGIA as varchar(31)),'.00',''), CHITIETPHIEUMUAHANG.SOLUONG, CHITIETPHIEUMUAHANG.SOLUONG*DONGIA AS THANHTIEN" +
                    " FROM SANPHAM, CHITIETPHIEUMUAHANG, LOAISANPHAM" +
@@ -105,15 +111,18 @@ namespace VangBacDaQuy.form
         {
             string sql;
             int TotalNew=Convert.ToInt32(textBox_Total.Text);
-            sql = "select SOPHIEU from PHIEUMUAHANG where SOPHIEU='" + textBox_ID.Text + "'";
+            sql = "select MASP from CHITIETPHIEUMUAHANG where (MASP='" + comboBox_ProductID.Text + "' and SOPHIEU='"+textBox_ID.Text+"')" ;
             if (!Class.Functions.CheckKey(sql))
             {
+                sql = "update SANPHAM set SOLUONG = SOLUONG + " + textBox_quantity.Text + " where MASP = '" + comboBox_ProductID.Text + "'";
+                Class.Functions.RunSQL(sql);
                 sql = "INSERT INTO CHITIETPHIEUMUAHANG VALUES('" + comboBox_ProductID.Text + "','" + textBox_ID.Text + "'," + textBox_quantity.Text + ")";
                 Class.Functions.RunSQL(sql);
                 LoadDataGridView();
                 if (dataGridView_List.RowCount > 0)
                     button_Save.Enabled = true;
                 TotalNew += Convert.ToInt32(textBox_totalPrice.Text);
+                textBox_Total.Text=Convert.ToString(TotalNew);
             }
             else
                 MessageBox.Show("Phiếu đã tồn tại. Vui lòng thay đổi số phiếu.");
@@ -130,7 +139,7 @@ namespace VangBacDaQuy.form
                 TotalPrice = quantity * price;
                 textBox_totalPrice.Text = Convert.ToString(TotalPrice);               
             }
-            if(!string.IsNullOrEmpty(textBox_ID.Text)&&!string.IsNullOrEmpty(textBox_quantity.Text))
+            if (button_Save.Text == "Cập nhật" && !string.IsNullOrEmpty(textBox_quantity.Text))
                 button_Add.Enabled = true;
         }
 
@@ -142,11 +151,11 @@ namespace VangBacDaQuy.form
         private void frmPhieuMuaHang_Load(object sender, EventArgs e)
         {
             ResetFormState();
+            textBox_ID.Text = "";
         }
 
         private void ResetFormState()
         {
-            textBox_ID.Text = "";
             dateTimePicker_date.Value = DateTime.Now;
             textBox_SDT.Text = "";
             textBox_Address.Text = "";
@@ -162,6 +171,8 @@ namespace VangBacDaQuy.form
             updateProductType();
             updateProductID();
             updateProductDetail();
+            button_Save.Text = "Tạo phiếu";
+            dataGridView_List.Refresh();
         }
 
         private void textBox_ID_TextChanged(object sender, EventArgs e)
@@ -198,26 +209,28 @@ namespace VangBacDaQuy.form
 
         private void button_Save_Click(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(textBox_ID.Text) && !string.IsNullOrEmpty(textBox_NCC.Text)
-                && !string.IsNullOrEmpty(dateTimePicker_date.Value.ToString()) && !string.IsNullOrEmpty(textBox_SDT.Text)
-                && !string.IsNullOrEmpty(textBox_Address.Text) && button_Add.Enabled == true)
+            string sql;
+            if (button_Save.Text == "Tạo phiếu")
             {
-                string sql;
-                sql = "select SOPHIEU from PHIEUMUAHANG where SOPHIEU='" + textBox_ID.Text + "'";
-                if (!Class.Functions.CheckKey(sql))
+                if (!string.IsNullOrEmpty(textBox_ID.Text) && !string.IsNullOrEmpty(textBox_Address.Text) && !string.IsNullOrEmpty(textBox_NCC.Text)
+                       && !string.IsNullOrEmpty(textBox_SDT.Text))
                 {
-                    sql = "INSERT INTO PHIEUMUAHANG VALUES('" + textBox_ID.Text + "','" + dateTimePicker_date.Value.ToString("dd/MM/yyyy")
-                        + "','" + textBox_NCC.Text + "','" + textBox_Total.Text + "')";
+                    sql = "insert into PHIEUMUAHANG values('" + textBox_ID.Text + "','" + dateTimePicker_date.Value.ToString("MM/dd/yyyy") + "','"
+                        + textBox_NCC.Text + "'," + textBox_Total.Text + ")";
                     Class.Functions.RunSQL(sql);
-                    LoadDataGridView();
-                    if (dataGridView_List.RowCount > 0)
-                        button_Save.Enabled = true;
+                    button_Save.Text = "Cập nhật";
+                    button_Delete.Enabled = true;
+                    button_Add.Enabled = true;
                 }
                 else
-                    MessageBox.Show("Phiếu đã tồn tại. Vui lòng thay đổi số phiếu.");
+                    MessageBox.Show("Vui lòng điền đầy đủ thông tin.");
             }
             else
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin trước khi lưu.");
+            {
+                sql = "update PHIEUMUAHANG set TONGTIEN = " + textBox_Total.Text + " where SOPHIEU ='" + textBox_ID.Text + "'";
+                Class.Functions.RunSQL(sql);
+                button_Save.Enabled = false;
+            }
         }
 
         private void button_Delete_Click(object sender, EventArgs e)
@@ -225,11 +238,30 @@ namespace VangBacDaQuy.form
             DialogResult Result = MessageBox.Show("Bạn có chắc chắn muốn xóa?", "Xóa dữ liệu", MessageBoxButtons.YesNo);
             if (Result == DialogResult.Yes)
             {
-                string sql;
-                sql = "delete from PHIEUBANHANG where SOPHIEU='" + textBox_ID.Text + "')";
+                int sl, slxoa;
+                string sql = "SELECT MASP, SOLUONG FROM CHITIETPHIEUBANHANG WHERE SOPHIEU = '" + textBox_ID.Text + "'";
+                DataTable tbSP = Class.Functions.GetDataToDataTable(sql);
+                for (int row = 0; row < tbSP.Rows.Count; row++)
+                {
+                    sql = "SELECT SOLUONG FROM SANPHAM WHERE MASP = '" + tbSP.Rows[row][0].ToString() + "'";
+                    sl = Convert.ToInt32(Class.Functions.GetFieldValues(sql));
+                    slxoa = Convert.ToInt32(tbSP.Rows[row][1].ToString());
+                    sl += slxoa;
+                    sql = "UPDATE SANPHAM SET SOLUONG = " + sl + " WHERE MASP = '" + tbSP.Rows[row][0].ToString() + "'";
+                    Class.Functions.RunSQL(sql);
+                }
+                sql = "delete from CHITIETPHIEUMUAHANG where SOPHIEU='" + textBox_ID.Text + "'";
                 Class.Functions.RunSQL(sql);
-                ResetFormState();  
+                sql = "delete from PHIEUMUAHANG where SOPHIEU='" + textBox_ID.Text + "'";
+                Class.Functions.RunSQL(sql);
+                ResetFormState();
+                textBox_ID.Text = "";
             }
+        }
+
+        private void textBox_totalPrice_TextChanged(object sender, EventArgs e)
+        {
+            button_Save.Enabled = true;
         }
     }
 }
