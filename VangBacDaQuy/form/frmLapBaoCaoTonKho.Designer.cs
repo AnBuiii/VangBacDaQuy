@@ -135,6 +135,7 @@
             this.btnXuatBaoCao.TabIndex = 0;
             this.btnXuatBaoCao.Text = "Xuất Báo Cáo";
             this.btnXuatBaoCao.UseVisualStyleBackColor = true;
+            this.btnXuatBaoCao.Click += new System.EventHandler(this.btnXuatBaoCao_Click);
             // 
             // btnDong
             // 
@@ -154,6 +155,7 @@
             this.btnInBaoCao.TabIndex = 3;
             this.btnInBaoCao.Text = "In Báo Cáo";
             this.btnInBaoCao.UseVisualStyleBackColor = true;
+            this.btnInBaoCao.Click += new System.EventHandler(this.btnInBaoCao_Click);
             // 
             // panel1
             // 
