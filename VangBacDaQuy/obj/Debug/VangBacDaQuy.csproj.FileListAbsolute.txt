@@ -55,5 +55,3 @@ C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.
 C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.exe.config
 C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.exe
 C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.pdb
-C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ.mdf
-C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VBDQ_log.ldf
