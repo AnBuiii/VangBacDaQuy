@@ -28,7 +28,7 @@ namespace VangBacDaQuy.form
         private void btnXuatBaoCao_Click(object sender, EventArgs e)
         {
             string sql;
-            if ((cboThang.Text=="") && (txbNam.Text == ""))
+            if ((cboThang.Text=="") || (txbNam.Text == ""))
             {
                 MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yêu cầu ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -138,16 +138,6 @@ namespace VangBacDaQuy.form
 
             exSheet.Name = "Báo cáo tồn kho";
             exApp.Visible = true;
-        }
-
-        private void panel2_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void dgvBaoCaoTonKho_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void btnDong_Click(object sender, EventArgs e)

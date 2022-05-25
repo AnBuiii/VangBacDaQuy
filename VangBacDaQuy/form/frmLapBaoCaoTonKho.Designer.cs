@@ -54,7 +54,6 @@
             this.dgvBaoCaoTonKho.RowTemplate.Height = 24;
             this.dgvBaoCaoTonKho.Size = new System.Drawing.Size(800, 249);
             this.dgvBaoCaoTonKho.TabIndex = 4;
-            this.dgvBaoCaoTonKho.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvBaoCaoTonKho_CellContentClick);
             // 
             // panel2
             // 
@@ -68,7 +67,6 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 111);
             this.panel2.TabIndex = 0;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
             // 
             // cboThang
             // 

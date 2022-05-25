@@ -30,19 +30,19 @@
         {
             this.dgvTraCuuPhieuDichVu = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cboMaKH = new System.Windows.Forms.ComboBox();
+            this.cboSoPhieu = new System.Windows.Forms.ComboBox();
             this.dtmNgayLap = new System.Windows.Forms.DateTimePicker();
-            this.txbDongia = new System.Windows.Forms.TextBox();
-            this.txbMaKhachHang = new System.Windows.Forms.TextBox();
-            this.txbSoPhieu = new System.Windows.Forms.TextBox();
+            this.txbTenKH = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.btnTimKiem = new System.Windows.Forms.Button();
-            this.btnChiTietPhieu = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraCuuPhieuDichVu)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -58,14 +58,14 @@
             this.dgvTraCuuPhieuDichVu.RowTemplate.Height = 24;
             this.dgvTraCuuPhieuDichVu.Size = new System.Drawing.Size(800, 220);
             this.dgvTraCuuPhieuDichVu.TabIndex = 4;
-            this.dgvTraCuuPhieuDichVu.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvTraCuuPhieuDichVu_CellContentClick);
+            this.dgvTraCuuPhieuDichVu.DoubleClick += new System.EventHandler(this.dgvTraCuuPhieuDichVu_DoubleClick);
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.cboMaKH);
+            this.panel2.Controls.Add(this.cboSoPhieu);
             this.panel2.Controls.Add(this.dtmNgayLap);
-            this.panel2.Controls.Add(this.txbDongia);
-            this.panel2.Controls.Add(this.txbMaKhachHang);
-            this.panel2.Controls.Add(this.txbSoPhieu);
+            this.panel2.Controls.Add(this.txbTenKH);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label3);
@@ -75,41 +75,41 @@
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 140);
-            this.panel2.TabIndex = 3;
-            this.panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.panel2_Paint);
+            this.panel2.TabIndex = 0;
+            // 
+            // cboMaKH
+            // 
+            this.cboMaKH.FormattingEnabled = true;
+            this.cboMaKH.Location = new System.Drawing.Point(537, 43);
+            this.cboMaKH.Name = "cboMaKH";
+            this.cboMaKH.Size = new System.Drawing.Size(178, 24);
+            this.cboMaKH.TabIndex = 1;
+            this.cboMaKH.SelectedIndexChanged += new System.EventHandler(this.cboMaKH_SelectedIndexChanged);
+            // 
+            // cboSoPhieu
+            // 
+            this.cboSoPhieu.FormattingEnabled = true;
+            this.cboSoPhieu.Location = new System.Drawing.Point(159, 43);
+            this.cboSoPhieu.Name = "cboSoPhieu";
+            this.cboSoPhieu.Size = new System.Drawing.Size(178, 24);
+            this.cboSoPhieu.TabIndex = 0;
             // 
             // dtmNgayLap
             // 
             this.dtmNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtmNgayLap.Location = new System.Drawing.Point(159, 87);
-            this.dtmNgayLap.MaxDate = new System.DateTime(2022, 5, 13, 0, 0, 0, 0);
+            this.dtmNgayLap.MaxDate = new System.DateTime(2023, 5, 13, 0, 0, 0, 0);
             this.dtmNgayLap.Name = "dtmNgayLap";
             this.dtmNgayLap.Size = new System.Drawing.Size(178, 22);
-            this.dtmNgayLap.TabIndex = 7;
-            this.dtmNgayLap.Value = new System.DateTime(2022, 5, 13, 0, 0, 0, 0);
-            this.dtmNgayLap.ValueChanged += new System.EventHandler(this.dateTimePicker1_ValueChanged);
+            this.dtmNgayLap.TabIndex = 2;
+            this.dtmNgayLap.Value = new System.DateTime(2022, 5, 25, 18, 13, 19, 0);
             // 
-            // txbDongia
+            // txbTenKH
             // 
-            this.txbDongia.Location = new System.Drawing.Point(537, 89);
-            this.txbDongia.Name = "txbDongia";
-            this.txbDongia.Size = new System.Drawing.Size(178, 22);
-            this.txbDongia.TabIndex = 3;
-            // 
-            // txbMaKhachHang
-            // 
-            this.txbMaKhachHang.Location = new System.Drawing.Point(537, 46);
-            this.txbMaKhachHang.Name = "txbMaKhachHang";
-            this.txbMaKhachHang.Size = new System.Drawing.Size(178, 22);
-            this.txbMaKhachHang.TabIndex = 2;
-            // 
-            // txbSoPhieu
-            // 
-            this.txbSoPhieu.Location = new System.Drawing.Point(159, 46);
-            this.txbSoPhieu.Name = "txbSoPhieu";
-            this.txbSoPhieu.Size = new System.Drawing.Size(178, 22);
-            this.txbSoPhieu.TabIndex = 0;
-            this.txbSoPhieu.TextChanged += new System.EventHandler(this.txbMaSp_TextChanged);
+            this.txbTenKH.Location = new System.Drawing.Point(537, 89);
+            this.txbTenKH.Name = "txbTenKH";
+            this.txbTenKH.Size = new System.Drawing.Size(178, 22);
+            this.txbTenKH.TabIndex = 3;
             // 
             // label5
             // 
@@ -160,42 +160,44 @@
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(167, 34);
+            this.btnTimKiem.Location = new System.Drawing.Point(190, 45);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(90, 23);
             this.btnTimKiem.TabIndex = 0;
             this.btnTimKiem.Text = "Tìm Kiếm";
             this.btnTimKiem.UseVisualStyleBackColor = true;
-            // 
-            // btnChiTietPhieu
-            // 
-            this.btnChiTietPhieu.Location = new System.Drawing.Point(343, 34);
-            this.btnChiTietPhieu.Name = "btnChiTietPhieu";
-            this.btnChiTietPhieu.Size = new System.Drawing.Size(114, 23);
-            this.btnChiTietPhieu.TabIndex = 5;
-            this.btnChiTietPhieu.Text = "Chi Tiết Phiếu";
-            this.btnChiTietPhieu.UseVisualStyleBackColor = true;
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
             // 
             // btnDong
             // 
-            this.btnDong.Location = new System.Drawing.Point(547, 34);
+            this.btnDong.Location = new System.Drawing.Point(506, 45);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(90, 23);
-            this.btnDong.TabIndex = 4;
+            this.btnDong.TabIndex = 1;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
             this.btnDong.Click += new System.EventHandler(this.btnDong_Click);
             // 
             // panel1
             // 
-            this.panel1.Controls.Add(this.btnChiTietPhieu);
+            this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnTimKiem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 360);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 90);
-            this.panel1.TabIndex = 5;
+            this.panel1.TabIndex = 1;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.ForeColor = System.Drawing.Color.Red;
+            this.label6.Location = new System.Drawing.Point(22, 12);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(295, 16);
+            this.label6.TabIndex = 5;
+            this.label6.Text = "Nháy đúp một dòng để xam chi tiết phiếu dịch vụ.";
             // 
             // frmTraCuuPhieuDichVu
             // 
@@ -213,6 +215,7 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -222,17 +225,17 @@
         private System.Windows.Forms.DataGridView dgvTraCuuPhieuDichVu;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DateTimePicker dtmNgayLap;
-        private System.Windows.Forms.TextBox txbDongia;
-        private System.Windows.Forms.TextBox txbMaKhachHang;
-        private System.Windows.Forms.TextBox txbSoPhieu;
+        private System.Windows.Forms.TextBox txbTenKH;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button btnTimKiem;
-        private System.Windows.Forms.Button btnChiTietPhieu;
         private System.Windows.Forms.Button btnDong;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.ComboBox cboMaKH;
+        private System.Windows.Forms.ComboBox cboSoPhieu;
+        private System.Windows.Forms.Label label6;
     }
 }
