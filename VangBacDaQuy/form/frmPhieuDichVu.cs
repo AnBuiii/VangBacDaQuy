@@ -114,9 +114,12 @@ namespace VangBacDaQuy.form
         private void txbGiaDuocTinh_TextChanged(object sender, EventArgs e)
         {
             if (txbGiaDuocTinh.Text != "" && txbSoLuong.Text != "")
-            {
+            {   
+               
+                
                 long totalMoney = Convert.ToInt64(txbGiaDuocTinh.Text) * Convert.ToInt64(txbSoLuong.Text);
                 txbThanhTien.Text = totalMoney.ToString();
+                //catch
 
                 if(txbTraTruoc.Text != "")
                 {
@@ -323,7 +326,7 @@ namespace VangBacDaQuy.form
 
         void addPHIEUDICHVU()
         {
-            String sql = "INSERT INTO PHIEUDICHVU VALUES('" + txbSoPhieu.Text + "', CONVERT(DATETIME, '" + dtpNgaylap.Value.ToString("dd/MM/yyy") + "', 103), '"
+            String sql = "INSERT INTO PHIEUDICHVU VALUES('" + txbSoPhieu.Text + "', CONVERT(DATETIME, '" + dtpNgaylap.Value.ToString("dd/MM/yyyy") + "', 103), '"
                             + takeIDKH() + "', '" + txbTongTien.Text + "', '" + txbTongTraTruoc.Text + "', '" + txbTongConLai.Text + "')";
             Class.Functions.RunSQL (sql);
           
