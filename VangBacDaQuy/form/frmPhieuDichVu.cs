@@ -15,8 +15,22 @@ namespace VangBacDaQuy.form
     {
 
         DataTable dtChiTietPhieuDichVu;
+        String idKH;
+        String idPH;
+        Boolean isSaved = false;
         public frmPhieuDichVu()
         {
+            InitializeComponent();
+            //tạo key phiếu dịch vụ
+            String sql = "SELECT [dbo].autoKey_PHIEUDICHVU()";
+            txbSoPhieu.Text = Class.Functions.GetFieldValues(sql);
+        }
+
+        public frmPhieuDichVu(string idKH, string idPH)
+        {
+            this.idKH = idKH;
+            this.idPH = idPH;
+            isSaved = true;
             InitializeComponent();
         }
         private void LoadDataGridView()
@@ -55,13 +69,14 @@ namespace VangBacDaQuy.form
             txbTongTraTruoc.Text = "0";
             txbTongConLai.Text = "0";
           
-            //tạo key phiếu dịch vụ
-            String sql = "SELECT [dbo].autoKey_PHIEUDICHVU()";
-            txbSoPhieu.Text = Class.Functions.GetFieldValues(sql);
+          
             Class.Functions.FillCombo("SELECT MADV, TENDV FROM DICHVU", cmbxLoaiDichVu, "MADV", "TENDV");
             cmbxLoaiDichVu.Text = "";
             txbDonGia.Text = "";
             LoadDataGridView();
+            DataTable dt = new DataTable();
+          
+            
         }
 
         private void cmbxLoaiDichVu_TextChanged(object sender, EventArgs e)
@@ -324,10 +339,29 @@ namespace VangBacDaQuy.form
 
         }
 
+        Boolean checkTrangThai()
+        {
+            foreach (DataGridViewRow row in dgvPhieuDichVu.Rows)
+            {
+                if(row.Cells[10].Value.ToString() == "Chưa giao") return false;
+            }
+            return true;
+        }
+
         void addPHIEUDICHVU()
         {
+            String tinhTrang;
+            if (checkTrangThai())
+            {
+                tinhTrang = "Hoàn thành";
+            }
+            else
+            {
+                tinhTrang = "Chưa hoàn thành";
+            }
+
             String sql = "INSERT INTO PHIEUDICHVU VALUES('" + txbSoPhieu.Text + "', CONVERT(DATETIME, '" + dtpNgaylap.Value.ToString("dd/MM/yyyy") + "', 103), '"
-                            + takeIDKH() + "', '" + txbTongTien.Text + "', '" + txbTongTraTruoc.Text + "', '" + txbTongConLai.Text + "')";
+                            + takeIDKH() + "', '" + txbTongTien.Text + "', '" + txbTongTraTruoc.Text + "', '" + txbTongConLai.Text + "', N'" + tinhTrang +"')";
             Class.Functions.RunSQL (sql);
           
         }
