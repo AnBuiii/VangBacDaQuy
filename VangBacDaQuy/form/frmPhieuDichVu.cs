@@ -14,16 +14,19 @@ namespace VangBacDaQuy.form
     public partial class frmPhieuDichVu : Form
     {
 
-        DataTable dtChiTietPhieuDichVu;
-        String idKH;
-        String idPH;
-        Boolean isSaved = false;
+        DataTable dtChiTietPhieuDichVu = new DataTable();
+        String idKH = "";
+        String idPH = "";
+        Boolean isSaved = false; // check xem phiếu này đã được lưu trước đó hay chưa
+        Boolean isSaveChanges = true; // nếu mà mở phiếu cũ, đang chỉnh sửa dở mà lỡ tắt thì dùng này để check
+        List<DataRow> rowsDeleted = new List<DataRow>();
+        List<DataRow> rowsInserted = new List<DataRow>();
+        List<DataRow> rowsUpdated = new List<DataRow>();
         public frmPhieuDichVu()
         {
             InitializeComponent();
-            //tạo key phiếu dịch vụ
-            String sql = "SELECT [dbo].autoKey_PHIEUDICHVU()";
-            txbSoPhieu.Text = Class.Functions.GetFieldValues(sql);
+           
+          
         }
 
         public frmPhieuDichVu(string idKH, string idPH)
@@ -32,9 +35,45 @@ namespace VangBacDaQuy.form
             this.idPH = idPH;
             isSaved = true;
             InitializeComponent();
+            blockField();
+        
+        }
+
+        private void dgvPhieuDichVu_CellEndEdit(object sender, DataGridViewCellEventArgs e)
+        {
+            dgvPhieuDichVu.Rows[e.RowIndex].Cells["STT"].Value = (e.RowIndex) + 1;
         }
         private void LoadDataGridView()
         {
+
+            if (isSaved) // nếu mà phiếu đã được lưu
+            {
+                String sql = "SELECT CTPDV.MADV, TENDV, DONGIA, DONGIADUOCTINH, SOLUONG, THANHTIEN, CTPDV.TIENTRATRUOC, CTPDV.TIENCONLAI, NGAYGIAO, CTPDV.TINHTRANG, GHICHU "
+                              + "FROM CHITIETPHIEUDICHVU CTPDV, DICHVU DV, PHIEUDICHVU PDV "
+                               + " WHERE CTPDV.SOPHIEU = PDV.SOPHIEU AND CTPDV.MADV = DV.MADV AND PDV.SOPHIEU = '" + idPH + "'";
+                // đọc dữ liệu từ database
+                dtChiTietPhieuDichVu.Columns.Add("STT", typeof(int)); // thêm cột STT vào                  
+                dtChiTietPhieuDichVu.Merge(Class.Functions.GetDataToDataTable(sql)); //thêm table sau cột STT;
+               
+            }
+            else // nếu chưa lưu, tạo table mới
+            {
+                dtChiTietPhieuDichVu.Columns.Add("STT", typeof(int));
+                dtChiTietPhieuDichVu.Columns.Add ("MADV", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("TENDV", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("DONGIA", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("DONGIADUOCTINH", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("SOLUONG", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(DateTime));
+                dtChiTietPhieuDichVu.Columns.Add("TINHTRANG", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("GHICHU", typeof(string));
+                
+
+            }
+            dgvPhieuDichVu.DataSource = dtChiTietPhieuDichVu;
             dgvPhieuDichVu.Columns[0].HeaderText = "STT";
             dgvPhieuDichVu.Columns[1].HeaderText = "Mã dịch vụ";
             dgvPhieuDichVu.Columns[2].HeaderText = "Loại dịch vụ";
@@ -50,14 +89,15 @@ namespace VangBacDaQuy.form
             dgvPhieuDichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
             dgvPhieuDichVu.AllowUserToAddRows = false;
             dgvPhieuDichVu.EditMode = DataGridViewEditMode.EditProgrammatically;
+          
         }
 
         private void frmPhieuDichVu_Load(object sender, EventArgs e)
         {
             
             txbSoPhieu.ReadOnly = true;
+            dtpNgaylap.Enabled = false;
             txbDonGia.ReadOnly = true;
-            txbConLai.ReadOnly = true;
             txbConLai.ReadOnly = true;
             txbThanhTien.ReadOnly = true;
             dtpNgayGiao.Text = "";
@@ -68,13 +108,35 @@ namespace VangBacDaQuy.form
             txbTongTien.Text = "0";
             txbTongTraTruoc.Text = "0";
             txbTongConLai.Text = "0";
+
+            if (!isSaved)// nếu đây là phiếu chưa được lưu
+            {
+                String sql = "SELECT [dbo].autoKey_PHIEUDICHVU()";
+                txbSoPhieu.Text = Class.Functions.GetFieldValues(sql);
+                butChinhSua.Enabled = false;
+                btnLuu.Enabled = true;
+            } 
+            else // nếu là phiếu cũ
+            {
+                txbSoPhieu.Text = this.idPH;
+                
+               string sql = "SELECT TENKH FROM KHACHHANG WHERE MAKH = '" + this.idKH + "'"; // lấy tên khách hàng cũ
+                txbKhachHang.Text = Class.Functions.GetFieldValues(sql);
+                txbKhachHang.ReadOnly = true;
+                sql = "SELECT SODT FROM KHACHHANG WHERE MAKH = '" + this.idKH + "'"; // lấy số điện thoại cũ
+                txbSDT.Text = Class.Functions.GetFieldValues(sql);
+                txbSDT.ReadOnly = true;
+                btnLuu.Enabled = false;
+                butChinhSua.Enabled = true;
+            }    
           
-          
+
             Class.Functions.FillCombo("SELECT MADV, TENDV FROM DICHVU", cmbxLoaiDichVu, "MADV", "TENDV");
             cmbxLoaiDichVu.Text = "";
             txbDonGia.Text = "";
             LoadDataGridView();
-            DataTable dt = new DataTable();
+            
+          
           
             
         }
@@ -255,15 +317,16 @@ namespace VangBacDaQuy.form
 
         void calSumMoney()
         {
-            long sumMoney = Convert.ToInt64(txbTongTien.Text);
-            long preMoney = Convert.ToInt64(txbTongTraTruoc.Text); ;
+            long sumMoney = 0;
+            long preMoney = 0; ;
             long leftMoney = 0;
 
-            DataGridViewRow lastRow = dgvPhieuDichVu.Rows[dgvPhieuDichVu.RowCount - 1];
-            
-                sumMoney += Convert.ToInt64(lastRow.Cells[6].Value.ToString());
-                preMoney += Convert.ToInt64(lastRow.Cells[7].Value.ToString());
-            
+            foreach(DataRow row in dtChiTietPhieuDichVu.Rows)
+            {
+                sumMoney += Convert.ToInt64(row["THANHTIEN"].ToString());
+                preMoney += Convert.ToInt64(row["TIENTRATRUOC"].ToString());
+            }
+                    
             leftMoney = sumMoney - preMoney; // tổng tiền còn lại = tổng tiền - tổng tiền trả trước
 
             txbTongTien.Text = sumMoney.ToString();
@@ -275,11 +338,20 @@ namespace VangBacDaQuy.form
         {
             if (checkFieldChitTietPhieu())// kiểm tra các text box nhập vào đã hợp lệ chưa
             {
-                object[] newRowData = new object[] {(dgvPhieuDichVu.RowCount + 1).ToString(), cmbxLoaiDichVu.SelectedValue, cmbxLoaiDichVu.Text, txbDonGia.Text,  txbGiaDuocTinh.Text, txbSoLuong.Text
+                object[] newRowData = new object[] {dtChiTietPhieuDichVu.Rows.Count + 1, cmbxLoaiDichVu.SelectedValue, cmbxLoaiDichVu.Text, txbDonGia.Text,  txbGiaDuocTinh.Text, txbSoLuong.Text
                                                      , txbThanhTien.Text, txbTraTruoc.Text, txbConLai.Text  , dtpNgayGiao.Text, combxTinhTrang.Text, richtxbGhiChu.Text
                                                     };
 
-                dgvPhieuDichVu.Rows.Add(newRowData);
+                DataRow newRow = dtChiTietPhieuDichVu.NewRow();
+                newRow.ItemArray = newRowData;
+              
+              dtChiTietPhieuDichVu.Rows.Add(newRow);
+
+                if (isSaved)
+                {
+                   rowsInserted.Add(newRow); //nếu phiếu đã được lưu, add vào listrowInserted để xóa khỏi csdl khi ấn nút lưu
+                }
+             
                 calSumMoney();
                 resetChonDichVu();
 
@@ -298,7 +370,7 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Vui lòng nhập số điện thoại");
                 return false;
             }
-            if(dgvPhieuDichVu.RowCount == 0)
+            if(dtChiTietPhieuDichVu.Rows.Count == 0)
             {
                 MessageBox.Show("Vui lòng điền thông tin dịch vụ được sử dụng");
                 return false;
@@ -309,7 +381,7 @@ namespace VangBacDaQuy.form
         Boolean checkKH()
         {
             String sql;
-            // kiểm tra xem khách hàng đã từng sử mua hay sử dụng dịch vụ của cửa hàng chưa, nếu chưa thì tạo mới
+            // kiểm tra xem khách hàng đã từng mua hay sử dụng dịch vụ của cửa hàng chưa, nếu chưa thì tạo mới
             sql = "SELECT TENKH, SODT FROM KHACHHANG WHERE TENKH = N'" + txbKhachHang.Text.Trim() + "'"
                 + "AND SODT = '" + txbSDT.Text + "'";
             String check = Class.Functions.GetFieldValues(sql);
@@ -360,59 +432,249 @@ namespace VangBacDaQuy.form
                 tinhTrang = "Chưa hoàn thành";
             }
 
-            String sql = "INSERT INTO PHIEUDICHVU VALUES('" + txbSoPhieu.Text + "', CONVERT(DATETIME, '" + dtpNgaylap.Value.ToString("dd/MM/yyyy") + "', 103), '"
-                            + takeIDKH() + "', '" + txbTongTien.Text + "', '" + txbTongTraTruoc.Text + "', '" + txbTongConLai.Text + "', N'" + tinhTrang +"')";
+            //lưu lại số phiếu muốn save, tí có muốn chỉnh sửa lại thì xài
+            this.idKH = takeIDKH();
+            this.idPH = txbSoPhieu.Text;
+
+            String sql = "INSERT INTO PHIEUDICHVU VALUES('" + idPH + "', CONVERT(DATETIME, '" + dtpNgaylap.Value.ToString("dd/MM/yyyy") + "', 103), '"
+                            + idKH + "', '" + txbTongTien.Text + "', '" + txbTongTraTruoc.Text + "', '" + txbTongConLai.Text + "', N'" + tinhTrang +"')";
             Class.Functions.RunSQL (sql);
           
         }
 
         void addCHITIETPHIEUDICHVU()
-        {
+        {   
+
             String sql;
-            foreach (DataGridViewRow row in dgvPhieuDichVu.Rows)
+            foreach (DataRow row in dtChiTietPhieuDichVu.Rows)
             {
                 sql = "INSERT INTO CHITIETPHIEUDICHVU VALUES('"
-                     + row.Cells[1].Value.ToString()
+                     + row["MADV"].ToString()
                      + "', '" + txbSoPhieu.Text
-                     + "', '" + row.Cells[4].Value.ToString()
-                     + "',  " + row.Cells[5].Value.ToString() // int nên k có dấu "'"
-                     + ", '" + row.Cells[6].Value.ToString()
-                     + "', '" + row.Cells[7].Value.ToString()
-                     + "', '" + row.Cells[8].Value.ToString()
-                     + "', CONVERT(DATETIME, '" + row.Cells[9].Value.ToString() + "', 103)"
-                     + ", N'" + row.Cells[10].Value.ToString()
-                      + "', N'" + row.Cells[11].Value.ToString().Trim() + "')";
+                     + "', '" + row["DONGIADUOCTINH"].ToString()
+                     + "',  " + row["SOLUONG"].ToString() // int nên k có dấu "'"
+                     + ", '" + row["THANHTIEN"].ToString()
+                     + "', '" + row["TIENTRATRUOC"].ToString()
+                     + "', '" + row["TIENCONLAI"].ToString()
+                     + "', CONVERT(DATETIME, '" + row["NGAYGIAO"].ToString() + "', 103)"
+                     + ", N'" + row["TINHTRANG"].ToString()
+                      + "', N'" + row["GHICHU"].ToString().Trim() + "')";
                 //MessageBox.Show(sql);
                 Class.Functions.RunSQL(sql);
             }
+           
+        }
+
+        void updatePHIEUDICHVU()
+        {
+            String tinhTrang;
+            if (checkTrangThai())
+            {
+                tinhTrang = "Hoàn thành";
+            }
+            else
+            {
+                tinhTrang = "Chưa hoàn thành";
+            }
+
+            String sql = "UPDATE PHIEUDICHVU SET TONGTIEN = '" + txbTongTien.Text + "', TIENTRATRUOC = '" + txbTongTraTruoc.Text
+                    + "', TIENCONLAI = '" + txbTongConLai.Text + "', TINHTRANG = N'" + tinhTrang
+                    + "' WHERE SOPHIEU = '" + this.idPH + "'";
+                    Class.Functions.RunSQL(sql);
+        }
+
+        void updateKHACHHANG()
+        {
+            String sql = "UPDATE KHACHHANG SET TENKH = N'" + txbKhachHang.Text + "', SODT = '" + txbSDT.Text
+                  + "' WHERE MAKH = '" + this.idKH + "'";
+            Class.Functions.RunSQL(sql);
+        }
+                  
+        void insertCHITIETPHIEUDICHVU()
+        {
+
+            String sql;
+            foreach (DataRow row in rowsInserted)
+            {
+                sql = "INSERT INTO CHITIETPHIEUDICHVU VALUES('"
+                     + row["MADV"].ToString()
+                     + "', '" + idPH
+                     + "', '" + row["DONGIADUOCTINH"].ToString()
+                     + "',  " + row["SOLUONG"].ToString() // int nên k có dấu "'"
+                     + ", '" + row["THANHTIEN"].ToString()
+                     + "', '" + row["TIENTRATRUOC"].ToString()
+                     + "', '" + row["TIENCONLAI"].ToString()
+                     + "', CONVERT(DATETIME, '" + row["NGAYGIAO"].ToString() + "', 103)"
+                     + ", N'" + row["TINHTRANG"].ToString()
+                      + "', N'" + row["GHICHU"].ToString().Trim() + "')";
+                
+                Class.Functions.RunSQL(sql);
+            }
+        }
+        void deleteCHITIETPHIEUDICHVU()
+        {
+            String sql;
+            foreach (DataRow row in rowsDeleted)
+            {
+                sql = "DELETE FROM CHITIETPHIEUDICHVU WHERE MADV = '" + row["MADV"].ToString() + "' AND SOPHIEU = '" + this.idPH + "'";              
+                Class.Functions.RunSQL(sql);
+            }
+        }
+
+        void blockField()
+        {           
+            txbKhachHang.ReadOnly = true;
+            txbSDT.ReadOnly = true;
+            cmbxLoaiDichVu.Enabled = false;
+            txbGiaDuocTinh.Enabled = false;
+            txbSoLuong.Enabled = false;
+            dtpNgayGiao.Enabled = false;
+            txbTraTruoc.Enabled = false;
+            combxTinhTrang.Enabled = false;
+            richtxbGhiChu.Enabled = false;
+            buttonThem.Enabled = false;
+            btnLuu.Enabled = false;           
+        }
+
+       
+
+        void unlockField()
+        {
+            txbKhachHang.ReadOnly = false;
+            txbSDT.ReadOnly = false;
+            cmbxLoaiDichVu.Enabled = true;
+            txbGiaDuocTinh.Enabled = true;
+            txbSoLuong.Enabled = true;
+            dtpNgayGiao.Enabled = true;
+            txbTraTruoc.Enabled = true;
+            combxTinhTrang.Enabled = true;
+            richtxbGhiChu.Enabled = true;
+            buttonThem.Enabled = true;
+            btnLuu.Enabled = true;
+        }
+   
+        void clearDataChanged()
+        {
+            rowsDeleted.Clear();
+            rowsInserted.Clear();
+            rowsUpdated.Clear();    
+        }
+
+        void savePhieu()
+        {
+            String  sql;
+
+            if (checkFieldThongTinChung())// nếu các thông tin đã hợp lệ
+            {
+                if (!isSaved)
+                {
+
+                    try
+                    {
+                        if (!checkKH()) // nếu khách hàng mới đến lần đầu
+                        {
+                            addKH(); // thêm khách hàng
+                        }
+                        //thêm phiếu dịch vụ vào PHIEUDICHVU
+                        addPHIEUDICHVU();
+
+                        //thêm các  chi tiết phiếu dịch vụ trong dgvPHIEUDICHVU của PHIEUDICHVU vừa tạo vào database
+                        addCHITIETPHIEUDICHVU();
+                        isSaved = true;
+                        MessageBox.Show("Lưu thành công");
+                        blockField();
+                    }
+                    catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);    
+                    }
+                   
+
+
+                }
+                else // nếu phiếu đã được lưu, hay được mở từ form thống kê số phiếu(tức là phiếu có sẵn) thì viết code update ở đây
+                {
+                    try
+                    {
+                        updateKHACHHANG();
+                        insertCHITIETPHIEUDICHVU();
+                        deleteCHITIETPHIEUDICHVU();
+                        updatePHIEUDICHVU();
+                        clearDataChanged();
+                        isSaveChanges = true;
+                        blockField();
+                        MessageBox.Show("Lưu thành công");
+                    }catch (Exception ex)
+                    {
+                        MessageBox.Show(ex.Message);
+                    } 
+                  
+                }
+            }     
+           
         }
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            String sql;
-
-            if (checkFieldThongTinChung()) // nếu các thông tin đã hợp lệ
-            {
-               if (!checkKH()) // nếu khách hàng mới đến lần đầu
-                {
-                    addKH(); // thêm khách hàng
-                }
-                 //thêm phiếu dịch vụ vào PHIEUDICHVU
-                addPHIEUDICHVU();
-
-                //thêm các  chi tiết phiếu dịch vụ trong dgvPHIEUDICHVU của PHIEUDICHVU vừa tạo vào database
-                addCHITIETPHIEUDICHVU();
-                MessageBox.Show("Lưu thành công");
-
-            }
+            savePhieu();
+            butChinhSua.Enabled = true;
+            isSaved = true;
+           
           
         }
-        private void dgvPhieuDichVu_DoubleClick(object sender, EventArgs e)
+
+        private void butChinhSua_Click(object sender, EventArgs e)
         {
-            foreach (DataGridViewRow item in this.dgvPhieuDichVu.SelectedRows)
+            butChinhSua.Enabled = false;
+            btnLuu.Enabled = true;
+            isSaveChanges = false;
+            unlockField();
+        }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            if (!isSaved)
             {
-                dgvPhieuDichVu.Rows.Remove(item);
+                if (MessageBox.Show("Bạn có muốn lưu phiếu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    savePhieu();
+                }
+              
             }
+            else if (!isSaveChanges)
+            {
+                if (MessageBox.Show("Bạn có muốn lưu những thay đổi trong phiếu này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
+                {
+                    savePhieu();
+                }
+              
+            }
+            this.Close();
            
+        }
+        private void dgvPhieuDichVu_DoubleClick(object sender, EventArgs e)
+        {  
+            if(!isSaved || !isSaveChanges)
+            {
+                if ((MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                {
+
+                    DataRowView dataRowSelectedView = (DataRowView)dgvPhieuDichVu.SelectedRows[0].DataBoundItem;
+                    DataRow dataRowSelected = dataRowSelectedView.Row;
+                   
+                   
+                    if (isSaved) // nếu phiếu đã được lưu, add vào listrowsInserted để thêm khi ấn nút lưu
+                    {
+                        DataRow deledRow = dataRowSelectedView.Row.Table.NewRow();
+                        deledRow.ItemArray = dataRowSelectedView.Row.ItemArray;
+                        rowsDeleted.Add(deledRow);
+                    }
+                    dtChiTietPhieuDichVu.Rows.Remove(dataRowSelectedView.Row);
+                    calSumMoney();
+
+                }
+
+            }
+
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -421,7 +683,7 @@ namespace VangBacDaQuy.form
             COMExcel.Workbook exBook; //Trong 1 chương trình Excel có nhiều Workbook
             COMExcel.Worksheet exSheet; //Trong 1 Workbook có nhiều Worksheet
             COMExcel.Range exRange;
-            string sql;
+            //string sql;
            // int row = 0, column = 0;
           //  DataTable tbPBH, tbSP;
             exBook = exApp.Workbooks.Add(COMExcel.XlWBATemplate.xlWBATWorksheet);
@@ -504,5 +766,7 @@ namespace VangBacDaQuy.form
             exSheet.Name = "Hóa đơn nhập";*/
             exApp.Visible = true;
         }
+
+    
     }
 }
