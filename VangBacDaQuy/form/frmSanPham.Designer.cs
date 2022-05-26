@@ -36,11 +36,9 @@
             this.btnXoa = new System.Windows.Forms.Button();
             this.btnThem = new System.Windows.Forms.Button();
             this.panel2 = new System.Windows.Forms.Panel();
-            this.txbDongia = new System.Windows.Forms.TextBox();
             this.txbMaLoaiSp = new System.Windows.Forms.TextBox();
             this.txbTenSp = new System.Windows.Forms.TextBox();
             this.txbMaSp = new System.Windows.Forms.TextBox();
-            this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -48,6 +46,8 @@
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.label6 = new System.Windows.Forms.Label();
             this.txbSL = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.txbDongia = new System.Windows.Forms.TextBox();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
@@ -145,13 +145,6 @@
             this.panel2.Size = new System.Drawing.Size(800, 179);
             this.panel2.TabIndex = 0;
             // 
-            // txbDongia
-            // 
-            this.txbDongia.Location = new System.Drawing.Point(556, 91);
-            this.txbDongia.Name = "txbDongia";
-            this.txbDongia.Size = new System.Drawing.Size(166, 22);
-            this.txbDongia.TabIndex = 3;
-            // 
             // txbMaLoaiSp
             // 
             this.txbMaLoaiSp.Location = new System.Drawing.Point(556, 44);
@@ -172,15 +165,6 @@
             this.txbMaSp.Name = "txbMaSp";
             this.txbMaSp.Size = new System.Drawing.Size(178, 22);
             this.txbMaSp.TabIndex = 0;
-            // 
-            // label5
-            // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(398, 94);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(53, 16);
-            this.label5.TabIndex = 4;
-            this.label5.Text = "Đơn giá";
             // 
             // label4
             // 
@@ -247,6 +231,22 @@
             this.txbSL.Size = new System.Drawing.Size(166, 22);
             this.txbSL.TabIndex = 6;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(398, 94);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(53, 16);
+            this.label5.TabIndex = 4;
+            this.label5.Text = "Đơn giá";
+            // 
+            // txbDongia
+            // 
+            this.txbDongia.Location = new System.Drawing.Point(556, 91);
+            this.txbDongia.Name = "txbDongia";
+            this.txbDongia.Size = new System.Drawing.Size(166, 22);
+            this.txbDongia.TabIndex = 3;
+            // 
             // frmSanPham
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -276,11 +276,9 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dgvSanPham;
-        private System.Windows.Forms.TextBox txbDongia;
         private System.Windows.Forms.TextBox txbMaLoaiSp;
         private System.Windows.Forms.TextBox txbTenSp;
         private System.Windows.Forms.TextBox txbMaSp;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label2;
@@ -288,5 +286,7 @@
         private System.Windows.Forms.Button btnHuy;
         private System.Windows.Forms.TextBox txbSL;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox txbDongia;
+        private System.Windows.Forms.Label label5;
     }
 }

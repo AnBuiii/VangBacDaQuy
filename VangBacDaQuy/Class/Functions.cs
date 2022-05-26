@@ -57,7 +57,7 @@ namespace VangBacDaQuy.Class
                 cmd.ExecuteNonQuery();
             } catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                MessageBox.Show("Lỗi CSDL: \n" + ex.ToString().Substring(0, ex.ToString().IndexOf('\n')));
             }
             cmd.Dispose();
             cmd = null;

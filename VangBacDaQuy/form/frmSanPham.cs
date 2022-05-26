@@ -46,7 +46,7 @@ namespace VangBacDaQuy.form
 
         private void dgvSanPham_Click(object sender, EventArgs e)
         {
-            
+
             if (btnThem.Enabled == false)
             {
                 MessageBox.Show("Đang ở chế độ thêm mới!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -130,8 +130,8 @@ namespace VangBacDaQuy.form
                 txbMaSp.Focus();
                 return;
             }
-            
-            sql = "INSERT INTO SANPHAM VALUES('" + txbMaSp.Text + "','" + txbMaLoaiSp.Text + "',N'" + txbTenSp.Text + "'," + Convert.ToDouble( txbDongia.Text.ToString()) + ","+Convert.ToInt32(txbSL.Text.ToString()) + ")";
+
+            sql = "INSERT INTO SANPHAM VALUES('" + txbMaSp.Text + "','" + txbMaLoaiSp.Text + "',N'" + txbTenSp.Text + "'," + Convert.ToDouble(txbDongia.Text.ToString()) + "," + Convert.ToInt32(txbSL.Text.ToString()) + ")";
             Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
             LoadDataGridView(); //Nạp lại DataGridView
             ResetValue();
@@ -146,7 +146,7 @@ namespace VangBacDaQuy.form
         private void btnSua_Click(object sender, EventArgs e)
         {
             String sql;
-            if(dtSanPham.Rows.Count == 0)
+            if (dtSanPham.Rows.Count == 0)
             {
                 MessageBox.Show("Không còn dữ liệu", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
@@ -181,7 +181,7 @@ namespace VangBacDaQuy.form
                 return;
             }
 
-            sql = "UPDATE SANPHAM SET TENSP = N'" + txbTenSp.Text + "', MALOAISP = '" + txbMaLoaiSp.Text + "', DONGIA = " + Convert.ToDouble(txbDongia.Text) + ", SOLUONG = " + Convert.ToInt32(txbSL.Text)+ " WHERE MASP = '" + txbMaSp.Text + "'";
+            sql = "UPDATE SANPHAM SET TENSP = N'" + txbTenSp.Text + "', MALOAISP = '" + txbMaLoaiSp.Text + "', DONGIA = " + Convert.ToDouble(txbDongia.Text) + ", SOLUONG = " + Convert.ToInt32(txbSL.Text) + " WHERE MASP = '" + txbMaSp.Text + "'";
             Class.Functions.RunSQL(sql);
             LoadDataGridView();
             ResetValue();
