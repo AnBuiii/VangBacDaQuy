@@ -110,13 +110,14 @@ namespace VangBacDaQuy.form
         {
 
             string sophieu;
+            string maKH;
             if (MessageBox.Show("Bạn có muốn hiển thị thông tin chi tiết?", "Xác nhận", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
             {
                 sophieu = dgvTraCuuPhieuDichVu.CurrentRow.Cells["SOPHIEU"].Value.ToString();
-                //frmPhieuDichVu frm = new frmPhieuDichVu(); // chỗ này là cần đối số
-                //frm.txbSoPhieu.Text = sophieu;
-                //frm.StartPosition = FormStartPosition.CenterParent;
-               // frm.ShowDialog();
+                maKH = dgvTraCuuPhieuDichVu.CurrentRow.Cells["MAKH"].Value.ToString();
+                frmPhieuDichVu frm = new frmPhieuDichVu(maKH, sophieu); // chỗ này là cần đối số  
+                frm.StartPosition = FormStartPosition.WindowsDefaultBounds;
+                frm.ShowDialog();
 
             }
 

@@ -54,6 +54,7 @@ namespace VangBacDaQuy.form
                 // đọc dữ liệu từ database
                 dtChiTietPhieuDichVu.Columns.Add("STT", typeof(int)); // thêm cột STT vào                  
                 dtChiTietPhieuDichVu.Merge(Class.Functions.GetDataToDataTable(sql)); //thêm table sau cột STT;
+                autoIDRows();
                
             }
             else // nếu chưa lưu, tạo table mới
@@ -125,6 +126,14 @@ namespace VangBacDaQuy.form
                 txbKhachHang.ReadOnly = true;
                 sql = "SELECT SODT FROM KHACHHANG WHERE MAKH = '" + this.idKH + "'"; // lấy số điện thoại cũ
                 txbSDT.Text = Class.Functions.GetFieldValues(sql);
+
+                sql = "SELECT TONGTIEN FROM PHIEUDICHVU WHERE SOPHIEU = '" + this.idPH + "'";
+                txbTongTien.Text = Class.Functions.GetFieldValues(sql);
+                sql = "SELECT TIENTRATRUOC FROM PHIEUDICHVU WHERE SOPHIEU = '" + this.idPH + "'";
+                txbTongTraTruoc.Text = Class.Functions.GetFieldValues(sql);
+                sql = "SELECT TIENCONLAI FROM PHIEUDICHVU WHERE SOPHIEU = '" + this.idPH + "'";
+                txbTongConLai.Text = Class.Functions.GetFieldValues(sql);
+
                 txbSDT.ReadOnly = true;
                 btnLuu.Enabled = false;
                 butChinhSua.Enabled = true;
@@ -134,11 +143,7 @@ namespace VangBacDaQuy.form
             Class.Functions.FillCombo("SELECT MADV, TENDV FROM DICHVU", cmbxLoaiDichVu, "MADV", "TENDV");
             cmbxLoaiDichVu.Text = "";
             txbDonGia.Text = "";
-            LoadDataGridView();
-            
-          
-          
-            
+            LoadDataGridView();         
         }
 
         private void cmbxLoaiDichVu_TextChanged(object sender, EventArgs e)
@@ -297,6 +302,15 @@ namespace VangBacDaQuy.form
             {
                 MessageBox.Show("Số tiền trả của từng loại dịch vụ phải >= (" +  (ptTraTruoc * 100).ToString() + "% x Thành tiền) của loại dịch vụ đó");
                 return false;
+            }
+            
+            foreach(DataRow row in dtChiTietPhieuDichVu.Rows)
+            {
+                if(cmbxLoaiDichVu.SelectedValue == row["MADV"])
+                {
+                    MessageBox.Show("Loại dịch vụ này đã có trong phiếu!");
+                    return false;
+                }
             }
             return true;
         
@@ -562,7 +576,6 @@ namespace VangBacDaQuy.form
 
         void savePhieu()
         {
-            String  sql;
 
             if (checkFieldThongTinChung())// nếu các thông tin đã hợp lệ
             {
@@ -597,10 +610,10 @@ namespace VangBacDaQuy.form
                     try
                     {
                         updateKHACHHANG();
-                        insertCHITIETPHIEUDICHVU();
-                        deleteCHITIETPHIEUDICHVU();
+                        deleteCHITIETPHIEUDICHVU(); //phải delete trước mới insert được, lỡ xóa MADV rồi add lại cùng MADV thì sao :> 
+                        insertCHITIETPHIEUDICHVU();              
                         updatePHIEUDICHVU();
-                        clearDataChanged();
+                        clearDataChanged();   // xóa data khỏi list đợi
                         isSaveChanges = true;
                         blockField();
                         MessageBox.Show("Lưu thành công");
@@ -637,6 +650,7 @@ namespace VangBacDaQuy.form
                 if (MessageBox.Show("Bạn có muốn lưu phiếu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     savePhieu();
+                  
                 }
               
             }
@@ -645,11 +659,21 @@ namespace VangBacDaQuy.form
                 if (MessageBox.Show("Bạn có muốn lưu những thay đổi trong phiếu này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     savePhieu();
+                   
                 }
               
             }
             this.Close();
-           
+
+
+        }
+
+        void autoIDRows()
+        {
+            foreach(DataRow row in dtChiTietPhieuDichVu.Rows)
+            {
+                row["STT"] = dtChiTietPhieuDichVu.Rows.IndexOf(row) + 1;
+            }
         }
         private void dgvPhieuDichVu_DoubleClick(object sender, EventArgs e)
         {  
@@ -664,12 +688,18 @@ namespace VangBacDaQuy.form
                    
                     if (isSaved) // nếu phiếu đã được lưu, add vào listrowsInserted để thêm khi ấn nút lưu
                     {
-                        DataRow deledRow = dataRowSelectedView.Row.Table.NewRow();
+                        DataRow deledRow = dataRowSelectedView.Row.Table.NewRow(); // copy nó, cho nó khỏi tham chiếu
                         deledRow.ItemArray = dataRowSelectedView.Row.ItemArray;
                         rowsDeleted.Add(deledRow);
+
+                        if (rowsInserted.Contains(dataRowSelectedView.Row)) // nếu mà cái vừa xóa có trong list đợi insert, thi remove nó đi khỏi list insert
+                        {
+                            rowsInserted.Remove(dataRowSelectedView.Row);
+                        }
                     }
                     dtChiTietPhieuDichVu.Rows.Remove(dataRowSelectedView.Row);
-                    calSumMoney();
+                    autoIDRows();  // đánh lại số thứ tự row
+                    calSumMoney(); // tính toán lại tổng tiền
 
                 }
 
