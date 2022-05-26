@@ -359,7 +359,7 @@
             // 
             // txbTongConLai
             // 
-            this.txbTongConLai.Location = new System.Drawing.Point(1916, 37);
+            this.txbTongConLai.Location = new System.Drawing.Point(2350, 37);
             this.txbTongConLai.Margin = new System.Windows.Forms.Padding(4);
             this.txbTongConLai.Name = "txbTongConLai";
             this.txbTongConLai.Size = new System.Drawing.Size(256, 38);
@@ -368,7 +368,7 @@
             // label19
             // 
             this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(1618, 37);
+            this.label19.Location = new System.Drawing.Point(2001, 43);
             this.label19.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label19.Name = "label19";
             this.label19.Size = new System.Drawing.Size(231, 32);
@@ -377,7 +377,7 @@
             // 
             // txbTongTraTruoc
             // 
-            this.txbTongTraTruoc.Location = new System.Drawing.Point(1332, 29);
+            this.txbTongTraTruoc.Location = new System.Drawing.Point(1668, 40);
             this.txbTongTraTruoc.Margin = new System.Windows.Forms.Padding(4);
             this.txbTongTraTruoc.Name = "txbTongTraTruoc";
             this.txbTongTraTruoc.Size = new System.Drawing.Size(242, 38);
@@ -386,7 +386,7 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(1028, 35);
+            this.label18.Location = new System.Drawing.Point(1319, 46);
             this.label18.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(251, 32);
@@ -395,7 +395,7 @@
             // 
             // txbTongTien
             // 
-            this.txbTongTien.Location = new System.Drawing.Point(742, 31);
+            this.txbTongTien.Location = new System.Drawing.Point(992, 43);
             this.txbTongTien.Margin = new System.Windows.Forms.Padding(4);
             this.txbTongTien.Name = "txbTongTien";
             this.txbTongTien.Size = new System.Drawing.Size(236, 38);
@@ -404,7 +404,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(538, 33);
+            this.label8.Location = new System.Drawing.Point(778, 49);
             this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(141, 32);
