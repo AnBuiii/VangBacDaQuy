@@ -42,6 +42,7 @@
             this.btnTimKiem = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnXoaPhieu = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraCuuPhieuDichVu)).BeginInit();
             this.panel2.SuspendLayout();
@@ -58,6 +59,7 @@
             this.dgvTraCuuPhieuDichVu.RowTemplate.Height = 24;
             this.dgvTraCuuPhieuDichVu.Size = new System.Drawing.Size(800, 220);
             this.dgvTraCuuPhieuDichVu.TabIndex = 4;
+            this.dgvTraCuuPhieuDichVu.Click += new System.EventHandler(this.dgvTraCuuPhieuDichVu_Click);
             this.dgvTraCuuPhieuDichVu.DoubleClick += new System.EventHandler(this.dgvTraCuuPhieuDichVu_DoubleClick);
             // 
             // panel2
@@ -85,6 +87,7 @@
             this.cboMaKH.Size = new System.Drawing.Size(178, 24);
             this.cboMaKH.TabIndex = 1;
             this.cboMaKH.SelectedIndexChanged += new System.EventHandler(this.cboMaKH_SelectedIndexChanged);
+            this.cboMaKH.Click += new System.EventHandler(this.cboMaKH_Click);
             // 
             // cboSoPhieu
             // 
@@ -93,6 +96,7 @@
             this.cboSoPhieu.Name = "cboSoPhieu";
             this.cboSoPhieu.Size = new System.Drawing.Size(178, 24);
             this.cboSoPhieu.TabIndex = 0;
+            this.cboSoPhieu.Click += new System.EventHandler(this.cboSoPhieu_Click);
             // 
             // dtmNgayLap
             // 
@@ -103,6 +107,7 @@
             this.dtmNgayLap.Size = new System.Drawing.Size(178, 22);
             this.dtmNgayLap.TabIndex = 2;
             this.dtmNgayLap.Value = new System.DateTime(2022, 5, 25, 18, 13, 19, 0);
+            this.dtmNgayLap.Enter += new System.EventHandler(this.dtmNgayLap_Enter);
             // 
             // txbTenKH
             // 
@@ -110,6 +115,7 @@
             this.txbTenKH.Name = "txbTenKH";
             this.txbTenKH.Size = new System.Drawing.Size(178, 22);
             this.txbTenKH.TabIndex = 3;
+            this.txbTenKH.Click += new System.EventHandler(this.txbTenKH_Click);
             // 
             // label5
             // 
@@ -160,7 +166,7 @@
             // 
             // btnTimKiem
             // 
-            this.btnTimKiem.Location = new System.Drawing.Point(190, 45);
+            this.btnTimKiem.Location = new System.Drawing.Point(159, 45);
             this.btnTimKiem.Name = "btnTimKiem";
             this.btnTimKiem.Size = new System.Drawing.Size(90, 23);
             this.btnTimKiem.TabIndex = 0;
@@ -170,7 +176,7 @@
             // 
             // btnDong
             // 
-            this.btnDong.Location = new System.Drawing.Point(506, 45);
+            this.btnDong.Location = new System.Drawing.Point(558, 44);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(90, 23);
             this.btnDong.TabIndex = 1;
@@ -180,6 +186,7 @@
             // 
             // panel1
             // 
+            this.panel1.Controls.Add(this.btnXoaPhieu);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnTimKiem);
@@ -188,6 +195,16 @@
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 90);
             this.panel1.TabIndex = 1;
+            // 
+            // btnXoaPhieu
+            // 
+            this.btnXoaPhieu.Location = new System.Drawing.Point(355, 44);
+            this.btnXoaPhieu.Name = "btnXoaPhieu";
+            this.btnXoaPhieu.Size = new System.Drawing.Size(90, 23);
+            this.btnXoaPhieu.TabIndex = 6;
+            this.btnXoaPhieu.Text = "Xóa Phiếu";
+            this.btnXoaPhieu.UseVisualStyleBackColor = true;
+            this.btnXoaPhieu.Click += new System.EventHandler(this.btnXoaPhieu_Click);
             // 
             // label6
             // 
@@ -237,5 +254,6 @@
         private System.Windows.Forms.ComboBox cboMaKH;
         private System.Windows.Forms.ComboBox cboSoPhieu;
         private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.Button btnXoaPhieu;
     }
 }
