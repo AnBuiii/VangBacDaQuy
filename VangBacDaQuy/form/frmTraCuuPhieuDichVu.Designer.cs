@@ -32,7 +32,6 @@
             this.panel2 = new System.Windows.Forms.Panel();
             this.cboMaKH = new System.Windows.Forms.ComboBox();
             this.cboSoPhieu = new System.Windows.Forms.ComboBox();
-            this.dtmNgayLap = new System.Windows.Forms.DateTimePicker();
             this.txbTenKH = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
@@ -44,6 +43,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnXoaPhieu = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.dtmNgayLap = new System.Windows.Forms.DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraCuuPhieuDichVu)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -64,9 +64,9 @@
             // 
             // panel2
             // 
+            this.panel2.Controls.Add(this.dtmNgayLap);
             this.panel2.Controls.Add(this.cboMaKH);
             this.panel2.Controls.Add(this.cboSoPhieu);
-            this.panel2.Controls.Add(this.dtmNgayLap);
             this.panel2.Controls.Add(this.txbTenKH);
             this.panel2.Controls.Add(this.label5);
             this.panel2.Controls.Add(this.label4);
@@ -97,17 +97,6 @@
             this.cboSoPhieu.Size = new System.Drawing.Size(178, 24);
             this.cboSoPhieu.TabIndex = 0;
             this.cboSoPhieu.Click += new System.EventHandler(this.cboSoPhieu_Click);
-            // 
-            // dtmNgayLap
-            // 
-            this.dtmNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
-            this.dtmNgayLap.Location = new System.Drawing.Point(159, 87);
-            this.dtmNgayLap.MaxDate = new System.DateTime(2023, 5, 13, 0, 0, 0, 0);
-            this.dtmNgayLap.Name = "dtmNgayLap";
-            this.dtmNgayLap.Size = new System.Drawing.Size(178, 22);
-            this.dtmNgayLap.TabIndex = 2;
-            this.dtmNgayLap.Value = new System.DateTime(2022, 5, 25, 18, 13, 19, 0);
-            this.dtmNgayLap.Enter += new System.EventHandler(this.dtmNgayLap_Enter);
             // 
             // txbTenKH
             // 
@@ -216,6 +205,14 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Nháy đúp một dòng để xam chi tiết phiếu dịch vụ.";
             // 
+            // dtmNgayLap
+            // 
+            this.dtmNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
+            this.dtmNgayLap.Location = new System.Drawing.Point(159, 88);
+            this.dtmNgayLap.Name = "dtmNgayLap";
+            this.dtmNgayLap.Size = new System.Drawing.Size(178, 22);
+            this.dtmNgayLap.TabIndex = 5;
+            // 
             // frmTraCuuPhieuDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -241,7 +238,6 @@
 
         private System.Windows.Forms.DataGridView dgvTraCuuPhieuDichVu;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.DateTimePicker dtmNgayLap;
         private System.Windows.Forms.TextBox txbTenKH;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label label4;
@@ -255,5 +251,6 @@
         private System.Windows.Forms.ComboBox cboSoPhieu;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnXoaPhieu;
+        private System.Windows.Forms.DateTimePicker dtmNgayLap;
     }
 }

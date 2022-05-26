@@ -28,7 +28,6 @@ namespace VangBacDaQuy.form
             Class.Functions.FillCombo("SELECT SOPHIEU FROM PHIEUDICHVU", cboSoPhieu, "SOPHIEU", "SOPHIEU");
             cboMaKH.Text = "";
             cboSoPhieu.Text = "";
-
             dgvTraCuuPhieuDichVu.DataSource = null;
         }
 
@@ -36,11 +35,12 @@ namespace VangBacDaQuy.form
         {
             dgvTraCuuPhieuDichVu.Columns[0].HeaderText = "Số phiếu";
             dgvTraCuuPhieuDichVu.Columns[1].HeaderText = "Ngày lập";
-            dgvTraCuuPhieuDichVu.Columns[2].HeaderText = "Khách hàng";
-            dgvTraCuuPhieuDichVu.Columns[3].HeaderText = "Tổng tiền";
-            dgvTraCuuPhieuDichVu.Columns[4].HeaderText = "Trả trước";
-            dgvTraCuuPhieuDichVu.Columns[5].HeaderText = "Còn lại";
-            dgvTraCuuPhieuDichVu.Columns[6].HeaderText = "Trạng thái";
+            dgvTraCuuPhieuDichVu.Columns[2].HeaderText = "Mã khách hàng";
+            dgvTraCuuPhieuDichVu.Columns[3].HeaderText = "Khách hàng";
+            dgvTraCuuPhieuDichVu.Columns[4].HeaderText = "Tổng tiền";
+            dgvTraCuuPhieuDichVu.Columns[5].HeaderText = "Trả trước";
+            dgvTraCuuPhieuDichVu.Columns[6].HeaderText = "Còn lại";
+            dgvTraCuuPhieuDichVu.Columns[7].HeaderText = "Trạng thái";
 
             dgvTraCuuPhieuDichVu.Columns[0].Width = 100;
             dgvTraCuuPhieuDichVu.Columns[1].Width = 100;
@@ -49,6 +49,7 @@ namespace VangBacDaQuy.form
             dgvTraCuuPhieuDichVu.Columns[4].Width = 100;
             dgvTraCuuPhieuDichVu.Columns[5].Width = 100;
             dgvTraCuuPhieuDichVu.Columns[6].Width = 100;
+            dgvTraCuuPhieuDichVu.Columns[7].Width = 100;
 
             dgvTraCuuPhieuDichVu.AllowUserToAddRows = false;
             dgvTraCuuPhieuDichVu.EditMode = DataGridViewEditMode.EditProgrammatically;
@@ -80,7 +81,7 @@ namespace VangBacDaQuy.form
                 return;
             }
 
-            sql = "SELECT SOPHIEU, NGAYLAP, TENKH, TONGTIEN, TIENTRATRUOC, TIENCONLAI, TINHTRANG FROM PHIEUDICHVU AS A, KHACHHANG AS B WHERE A.MAKH = B.MAKH AND 1=1";
+            sql = "SELECT SOPHIEU, NGAYLAP, A.MAKH, TENKH, TONGTIEN, TIENTRATRUOC, TIENCONLAI, TINHTRANG FROM PHIEUDICHVU AS A, KHACHHANG AS B WHERE A.MAKH = B.MAKH AND 1=1";
 
             if (cboSoPhieu.Text != "")
                 sql = sql + " AND SOPHIEU like N'%" + cboSoPhieu.Text + "%'";
