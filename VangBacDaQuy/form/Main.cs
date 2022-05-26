@@ -19,6 +19,10 @@ namespace VangBacDaQuy
         frmTraCuuPhieuDichVu tcpdv = null;
         frmLapBaoCaoTonKho lbctk = null;
         frmSanPham sp = null;
+        frmDichVu dv = null;
+        frmKhachHang kh = null;
+        frmNhaCungCap ncc = null;
+        frmLoaiSanPham lsp = null;
 
         public Main()
         {
@@ -82,6 +86,38 @@ namespace VangBacDaQuy
             sp.MdiParent = this;
             sp.Dock = DockStyle.Fill;
             sp.Show();
+        }
+
+        private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (kh == null || kh.IsDisposed) kh = new frmKhachHang();
+            kh.MdiParent = this;
+            kh.Dock = DockStyle.Fill;
+            kh.Show();
+        }
+
+        private void nhàCungCấpToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (ncc == null || ncc.IsDisposed) ncc = new frmNhaCungCap();
+            ncc.MdiParent = this;
+            ncc.Dock = DockStyle.Fill;
+            ncc.Show();
+        }
+
+        private void dịchVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (dv == null || dv.IsDisposed) dv = new frmDichVu();
+            dv.MdiParent = this;
+            dv.Dock = DockStyle.Fill;
+            dv.Show();
+        }
+
+        private void loạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (lsp == null || lsp.IsDisposed) lsp = new frmLoaiSanPham();
+            lsp.MdiParent = this;
+            lsp.Dock = DockStyle.Fill;
+            lsp.Show();
         }
     }
 }

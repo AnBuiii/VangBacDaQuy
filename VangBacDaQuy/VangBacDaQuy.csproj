@@ -62,11 +62,35 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Class\Functions.cs" />
+    <Compile Include="form\frmDichVu.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmDichVu.Designer.cs">
+      <DependentUpon>frmDichVu.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmKhachHang.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmKhachHang.Designer.cs">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </Compile>
     <Compile Include="form\frmLapBaoCaoTonKho.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="form\frmLapBaoCaoTonKho.Designer.cs">
       <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmLoaiSanPham.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmLoaiSanPham.Designer.cs">
+      <DependentUpon>frmLoaiSanPham.cs</DependentUpon>
+    </Compile>
+    <Compile Include="form\frmNhaCungCap.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="form\frmNhaCungCap.Designer.cs">
+      <DependentUpon>frmNhaCungCap.cs</DependentUpon>
     </Compile>
     <Compile Include="form\frmPhieuMuaHang.cs">
       <SubType>Form</SubType>
@@ -106,6 +130,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form\frmKhachHang.resx">
+      <DependentUpon>frmKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\frmLapBaoCaoTonKho.resx">
       <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
     </EmbeddedResource>
