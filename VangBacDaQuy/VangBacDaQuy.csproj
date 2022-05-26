@@ -130,11 +130,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="form\frmDichVu.resx">
+      <DependentUpon>frmDichVu.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="form\frmKhachHang.resx">
       <DependentUpon>frmKhachHang.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\frmLapBaoCaoTonKho.resx">
       <DependentUpon>frmLapBaoCaoTonKho.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmLoaiSanPham.resx">
+      <DependentUpon>frmLoaiSanPham.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="form\frmNhaCungCap.resx">
+      <DependentUpon>frmNhaCungCap.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="form\frmPhieuBanHang.resx">
       <DependentUpon>frmPhieuBanHang.cs</DependentUpon>

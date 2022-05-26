@@ -32,7 +32,7 @@ namespace VangBacDaQuy.form
             dgvKhachHang.DataSource = dtKhachHang;
             dgvKhachHang.Columns[0].HeaderText = "Mã khách hàng";
             dgvKhachHang.Columns[1].HeaderText = "Tên khách hàng";
-            dgvKhachHang.Columns[2].HeaderText = "Mã loại khách hàng";
+            dgvKhachHang.Columns[2].HeaderText = "Số điện thoại";
             /*dgvKhachHang.Columns[0].Width = 100;
             dgvKhachHang.Columns[1].Width = 300;
             dgvKhachHang.Columns[2].Width = 300;
@@ -147,7 +147,7 @@ namespace VangBacDaQuy.form
             }
             if (txbSoDT.Text.Trim().Length == 0) 
             {
-                MessageBox.Show("Bạn phải nhập mã loại khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Bạn phải nhập số điện thoại", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 txbSoDT.Focus();
                 return;
             }

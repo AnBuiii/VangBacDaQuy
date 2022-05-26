@@ -56,3 +56,6 @@ C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.
 C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.exe
 C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\bin\Debug\VangBacDaQuy.pdb
 C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmKhachHang.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmNhaCungCap.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmDichVu.resources
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmLoaiSanPham.resources
