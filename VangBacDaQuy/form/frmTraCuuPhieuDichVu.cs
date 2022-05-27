@@ -121,6 +121,10 @@ namespace VangBacDaQuy.form
 
         private void dgvTraCuuPhieuDichVu_DoubleClick(object sender, EventArgs e)
         {
+            if (dtTraCuu == null || dtTraCuu.Rows.Count == 0) //không có dữ liệu
+            {
+                return;
+            }
 
             string sophieu;
             string maKH;
@@ -146,25 +150,19 @@ namespace VangBacDaQuy.form
                 sql = sql + "DELETE PHIEUDICHVU WHERE SOPHIEU LIKE N'" + cboSoPhieu.Text + "'";
 
                 Class.Functions.RunSQL(sql);
-                
+
                 MessageBox.Show("Bạn đã xóa thành công phiếu dịch vụ " + cboSoPhieu.Text + "!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 dgvTraCuuPhieuDichVu.DataSource = null;
                 Reset();
             }
-            
+
         }
 
         private void dgvTraCuuPhieuDichVu_Click(object sender, EventArgs e)
         {
             String sql;
-            if (dtTraCuu == null) //Nếu không có dữ liệu
+            if (dtTraCuu == null || dtTraCuu.Rows.Count == 0) //không có dữ liệu
             {
-                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-            if (dtTraCuu.Rows.Count == 0) //Nếu không có dữ liệu
-            {
-                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             cboSoPhieu.Text = dgvTraCuuPhieuDichVu.CurrentRow.Cells["SOPHIEU"].Value.ToString();
