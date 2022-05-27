@@ -57,6 +57,7 @@
             // 
             // panel2
             // 
+            this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.cboThang);
             this.panel2.Controls.Add(this.txbNam);
             this.panel2.Controls.Add(this.label4);
@@ -70,6 +71,8 @@
             // 
             // cboThang
             // 
+            this.cboThang.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cboThang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboThang.FormattingEnabled = true;
             this.cboThang.Items.AddRange(new object[] {
             "1",
@@ -84,52 +87,61 @@
             "10",
             "11",
             "12"});
-            this.cboThang.Location = new System.Drawing.Point(116, 62);
+            this.cboThang.Location = new System.Drawing.Point(223, 60);
             this.cboThang.Name = "cboThang";
-            this.cboThang.Size = new System.Drawing.Size(143, 24);
+            this.cboThang.Size = new System.Drawing.Size(143, 28);
             this.cboThang.TabIndex = 1;
             // 
             // txbNam
             // 
-            this.txbNam.Location = new System.Drawing.Point(386, 61);
+            this.txbNam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.txbNam.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txbNam.Location = new System.Drawing.Point(504, 61);
             this.txbNam.Name = "txbNam";
-            this.txbNam.Size = new System.Drawing.Size(143, 22);
+            this.txbNam.Size = new System.Drawing.Size(143, 27);
             this.txbNam.TabIndex = 2;
             // 
             // label4
             // 
+            this.label4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(338, 67);
+            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label4.Location = new System.Drawing.Point(446, 64);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(42, 16);
+            this.label4.Size = new System.Drawing.Size(54, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Năm: ";
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(61, 70);
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(153, 64);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(49, 16);
+            this.label2.Size = new System.Drawing.Size(60, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Tháng:";
             // 
             // label1
             // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label1.ForeColor = System.Drawing.Color.Blue;
-            this.label1.Location = new System.Drawing.Point(262, 9);
+            this.label1.Location = new System.Drawing.Point(255, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(252, 29);
+            this.label1.Size = new System.Drawing.Size(291, 32);
             this.label1.TabIndex = 0;
             this.label1.Text = "BÁO CÁO TỒN KHO";
             // 
             // btnXuatBaoCao
             // 
-            this.btnXuatBaoCao.Location = new System.Drawing.Point(123, 34);
+            this.btnXuatBaoCao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnXuatBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnXuatBaoCao.Location = new System.Drawing.Point(125, 28);
             this.btnXuatBaoCao.Name = "btnXuatBaoCao";
-            this.btnXuatBaoCao.Size = new System.Drawing.Size(111, 23);
+            this.btnXuatBaoCao.Size = new System.Drawing.Size(127, 34);
             this.btnXuatBaoCao.TabIndex = 0;
             this.btnXuatBaoCao.Text = "Xuất Báo Cáo";
             this.btnXuatBaoCao.UseVisualStyleBackColor = true;
@@ -137,9 +149,11 @@
             // 
             // btnDong
             // 
-            this.btnDong.Location = new System.Drawing.Point(547, 34);
+            this.btnDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDong.Location = new System.Drawing.Point(549, 28);
             this.btnDong.Name = "btnDong";
-            this.btnDong.Size = new System.Drawing.Size(111, 23);
+            this.btnDong.Size = new System.Drawing.Size(127, 34);
             this.btnDong.TabIndex = 4;
             this.btnDong.Text = "Đóng";
             this.btnDong.UseVisualStyleBackColor = true;
@@ -147,9 +161,11 @@
             // 
             // btnInBaoCao
             // 
-            this.btnInBaoCao.Location = new System.Drawing.Point(345, 34);
+            this.btnInBaoCao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.btnInBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnInBaoCao.Location = new System.Drawing.Point(337, 28);
             this.btnInBaoCao.Name = "btnInBaoCao";
-            this.btnInBaoCao.Size = new System.Drawing.Size(111, 23);
+            this.btnInBaoCao.Size = new System.Drawing.Size(127, 34);
             this.btnInBaoCao.TabIndex = 3;
             this.btnInBaoCao.Text = "In Báo Cáo";
             this.btnInBaoCao.UseVisualStyleBackColor = true;
@@ -157,6 +173,7 @@
             // 
             // panel1
             // 
+            this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnInBaoCao);
             this.panel1.Controls.Add(this.btnXuatBaoCao);
