@@ -574,7 +574,7 @@ namespace VangBacDaQuy.form
             rowsUpdated.Clear();    
         }
 
-        void savePhieu()
+        Boolean savePhieu()
         {
 
             if (checkFieldThongTinChung())// nếu các thông tin đã hợp lệ
@@ -596,10 +596,12 @@ namespace VangBacDaQuy.form
                         isSaved = true;
                         MessageBox.Show("Lưu thành công");
                         blockField();
+                        return true;
                     }
                     catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);    
+                        return false;
                     }
                    
 
@@ -617,13 +619,16 @@ namespace VangBacDaQuy.form
                         isSaveChanges = true;
                         blockField();
                         MessageBox.Show("Lưu thành công");
+                        return true;
                     }catch (Exception ex)
                     {
                         MessageBox.Show(ex.Message);
+                        return false;
                     } 
                   
                 }
-            }     
+            }
+            return false;
            
         }
         private void btnLuu_Click(object sender, EventArgs e)
@@ -649,23 +654,33 @@ namespace VangBacDaQuy.form
             {
                 if (MessageBox.Show("Bạn có muốn lưu phiếu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    savePhieu();
+                    if (savePhieu())
+                    {
+                        this.Close();
+                    }
                   
                 }
-              
+                else
+                {
+                    this.Close();
+                }
             }
             else if (!isSaveChanges)
             {
                 if (MessageBox.Show("Bạn có muốn lưu những thay đổi trong phiếu này không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    savePhieu();
-                   
+                    if (savePhieu())
+                    {
+                        this.Close();
+                    }
+                    else
+                    {
+                        this.Close();
+                    }
+
                 }
-              
             }
-            this.Close();
-
-
+          
         }
 
         void autoIDRows()
