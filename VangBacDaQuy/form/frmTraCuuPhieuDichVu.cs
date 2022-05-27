@@ -8,12 +8,15 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using COMExcel = Microsoft.Office.Interop.Excel;
+using System.Globalization;
 
 namespace VangBacDaQuy.form
 {
     public partial class frmTraCuuPhieuDichVu : Form
     {
         DataTable dtTraCuu;
+
+        CultureInfo culture = new CultureInfo("en-US"); // chọn vùng để format tiền tệ
         public frmTraCuuPhieuDichVu()
         {
 
@@ -42,6 +45,16 @@ namespace VangBacDaQuy.form
             dgvTraCuuPhieuDichVu.Columns[6].HeaderText = "Còn lại";
             dgvTraCuuPhieuDichVu.Columns[7].HeaderText = "Trạng thái";
 
+            //fomat để hiện thị tiền tệ
+            dgvTraCuuPhieuDichVu.Columns[4].DefaultCellStyle.Format = "N0";
+            dgvTraCuuPhieuDichVu.Columns[4].DefaultCellStyle.FormatProvider = culture;
+
+            dgvTraCuuPhieuDichVu.Columns[5].DefaultCellStyle.Format = "N0";
+            dgvTraCuuPhieuDichVu.Columns[5].DefaultCellStyle.FormatProvider = culture;
+
+            dgvTraCuuPhieuDichVu.Columns[6].DefaultCellStyle.Format = "N0";
+            dgvTraCuuPhieuDichVu.Columns[6].DefaultCellStyle.FormatProvider = culture;
+            //
             dgvTraCuuPhieuDichVu.Columns[0].Width = 100;
             dgvTraCuuPhieuDichVu.Columns[1].Width = 100;
             dgvTraCuuPhieuDichVu.Columns[2].Width = 100;

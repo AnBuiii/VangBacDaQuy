@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using COMExcel = Microsoft.Office.Interop.Excel;
+using System.Globalization;
 
 namespace VangBacDaQuy.form
 {
@@ -19,14 +20,15 @@ namespace VangBacDaQuy.form
         String idPH = "";
         Boolean isSaved = false; // check xem phiếu này đã được lưu trước đó hay chưa
         Boolean isSaveChanges = true; // nếu mà mở phiếu cũ, đang chỉnh sửa dở mà lỡ tắt thì dùng này để check
+        CultureInfo culture = new CultureInfo("en-US"); // chọn vùng để format tiền tệ
         List<DataRow> rowsDeleted = new List<DataRow>();
         List<DataRow> rowsInserted = new List<DataRow>();
         List<DataRow> rowsUpdated = new List<DataRow>();
+        int rowIndex = 0; // lấy vị trí để xóa dòng
         public frmPhieuDichVu()
         {
             InitializeComponent();
            
-          
         }
 
         public frmPhieuDichVu(string idKH, string idPH)
@@ -69,9 +71,9 @@ namespace VangBacDaQuy.form
                 dtChiTietPhieuDichVu.Columns.Add("DONGIA", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("DONGIADUOCTINH", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("SOLUONG", typeof(string));
-                dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(CurrencyManager));
-                dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(CurrencyManager));
-                dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(CurrencyManager));
+                dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(decimal));
+                dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(decimal));
+                dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(DateTime));
                 dtChiTietPhieuDichVu.Columns.Add("TINHTRANG", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("GHICHU", typeof(string));
@@ -91,10 +93,20 @@ namespace VangBacDaQuy.form
             dgvPhieuDichVu.Columns[9].HeaderText = "Ngày giao";
             dgvPhieuDichVu.Columns[10].HeaderText = "Tình trạng";
             dgvPhieuDichVu.Columns[11].HeaderText = "Ghi chú";
-            dgvPhieuDichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            dgvPhieuDichVu.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.AllCells;
             dgvPhieuDichVu.AllowUserToAddRows = false;
             dgvPhieuDichVu.EditMode = DataGridViewEditMode.EditProgrammatically;
-          
+            dgvPhieuDichVu.Columns[3].DefaultCellStyle.Format = "N0";
+            dgvPhieuDichVu.Columns[3].DefaultCellStyle.FormatProvider = culture;
+            dgvPhieuDichVu.Columns[4].DefaultCellStyle.Format = "N0";
+            dgvPhieuDichVu.Columns[4].DefaultCellStyle.FormatProvider = culture;
+            dgvPhieuDichVu.Columns[6].DefaultCellStyle.Format = "N0";
+            dgvPhieuDichVu.Columns[6].DefaultCellStyle.FormatProvider = culture;
+            dgvPhieuDichVu.Columns[7].DefaultCellStyle.Format = "N0";
+            dgvPhieuDichVu.Columns[7].DefaultCellStyle.FormatProvider = culture;
+            dgvPhieuDichVu.Columns[8].DefaultCellStyle.Format = "N0";
+            dgvPhieuDichVu.Columns[8].DefaultCellStyle.FormatProvider = culture;
+
         }
 
         private void frmPhieuDichVu_Load(object sender, EventArgs e)
@@ -125,19 +137,29 @@ namespace VangBacDaQuy.form
             else // nếu là phiếu cũ
             {
                 txbSoPhieu.Text = this.idPH;
+                string sql;
+                decimal money;
                 
-               string sql = "SELECT TENKH FROM KHACHHANG WHERE MAKH = '" + this.idKH + "'"; // lấy tên khách hàng cũ
+                sql = "SELECT TENKH FROM KHACHHANG WHERE MAKH = '" + this.idKH + "'"; // lấy tên khách hàng cũ
                 txbKhachHang.Text = Class.Functions.GetFieldValues(sql);
                 txbKhachHang.ReadOnly = true;
                 sql = "SELECT SODT FROM KHACHHANG WHERE MAKH = '" + this.idKH + "'"; // lấy số điện thoại cũ
                 txbSDT.Text = Class.Functions.GetFieldValues(sql);
 
-                sql = "SELECT TONGTIEN FROM PHIEUDICHVU WHERE SOPHIEU = '" + this.idPH + "'";
-                txbTongTien.Text = Class.Functions.GetFieldValues(sql);
+                //get and format textbox tongtien
+                sql = "SELECT TONGTIEN FROM PHIEUDICHVU WHERE SOPHIEU = '" + this.idPH + "'";              
+                money = decimal.Parse(Class.Functions.GetFieldValues(sql));
+                txbTongTien.Text = currencyFomat(money);
+
+                //get and format textbox tongtientratruoc
                 sql = "SELECT TIENTRATRUOC FROM PHIEUDICHVU WHERE SOPHIEU = '" + this.idPH + "'";
-                txbTongTraTruoc.Text = Class.Functions.GetFieldValues(sql);
+                money = decimal.Parse(Class.Functions.GetFieldValues(sql));
+                txbTongTraTruoc.Text = currencyFomat(money);
+
+                //get and format textbox tongtienconlai
                 sql = "SELECT TIENCONLAI FROM PHIEUDICHVU WHERE SOPHIEU = '" + this.idPH + "'";
-                txbTongConLai.Text = Class.Functions.GetFieldValues(sql);
+                money = decimal.Parse(Class.Functions.GetFieldValues(sql));
+                txbTongConLai.Text = currencyFomat(money);
 
                 txbSDT.ReadOnly = true;
                 btnLuu.Enabled = false;
@@ -155,11 +177,13 @@ namespace VangBacDaQuy.form
         {
           
                 String sql = "SELECT DONGIA FROM DICHVU WHERE MADV = '" + cmbxLoaiDichVu.SelectedValue.ToString() + "'";
-
-                // MessageBox.Show(Class.Functions.GetFieldValues(sql));
-                txbDonGia.Text = Class.Functions.GetFieldValues(sql);
-            
-          
+                  String value = Class.Functions.GetFieldValues(sql);
+                if(value != "")
+                {
+                     decimal money = decimal.Parse(value);
+                      txbDonGia.Text = currencyFomat(money);
+                }
+                     
         }
 
         private void txbSoLuong_KeyPress(object sender, KeyPressEventArgs e)
@@ -197,31 +221,51 @@ namespace VangBacDaQuy.form
 
         }
 
+        private void cmbxLoaiDichVu_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+
+        }
+
+        private void combxTinhTrang_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            e.Handled = true;
+        }
+
+
+        String currencyFomat(decimal money)
+        {
+            return String.Format(this.culture, "{0:N0}", money);
+        }
 
         private void txbGiaDuocTinh_TextChanged(object sender, EventArgs e)
         {
-            if (txbGiaDuocTinh.Text != "" && txbSoLuong.Text != "")
-            {   
-               
-                
-                long totalMoney = Convert.ToInt64(txbGiaDuocTinh.Text) * Convert.ToInt64(txbSoLuong.Text);
-                txbThanhTien.Text = totalMoney.ToString();
-                //catch
-
-                if(txbTraTruoc.Text != "")
+            if (txbGiaDuocTinh.Text != "")
+            {
+                decimal caledMoney = decimal.Parse(txbGiaDuocTinh.Text, NumberStyles.AllowThousands);
+                txbGiaDuocTinh.Text = currencyFomat(caledMoney);
+                txbGiaDuocTinh.Select(txbGiaDuocTinh.Text.Length, 0);
+                if ( txbSoLuong.Text != "")
                 {
-                    long leftMoney = Convert.ToInt64(txbThanhTien.Text) - Convert.ToInt64(txbTraTruoc.Text);
-                    txbConLai.Text = leftMoney.ToString();
+
+                    decimal totalMoney = caledMoney * decimal.Parse(txbSoLuong.Text, NumberStyles.Integer);
+                    txbThanhTien.Text = currencyFomat(totalMoney);
+
+                    if (txbTraTruoc.Text != "")
+                    {
+                        decimal leftMoney = totalMoney - decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands);
+                        txbConLai.Text = currencyFomat(leftMoney);
+                    }
+                    else
+                    {
+                        txbConLai.Text = txbThanhTien.Text;
+                    }
                 }
                 else
                 {
-                    txbConLai.Text = txbThanhTien.Text;
+                    txbThanhTien.Text = "0";
+                    txbConLai.Text = "0";
                 }
-            }
-            else
-            {
-                txbThanhTien.Text = "0";
-                txbConLai.Text = "0";
             }
         }
 
@@ -229,17 +273,17 @@ namespace VangBacDaQuy.form
         {
             if (txbGiaDuocTinh.Text != "" && txbSoLuong.Text != "")
             {
-                long totalMoney = Convert.ToInt64(txbGiaDuocTinh.Text) * Convert.ToInt64(txbSoLuong.Text);
-                txbThanhTien.Text = totalMoney.ToString();
-
+                decimal totalMoney = decimal.Parse(txbGiaDuocTinh.Text, NumberStyles.AllowThousands) * decimal.Parse(txbSoLuong.Text, NumberStyles.Integer);
+                txbThanhTien.Text = currencyFomat(totalMoney);
+ 
                 if (txbTraTruoc.Text != "")
                 {
-                    long leftMoney = Convert.ToInt64(txbThanhTien.Text) - Convert.ToInt64(txbTraTruoc.Text);
-                    txbConLai.Text = leftMoney.ToString();
+                    decimal leftMoney = totalMoney - decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands);
+                    txbConLai.Text = currencyFomat(leftMoney);
                 }
                 else
                 {
-                    txbConLai.Text = txbThanhTien.Text;
+                    txbConLai.Text = currencyFomat(decimal.Parse(txbThanhTien.Text, NumberStyles.AllowThousands));
                 }
             }
             else
@@ -254,8 +298,12 @@ namespace VangBacDaQuy.form
         {
             if(txbTraTruoc.Text != "")
             {
-                long totalMoney = Convert.ToInt64(txbThanhTien.Text) - Convert.ToInt64(txbTraTruoc.Text);
-                txbConLai.Text = totalMoney.ToString();
+                decimal payedMoney = decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands);
+                txbTraTruoc.Text = currencyFomat(payedMoney);
+                txbTraTruoc.Select(txbTraTruoc.Text.Length, 0);
+
+                decimal totalMoney = decimal.Parse(txbThanhTien.Text, NumberStyles.AllowThousands) - payedMoney;
+                txbConLai.Text = currencyFomat(totalMoney);
             }
             else
             {
@@ -300,9 +348,9 @@ namespace VangBacDaQuy.form
 
             //lấy tham số là phần trăm tiền trả trước từ bảng tham số
             String sql = "SELECT PhanTramTienTraTruoc FROM THAMSO";
-            double ptTraTruoc = Convert.ToDouble(Class.Functions.GetFieldValues(sql));
-            long traTruoc = Convert.ToInt64(txbTraTruoc.Text);
-            long thanhTien = Convert.ToInt64(txbThanhTien.Text);
+            decimal ptTraTruoc = decimal.Parse(Class.Functions.GetFieldValues(sql), NumberStyles.Float);
+            decimal traTruoc = decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands);
+            decimal thanhTien = decimal.Parse(txbThanhTien.Text, NumberStyles.AllowThousands);
             if (traTruoc < thanhTien * ptTraTruoc) // Số tiền trả trước của từng loại dịch vụ phải >= (%TienTraTruoc x Thành tiền) của loại dịch vụ đó. 
             {
                 MessageBox.Show("Số tiền trả của từng loại dịch vụ phải >= (" +  (ptTraTruoc * 100).ToString() + "% x Thành tiền) của loại dịch vụ đó");
@@ -337,26 +385,14 @@ namespace VangBacDaQuy.form
 
         void calSumMoney()
         {
-            /* long sumMoney = 0;
-             long preMoney = 0; ;
-             long leftMoney = 0;
-
-             foreach(DataRow row in dtChiTietPhieuDichVu.Rows)
-             {
-                 sumMoney += Convert.ToInt64(row["THANHTIEN"].ToString());
-                 preMoney += Convert.ToInt64(row["TIENTRATRUOC"].ToString());
-
-             }
-
-
-             leftMoney = sumMoney - preMoney; // tổng tiền còn lại = tổng tiền - tổng tiền trả trước
-
-             txbTongTien.Text = sumMoney.ToString();
-             txbTongTraTruoc.Text = preMoney.ToString();
-             txbTongConLai.Text  = leftMoney.ToString();*/
-            txbTongTien.Text = dtChiTietPhieuDichVu.Compute("Sum(THANHTIEN)", "").ToString();
-            txbTongTraTruoc.Text = dtChiTietPhieuDichVu.Compute("Sum(TIENTRATRUOC)", "").ToString();
-            txbTongConLai.Text = dtChiTietPhieuDichVu.Compute("Sum(TIENCONLAI)", "").ToString();
+            decimal calValue; 
+            
+            calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(THANHTIEN)", "").ToString());
+            txbTongTien.Text = currencyFomat(calValue);
+            calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(TIENTRATRUOC)", "").ToString());
+            txbTongTraTruoc.Text = currencyFomat(calValue);
+            calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(TIENCONLAI)", "").ToString());
+            txbTongConLai.Text = currencyFomat(calValue);
         }
         private void buttonThem_Click(object sender, EventArgs e)
         {
@@ -702,17 +738,32 @@ namespace VangBacDaQuy.form
                 row["STT"] = dtChiTietPhieuDichVu.Rows.IndexOf(row) + 1;
             }
         }
-        private void dgvPhieuDichVu_DoubleClick(object sender, EventArgs e)
-        {  
-            if(!isSaved || !isSaveChanges)
+        private void dgvPhieuDichVu_CellMouseUp(object sender, DataGridViewCellMouseEventArgs e)
+        {
+            if (!isSaved || !isSaveChanges)
+            {
+                if (e.Button == MouseButtons.Right)
+                {
+                    dgvPhieuDichVu.Rows[e.RowIndex].Selected = true;
+                    this.rowIndex = e.RowIndex;
+                    dgvPhieuDichVu.CurrentCell = this.dgvPhieuDichVu.Rows[e.RowIndex].Cells[1];
+                    contextMenuStripRightClick.Show(dgvPhieuDichVu, e.Location);
+                    contextMenuStripRightClick.Show(Cursor.Position);
+                }
+            }
+        }
+
+        private void deleteRowToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!isSaved || !isSaveChanges)
             {
                 if ((MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
 
-                    DataRowView dataRowSelectedView = (DataRowView)dgvPhieuDichVu.SelectedRows[0].DataBoundItem;
+                    DataRowView dataRowSelectedView = (DataRowView)dgvPhieuDichVu.Rows[rowIndex].DataBoundItem;
                     DataRow dataRowSelected = dataRowSelectedView.Row;
-                   
-                   
+
+
                     if (isSaved) // nếu phiếu đã được lưu, add vào listrowsInserted để thêm khi ấn nút lưu
                     {
                         DataRow deledRow = dataRowSelectedView.Row.Table.NewRow(); // copy nó, cho nó khỏi tham chiếu
@@ -730,8 +781,20 @@ namespace VangBacDaQuy.form
 
                 }
             }
-            
 
+        }
+
+        private void dgvPhieuDichVu_MouseUp(object sender, MouseEventArgs e)
+        {
+            if (e.Button == MouseButtons.Left)
+            {
+                DataGridView.HitTestInfo hit = dgvPhieuDichVu.HitTest(e.X, e.Y);
+                if (hit.Type == DataGridViewHitTestType.None)
+                {
+                    dgvPhieuDichVu.ClearSelection();
+                    dgvPhieuDichVu.CurrentCell = null;
+                }
+            }
         }
 
         private void btnIn_Click(object sender, EventArgs e)
@@ -823,5 +886,7 @@ namespace VangBacDaQuy.form
             exSheet.Name = "Hóa đơn nhập";*/
             exApp.Visible = true;
         }
+
+
     }
 }

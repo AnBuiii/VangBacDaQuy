@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label17 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.panel6 = new System.Windows.Forms.Panel();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
@@ -54,7 +54,6 @@
             this.label18 = new System.Windows.Forms.Label();
             this.txbTongTien = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.butChinhSua = new System.Windows.Forms.Button();
             this.btnDong = new System.Windows.Forms.Button();
@@ -84,6 +83,9 @@
             this.label20 = new System.Windows.Forms.Label();
             this.richtxbGhiChu = new System.Windows.Forms.RichTextBox();
             this.txbSoLuong = new System.Windows.Forms.TextBox();
+            this.contextMenuStripRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.deleteRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.panel3 = new System.Windows.Forms.Panel();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -100,6 +102,7 @@
             this.tableLayoutPanel2.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tableLayoutPanel3.SuspendLayout();
+            this.contextMenuStripRightClick.SuspendLayout();
             this.SuspendLayout();
             // 
             // label17
@@ -116,20 +119,11 @@
             // 
             this.panel1.Controls.Add(this.label17);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 1310);
+            this.panel1.Location = new System.Drawing.Point(0, 1349);
             this.panel1.Margin = new System.Windows.Forms.Padding(4);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(2919, 10);
             this.panel1.TabIndex = 1;
-            // 
-            // panel3
-            // 
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 1232);
-            this.panel3.Margin = new System.Windows.Forms.Padding(4);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(2919, 78);
-            this.panel3.TabIndex = 2;
             // 
             // splitContainer1
             // 
@@ -149,8 +143,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
-            this.splitContainer1.Size = new System.Drawing.Size(2919, 1232);
-            this.splitContainer1.SplitterDistance = 367;
+            this.splitContainer1.Size = new System.Drawing.Size(2919, 1271);
+            this.splitContainer1.SplitterDistance = 378;
             this.splitContainer1.SplitterWidth = 8;
             this.splitContainer1.TabIndex = 1;
             // 
@@ -161,14 +155,14 @@
             this.panel6.Location = new System.Drawing.Point(0, 77);
             this.panel6.Margin = new System.Windows.Forms.Padding(4);
             this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(2917, 288);
+            this.panel6.Size = new System.Drawing.Size(2917, 299);
             this.panel6.TabIndex = 21;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox1.Location = new System.Drawing.Point(0, 32);
+            this.groupBox1.Location = new System.Drawing.Point(0, 43);
             this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 2, 4, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 2, 4, 2);
@@ -322,7 +316,7 @@
             this.groupBox2.Margin = new System.Windows.Forms.Padding(4);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Padding = new System.Windows.Forms.Padding(4);
-            this.groupBox2.Size = new System.Drawing.Size(2917, 855);
+            this.groupBox2.Size = new System.Drawing.Size(2917, 883);
             this.groupBox2.TabIndex = 21;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Chọn các loại dịch vụ";
@@ -336,10 +330,11 @@
             this.dgvPhieuDichVu.Name = "dgvPhieuDichVu";
             this.dgvPhieuDichVu.RowHeadersWidth = 102;
             this.dgvPhieuDichVu.RowTemplate.Height = 40;
-            this.dgvPhieuDichVu.Size = new System.Drawing.Size(2909, 461);
+            this.dgvPhieuDichVu.Size = new System.Drawing.Size(2909, 489);
             this.dgvPhieuDichVu.TabIndex = 2;
             this.dgvPhieuDichVu.CellEndEdit += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvPhieuDichVu_CellEndEdit);
-            this.dgvPhieuDichVu.DoubleClick += new System.EventHandler(this.dgvPhieuDichVu_DoubleClick);
+            this.dgvPhieuDichVu.CellMouseUp += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvPhieuDichVu_CellMouseUp);
+            this.dgvPhieuDichVu.MouseUp += new System.Windows.Forms.MouseEventHandler(this.dgvPhieuDichVu_MouseUp);
             // 
             // panel4
             // 
@@ -349,9 +344,8 @@
             this.panel4.Controls.Add(this.label18);
             this.panel4.Controls.Add(this.txbTongTien);
             this.panel4.Controls.Add(this.label8);
-            this.panel4.Controls.Add(this.label4);
             this.panel4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel4.Location = new System.Drawing.Point(4, 649);
+            this.panel4.Location = new System.Drawing.Point(4, 677);
             this.panel4.Margin = new System.Windows.Forms.Padding(4);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(2909, 101);
@@ -411,18 +405,6 @@
             this.label8.TabIndex = 1;
             this.label8.Text = "Tổng tiền:";
             // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label4.ForeColor = System.Drawing.Color.Red;
-            this.label4.Location = new System.Drawing.Point(0, 0);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(352, 32);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "Nháy đúp một dòng để xóa";
-            // 
             // panel2
             // 
             this.panel2.Controls.Add(this.butChinhSua);
@@ -430,7 +412,7 @@
             this.panel2.Controls.Add(this.btnIn);
             this.panel2.Controls.Add(this.btnLuu);
             this.panel2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel2.Location = new System.Drawing.Point(4, 750);
+            this.panel2.Location = new System.Drawing.Point(4, 778);
             this.panel2.Margin = new System.Windows.Forms.Padding(4);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(2909, 101);
@@ -568,6 +550,7 @@
             this.cmbxLoaiDichVu.Size = new System.Drawing.Size(308, 39);
             this.cmbxLoaiDichVu.TabIndex = 1;
             this.cmbxLoaiDichVu.TextChanged += new System.EventHandler(this.cmbxLoaiDichVu_TextChanged);
+            this.cmbxLoaiDichVu.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.cmbxLoaiDichVu_KeyPress);
             // 
             // label10
             // 
@@ -726,6 +709,7 @@
             this.combxTinhTrang.Name = "combxTinhTrang";
             this.combxTinhTrang.Size = new System.Drawing.Size(208, 39);
             this.combxTinhTrang.TabIndex = 15;
+            this.combxTinhTrang.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.combxTinhTrang_KeyPress);
             // 
             // label7
             // 
@@ -778,6 +762,30 @@
             this.txbSoLuong.TextChanged += new System.EventHandler(this.txbSoLuong_TextChanged);
             this.txbSoLuong.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbSoLuong_KeyPress);
             // 
+            // contextMenuStripRightClick
+            // 
+            this.contextMenuStripRightClick.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.contextMenuStripRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.deleteRowToolStripMenuItem});
+            this.contextMenuStripRightClick.Name = "contextMenuStripRightClick";
+            this.contextMenuStripRightClick.Size = new System.Drawing.Size(241, 52);
+            // 
+            // deleteRowToolStripMenuItem
+            // 
+            this.deleteRowToolStripMenuItem.Name = "deleteRowToolStripMenuItem";
+            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(240, 48);
+            this.deleteRowToolStripMenuItem.Text = "Delete row";
+            this.deleteRowToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
+            // 
+            // panel3
+            // 
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 1271);
+            this.panel3.Margin = new System.Windows.Forms.Padding(4);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(2919, 78);
+            this.panel3.TabIndex = 2;
+            // 
             // frmPhieuDichVu
             // 
             this.AllowDrop = true;
@@ -785,7 +793,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.AutoSize = true;
-            this.ClientSize = new System.Drawing.Size(2919, 1320);
+            this.ClientSize = new System.Drawing.Size(2919, 1359);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
@@ -818,6 +826,7 @@
             this.groupBox3.ResumeLayout(false);
             this.tableLayoutPanel3.ResumeLayout(false);
             this.tableLayoutPanel3.PerformLayout();
+            this.contextMenuStripRightClick.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -825,7 +834,6 @@
         #endregion
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel3;
         private System.Windows.Forms.SplitContainer splitContainer1;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Panel panel2;
@@ -847,7 +855,6 @@
         private System.Windows.Forms.Label label18;
         private System.Windows.Forms.TextBox txbTongTien;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnDong;
         private System.Windows.Forms.Button btnIn;
@@ -879,5 +886,8 @@
         private System.Windows.Forms.RichTextBox richtxbGhiChu;
         private System.Windows.Forms.TextBox txbSoLuong;
         private System.Windows.Forms.Button butChinhSua;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStripRightClick;
+        private System.Windows.Forms.ToolStripMenuItem deleteRowToolStripMenuItem;
+        private System.Windows.Forms.Panel panel3;
     }
 }
