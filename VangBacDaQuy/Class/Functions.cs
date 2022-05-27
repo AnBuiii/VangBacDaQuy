@@ -38,7 +38,7 @@ namespace VangBacDaQuy.Class
                 con = null;
             }
         }
-        //Select dữ liệu
+        //Select dữ liệu 
         public static DataTable GetDataToDataTable(string sql)
         {
             DataTable dt = new DataTable();
@@ -46,6 +46,7 @@ namespace VangBacDaQuy.Class
             adapter.Fill(dt);
             return dt;
         }
+
         //Insert, Update, Delete
         public static void RunSQL(string sql)
         {

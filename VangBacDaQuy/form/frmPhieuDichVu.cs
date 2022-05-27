@@ -54,8 +54,12 @@ namespace VangBacDaQuy.form
                 // đọc dữ liệu từ database
                 dtChiTietPhieuDichVu.Columns.Add("STT", typeof(int)); // thêm cột STT vào                  
                 dtChiTietPhieuDichVu.Merge(Class.Functions.GetDataToDataTable(sql)); //thêm table sau cột STT;
+                /*dtChiTietPhieuDichVu.Columns["THANHTIEN"].DataType = typeof(CurrencyManager);
+                dtChiTietPhieuDichVu.Columns["TIENTRATRUOC"].DataType = typeof(CurrencyManager);
+                dtChiTietPhieuDichVu.Columns["TIENCONLAI"].DataType = typeof(CurrencyManager);
+                dtChiTietPhieuDichVu.Columns["NGAYGIAO"].DataType = typeof (DateTime);*/
                 autoIDRows();
-               
+
             }
             else // nếu chưa lưu, tạo table mới
             {
@@ -65,9 +69,9 @@ namespace VangBacDaQuy.form
                 dtChiTietPhieuDichVu.Columns.Add("DONGIA", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("DONGIADUOCTINH", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("SOLUONG", typeof(string));
-                dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(string));
-                dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(string));
-                dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(CurrencyManager));
+                dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(CurrencyManager));
+                dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(CurrencyManager));
                 dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(DateTime));
                 dtChiTietPhieuDichVu.Columns.Add("TINHTRANG", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("GHICHU", typeof(string));
@@ -99,6 +103,7 @@ namespace VangBacDaQuy.form
             txbSoPhieu.ReadOnly = true;
             dtpNgaylap.Enabled = false;
             txbDonGia.ReadOnly = true;
+           
             txbConLai.ReadOnly = true;
             txbThanhTien.ReadOnly = true;
             dtpNgayGiao.Text = "";
@@ -306,7 +311,8 @@ namespace VangBacDaQuy.form
             
             foreach(DataRow row in dtChiTietPhieuDichVu.Rows)
             {
-                if(cmbxLoaiDichVu.SelectedValue == row["MADV"])
+                
+                if (cmbxLoaiDichVu.SelectedValue.ToString() == row["MADV"].ToString())
                 {
                     MessageBox.Show("Loại dịch vụ này đã có trong phiếu!");
                     return false;
@@ -331,22 +337,26 @@ namespace VangBacDaQuy.form
 
         void calSumMoney()
         {
-            long sumMoney = 0;
-            long preMoney = 0; ;
-            long leftMoney = 0;
+            /* long sumMoney = 0;
+             long preMoney = 0; ;
+             long leftMoney = 0;
 
-            foreach(DataRow row in dtChiTietPhieuDichVu.Rows)
-            {
-                sumMoney += Convert.ToInt64(row["THANHTIEN"].ToString());
-                preMoney += Convert.ToInt64(row["TIENTRATRUOC"].ToString());
-            }
-                    
-            leftMoney = sumMoney - preMoney; // tổng tiền còn lại = tổng tiền - tổng tiền trả trước
+             foreach(DataRow row in dtChiTietPhieuDichVu.Rows)
+             {
+                 sumMoney += Convert.ToInt64(row["THANHTIEN"].ToString());
+                 preMoney += Convert.ToInt64(row["TIENTRATRUOC"].ToString());
 
-            txbTongTien.Text = sumMoney.ToString();
-            txbTongTraTruoc.Text = preMoney.ToString();
-            txbTongConLai.Text  = leftMoney.ToString();
-           
+             }
+
+
+             leftMoney = sumMoney - preMoney; // tổng tiền còn lại = tổng tiền - tổng tiền trả trước
+
+             txbTongTien.Text = sumMoney.ToString();
+             txbTongTraTruoc.Text = preMoney.ToString();
+             txbTongConLai.Text  = leftMoney.ToString();*/
+            txbTongTien.Text = dtChiTietPhieuDichVu.Compute("Sum(THANHTIEN)", "").ToString();
+            txbTongTraTruoc.Text = dtChiTietPhieuDichVu.Compute("Sum(TIENTRATRUOC)", "").ToString();
+            txbTongConLai.Text = dtChiTietPhieuDichVu.Compute("Sum(TIENCONLAI)", "").ToString();
         }
         private void buttonThem_Click(object sender, EventArgs e)
         {
@@ -359,13 +369,13 @@ namespace VangBacDaQuy.form
                 DataRow newRow = dtChiTietPhieuDichVu.NewRow();
                 newRow.ItemArray = newRowData;
               
-              dtChiTietPhieuDichVu.Rows.Add(newRow);
+              dtChiTietPhieuDichVu.Rows.Add(newRowData);
 
                 if (isSaved)
                 {
-                   rowsInserted.Add(newRow); //nếu phiếu đã được lưu, add vào listrowInserted để xóa khỏi csdl khi ấn nút lưu
+                   rowsInserted.Add(newRow); //nếu phiếu đã được lưu, add vào listrowInserted để thêm khỏi csdl khi ấn nút lưu
                 }
-             
+              
                 calSumMoney();
                 resetChonDichVu();
 
@@ -673,11 +683,12 @@ namespace VangBacDaQuy.form
                     {
                         this.Close();
                     }
-                    else
-                    {
-                        this.Close();
-                    }
+                  
 
+                }
+                else
+                {
+                    this.Close();
                 }
             }
             else this.Close();
@@ -812,7 +823,5 @@ namespace VangBacDaQuy.form
             exSheet.Name = "Hóa đơn nhập";*/
             exApp.Visible = true;
         }
-
-    
     }
 }
