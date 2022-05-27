@@ -680,6 +680,7 @@ namespace VangBacDaQuy.form
 
                 }
             }
+            else this.Close();
           
         }
 
@@ -717,8 +718,8 @@ namespace VangBacDaQuy.form
                     calSumMoney(); // tính toán lại tổng tiền
 
                 }
-
             }
+            
 
         }
 
