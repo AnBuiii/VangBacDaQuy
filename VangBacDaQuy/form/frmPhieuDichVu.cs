@@ -267,6 +267,16 @@ namespace VangBacDaQuy.form
                     txbConLai.Text = "0";
                 }
             }
+            else
+            {
+                txbThanhTien.Text = "0";
+                if(txbTraTruoc.Text != "0")
+                {
+                    txbConLai.Text = currencyFomat(decimal.Parse("0", NumberStyles.AllowThousands) - decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands));
+                }
+              
+            }
+
         }
 
         private void txbSoLuong_TextChanged(object sender, EventArgs e)
