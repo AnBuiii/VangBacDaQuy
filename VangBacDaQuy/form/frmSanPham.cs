@@ -13,6 +13,8 @@ namespace VangBacDaQuy.form
     public partial class frmSanPham : Form
     {
         DataTable dtSanPham;
+        DataTable dtPhieuMuaHang;
+        DataTable dtPhieuBanHang;
         public frmSanPham()
         {
             InitializeComponent();
@@ -22,8 +24,11 @@ namespace VangBacDaQuy.form
         {
             txbMaSp.Enabled = false;
             btnLuu.Enabled = false;
+            Class.Functions.FillCombo("SELECT MALOAISP, TENLOAISP FROM LOAISANPHAM", cbMaLoaiSp, "MALOAISP", "MAKLOAISP");
+            cbMaLoaiSp.SelectedIndex = -1;
             LoadDataGridView();
         }
+
         private void LoadDataGridView()
         {
             string sql;
@@ -43,6 +48,20 @@ namespace VangBacDaQuy.form
             dgvSanPham.EditMode = DataGridViewEditMode.EditProgrammatically;
 
         }
+        private void LoadDataPhieuBanHang(String masp)
+        {
+            string sql = "SELECT PHIEUBANHANG.SOPHIEU, MAKH, NGAYLAP, SOLUONG FROM PHIEUBANHANG, CHITIETPHIEUBANHANG WHERE PHIEUBANHANG.SOPHIEU = CHITIETPHIEUBANHANG.SOPHIEU AND MASP = '" + masp + "'" ;
+            dtPhieuBanHang = Class.Functions.GetDataToDataTable(sql);
+            dgvPhieuBanHang.DataSource = dtPhieuBanHang;
+            dgvSanPham.DataSource = dtSanPham;
+            dgvSanPham.Columns[0].HeaderText = "Số phiếu";
+            dgvSanPham.Columns[1].HeaderText = "Mã khách hàng";
+            dgvSanPham.Columns[2].HeaderText = "Ngày lập";
+            dgvSanPham.Columns[3].HeaderText = "Số lượng";
+            dgvPhieuBanHang.AllowUserToAddRows=false;
+            dgvPhieuBanHang.EditMode = DataGridViewEditMode.EditProgrammatically;
+
+        }
 
         private void dgvSanPham_Click(object sender, EventArgs e)
         {
@@ -60,12 +79,14 @@ namespace VangBacDaQuy.form
             }
             txbMaSp.Text = dgvSanPham.CurrentRow.Cells["MASP"].Value.ToString();
             txbTenSp.Text = dgvSanPham.CurrentRow.Cells["TENSP"].Value.ToString();
-            txbMaLoaiSp.Text = dgvSanPham.CurrentRow.Cells["MALOAISP"].Value.ToString();
+            cbMaLoaiSp.Text = dgvSanPham.CurrentRow.Cells["MALOAISP"].Value.ToString();
             txbDongia.Text = dgvSanPham.CurrentRow.Cells["DONGIA"].Value.ToString();
             txbSL.Text = dgvSanPham.CurrentRow.Cells["SOLUONG"].Value.ToString();
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnHuy.Enabled = true;
+            LoadDataPhieuBanHang(txbMaSp.Text);
+
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -83,7 +104,7 @@ namespace VangBacDaQuy.form
         private void ResetValue()
         {
             txbDongia.Text = "";
-            txbMaLoaiSp.Text = "";
+            cbMaLoaiSp.Text = "";
             txbMaSp.Text = "";
             txbTenSp.Text = "";
             txbSL.Text = "";
@@ -104,10 +125,10 @@ namespace VangBacDaQuy.form
                 txbTenSp.Focus();
                 return;
             }
-            if (txbMaLoaiSp.Text.Trim().Length == 0) //Nếu chưa nhập mã chất liệu
+            if (cbMaLoaiSp.Text.Trim().Length == 0) //Nếu chưa nhập mã chất liệu
             {
                 MessageBox.Show("Bạn phải nhập mã loại sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txbMaLoaiSp.Focus();
+                cbMaLoaiSp.Focus();
                 return;
             }
             if (txbDongia.Text.Trim().Length == 0) //Nếu chưa nhập mã chất liệu
@@ -131,7 +152,7 @@ namespace VangBacDaQuy.form
                 return;
             }
 
-            sql = "INSERT INTO SANPHAM VALUES('" + txbMaSp.Text + "','" + txbMaLoaiSp.Text + "',N'" + txbTenSp.Text + "'," + Convert.ToDouble(txbDongia.Text.ToString()) + "," + Convert.ToInt32(txbSL.Text.ToString()) + ")";
+            sql = "INSERT INTO SANPHAM VALUES('" + txbMaSp.Text + "','" + cbMaLoaiSp.Text + "',N'" + txbTenSp.Text + "'," + Convert.ToDouble(txbDongia.Text.ToString()) + "," + Convert.ToInt32(txbSL.Text.ToString()) + ")";
             Class.Functions.RunSQL(sql); //Thực hiện câu lệnh sql
             LoadDataGridView(); //Nạp lại DataGridView
             ResetValue();
@@ -162,10 +183,10 @@ namespace VangBacDaQuy.form
                 txbTenSp.Focus();
                 return;
             }
-            if (txbMaLoaiSp.Text.Trim().Length == 0) //Nếu chưa nhập mã chất liệu
+            if (cbMaLoaiSp.Text.Trim().Length == 0) //Nếu chưa nhập mã chất liệu
             {
                 MessageBox.Show("Bạn phải nhập mã loại sản phẩm", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txbMaLoaiSp.Focus();
+                cbMaLoaiSp.Focus();
                 return;
             }
             if (txbDongia.Text.Trim().Length == 0) //Nếu chưa nhập mã chất liệu
@@ -181,7 +202,7 @@ namespace VangBacDaQuy.form
                 return;
             }
 
-            sql = "UPDATE SANPHAM SET TENSP = N'" + txbTenSp.Text + "', MALOAISP = '" + txbMaLoaiSp.Text + "', DONGIA = " + Convert.ToDouble(txbDongia.Text) + ", SOLUONG = " + Convert.ToInt32(txbSL.Text) + " WHERE MASP = '" + txbMaSp.Text + "'";
+            sql = "UPDATE SANPHAM SET TENSP = N'" + txbTenSp.Text + "', MALOAISP = '" + cbMaLoaiSp.Text + "', DONGIA = " + Convert.ToDouble(txbDongia.Text) + ", SOLUONG = " + Convert.ToInt32(txbSL.Text) + " WHERE MASP = '" + txbMaSp.Text + "'";
             Class.Functions.RunSQL(sql);
             LoadDataGridView();
             ResetValue();
@@ -216,6 +237,17 @@ namespace VangBacDaQuy.form
             btnSua.Enabled = true;
             btnLuu.Enabled = false;
             txbMaSp.Enabled = false;
+        }
+
+        private void cbMaLoaiSp_TextChanged(object sender, EventArgs e)
+        {
+            string sql;
+            if (cbMaLoaiSp.Text == "")
+            {
+                txbTenLoaiSp.Text = "";
+            }
+            sql = "SELECT TENLOAISP FROM LOAISANPHAM WHERE MALOAISP = '" + cbMaLoaiSp.SelectedValue + "'";
+            txbTenLoaiSp.Text = Class.Functions.GetFieldValues(sql);
         }
     }
 }
