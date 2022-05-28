@@ -52,25 +52,25 @@
             this.dgvSanPham = new System.Windows.Forms.DataGridView();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.label9 = new System.Windows.Forms.Label();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.label8 = new System.Windows.Forms.Label();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.dgvPhieuBanHang = new System.Windows.Forms.DataGridView();
-            this.label10 = new System.Windows.Forms.Label();
             this.panel6 = new System.Windows.Forms.Panel();
             this.dgvPhieuMuaHang = new System.Windows.Forms.DataGridView();
             this.label11 = new System.Windows.Forms.Label();
+            this.label9 = new System.Windows.Forms.Label();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.dgvPhieuBanHang = new System.Windows.Forms.DataGridView();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label8 = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel4.SuspendLayout();
+            this.panel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuaHang)).BeginInit();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuBanHang)).BeginInit();
-            this.panel6.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuaHang)).BeginInit();
             this.SuspendLayout();
             // 
             // panel1
@@ -313,6 +313,38 @@
             this.panel4.Size = new System.Drawing.Size(541, 172);
             this.panel4.TabIndex = 1;
             // 
+            // panel6
+            // 
+            this.panel6.Controls.Add(this.dgvPhieuMuaHang);
+            this.panel6.Controls.Add(this.label11);
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(541, 172);
+            this.panel6.TabIndex = 1;
+            // 
+            // dgvPhieuMuaHang
+            // 
+            this.dgvPhieuMuaHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhieuMuaHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPhieuMuaHang.Location = new System.Drawing.Point(0, 20);
+            this.dgvPhieuMuaHang.Name = "dgvPhieuMuaHang";
+            this.dgvPhieuMuaHang.RowHeadersWidth = 51;
+            this.dgvPhieuMuaHang.RowTemplate.Height = 24;
+            this.dgvPhieuMuaHang.Size = new System.Drawing.Size(541, 152);
+            this.dgvPhieuMuaHang.TabIndex = 1;
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label11.Location = new System.Drawing.Point(0, 0);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(141, 20);
+            this.label11.TabIndex = 0;
+            this.label11.Text = "phiếu mua hàng";
+            // 
             // label9
             // 
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
@@ -331,16 +363,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(541, 172);
             this.panel3.TabIndex = 0;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label8.Location = new System.Drawing.Point(0, 0);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(122, 20);
-            this.label8.TabIndex = 0;
-            this.label8.Text = "phiếu bán hàng";
             // 
             // panel5
             // 
@@ -374,37 +396,15 @@
             this.label10.TabIndex = 0;
             this.label10.Text = "phiếu bán hàng";
             // 
-            // panel6
+            // label8
             // 
-            this.panel6.Controls.Add(this.dgvPhieuMuaHang);
-            this.panel6.Controls.Add(this.label11);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(541, 172);
-            this.panel6.TabIndex = 1;
-            // 
-            // dgvPhieuMuaHang
-            // 
-            this.dgvPhieuMuaHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhieuMuaHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPhieuMuaHang.Location = new System.Drawing.Point(0, 20);
-            this.dgvPhieuMuaHang.Name = "dgvPhieuMuaHang";
-            this.dgvPhieuMuaHang.RowHeadersWidth = 51;
-            this.dgvPhieuMuaHang.RowTemplate.Height = 24;
-            this.dgvPhieuMuaHang.Size = new System.Drawing.Size(541, 152);
-            this.dgvPhieuMuaHang.TabIndex = 1;
-            // 
-            // label11
-            // 
-            this.label11.AutoSize = true;
-            this.label11.Dock = System.Windows.Forms.DockStyle.Top;
-            this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label11.Location = new System.Drawing.Point(0, 0);
-            this.label11.Name = "label11";
-            this.label11.Size = new System.Drawing.Size(141, 20);
-            this.label11.TabIndex = 0;
-            this.label11.Text = "phiếu mua hàng";
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label8.Location = new System.Drawing.Point(0, 0);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(122, 20);
+            this.label8.TabIndex = 0;
+            this.label8.Text = "phiếu bán hàng";
             // 
             // frmSanPham
             // 
@@ -424,14 +424,14 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvSanPham)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.panel4.ResumeLayout(false);
+            this.panel6.ResumeLayout(false);
+            this.panel6.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuaHang)).EndInit();
             this.panel3.ResumeLayout(false);
             this.panel3.PerformLayout();
             this.panel5.ResumeLayout(false);
             this.panel5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuBanHang)).EndInit();
-            this.panel6.ResumeLayout(false);
-            this.panel6.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuMuaHang)).EndInit();
             this.ResumeLayout(false);
 
         }
