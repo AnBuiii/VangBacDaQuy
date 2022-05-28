@@ -333,6 +333,7 @@
             this.dgvPhieuMuaHang.RowTemplate.Height = 24;
             this.dgvPhieuMuaHang.Size = new System.Drawing.Size(541, 152);
             this.dgvPhieuMuaHang.TabIndex = 1;
+            this.dgvPhieuMuaHang.DoubleClick += new System.EventHandler(this.dgvPhieuMuaHang_DoubleClick);
             // 
             // label11
             // 
@@ -384,6 +385,7 @@
             this.dgvPhieuBanHang.RowTemplate.Height = 24;
             this.dgvPhieuBanHang.Size = new System.Drawing.Size(541, 152);
             this.dgvPhieuBanHang.TabIndex = 1;
+            this.dgvPhieuBanHang.DoubleClick += new System.EventHandler(this.dgvPhieuBanHang_DoubleClick);
             // 
             // label10
             // 
