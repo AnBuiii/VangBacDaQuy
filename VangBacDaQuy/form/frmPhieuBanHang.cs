@@ -21,7 +21,7 @@ namespace VangBacDaQuy.form
 
         private void btnDong_Click(object sender, EventArgs e)
         {
-
+            this.Close();
         }
 
         private void btnHuy_Click(object sender, EventArgs e)
@@ -68,7 +68,7 @@ namespace VangBacDaQuy.form
             btnThem.Enabled = false;
             ResetValues();
             txbSoPhieu.Enabled = true;
-            txbSoPhieu.Text = "PH";
+            txbSoPhieu.Text = "";
             LoadDataGridView();
 
         }
@@ -185,6 +185,8 @@ namespace VangBacDaQuy.form
             txbTongtien.Text = "0";
             Class.Functions.FillCombo("SELECT MAKH, TENKH FROM KHACHHANG", cbMaKH, "MAKH", "MAKH");
             Class.Functions.FillCombo("SELECT MASP, TENSP FROM SANPHAM", cbMaSP, "MASP", "MASP");
+            cbMaKH.SelectedIndex = -1;
+            cbMaSP.SelectedIndex = -1; 
             if (txbSoPhieu.Text != "")
             {
                 LoadInfoPhieu();

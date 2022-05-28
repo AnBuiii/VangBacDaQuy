@@ -29,38 +29,6 @@ namespace VangBacDaQuy
             InitializeComponent();
         }
 
-        private void phiếuMuaHàngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if(lpmh == null || lpmh.IsDisposed) lpmh = new frmPhieuMuaHang();
-            lpmh.MdiParent = this;
-            lpmh.Dock = DockStyle.Fill;
-            lpmh.Show();
-        }
-
-        private void phiếuBánHàngToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if(lpbh == null || lpbh.IsDisposed) lpbh = new frmPhieuBanHang();
-            lpbh.MdiParent = this;
-            lpbh.Dock = DockStyle.Fill;
-            lpbh.Show();
-        }
-
-        private void phiếuDịchVụToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            if(lpdv == null || lpdv.IsDisposed ) lpdv = new frmPhieuDichVu();
-            lpdv.MdiParent = this;
-            lpdv.Dock = DockStyle.Fill;
-            lpdv.Show();
-        }
-
-        private void tồnKhoToolStripMenuItem1_Click(object sender, EventArgs e)
-        {
-            if (lbctk == null || lbctk.IsDisposed) lbctk = new frmLapBaoCaoTonKho();
-            lbctk.MdiParent = this;
-            lbctk.Dock = DockStyle.Fill;
-            lbctk.Show();
-        }
-
         private void Main_Load(object sender, EventArgs e)
         {
             Class.Functions.Connect();
@@ -71,9 +39,45 @@ namespace VangBacDaQuy
             Class.Functions.Disconnect();
             Application.Exit();    
         }
+        private void phiếuMuaHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            closePeviousForm(lpmh);
+            if (lpmh == null || lpmh.IsDisposed) lpmh = new frmPhieuMuaHang();
+            lpmh.MdiParent = this;
+            lpmh.Dock = DockStyle.Fill;
+            lpmh.Show();
+        }
+
+        private void phiếuBánHàngToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            closePeviousForm(lpbh);
+            if (lpbh == null || lpbh.IsDisposed) lpbh = new frmPhieuBanHang();
+            lpbh.MdiParent = this;
+            lpbh.Dock = DockStyle.Fill;
+            lpbh.Show();
+        }
+
+        private void phiếuDịchVụToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            closePeviousForm(lpdv);
+            if (lpdv == null || lpdv.IsDisposed) lpdv = new frmPhieuDichVu();
+            lpdv.MdiParent = this;
+            lpdv.Dock = DockStyle.Fill;
+            lpdv.Show();
+        }
+
+        private void tồnKhoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            closePeviousForm(lbctk);
+            if (lbctk == null || lbctk.IsDisposed) lbctk = new frmLapBaoCaoTonKho();
+            lbctk.MdiParent = this;
+            lbctk.Dock = DockStyle.Fill;
+            lbctk.Show();
+        }
 
         private void phiếuDịchVụToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            closePeviousForm(tcpdv);
             if (tcpdv == null || tcpdv.IsDisposed) tcpdv = new frmTraCuuPhieuDichVu();
             tcpdv.MdiParent = this;
             tcpdv.Dock = DockStyle.Fill;
@@ -82,6 +86,7 @@ namespace VangBacDaQuy
 
         private void sảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            closePeviousForm(sp);
             if (sp == null || sp.IsDisposed) sp = new frmSanPham();
             sp.MdiParent = this;
             sp.Dock = DockStyle.Fill;
@@ -90,6 +95,7 @@ namespace VangBacDaQuy
 
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            closePeviousForm(kh);
             if (kh == null || kh.IsDisposed) kh = new frmKhachHang();
             kh.MdiParent = this;
             kh.Dock = DockStyle.Fill;
@@ -98,6 +104,7 @@ namespace VangBacDaQuy
 
         private void nhàCungCấpToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            closePeviousForm(ncc);
             if (ncc == null || ncc.IsDisposed) ncc = new frmNhaCungCap();
             ncc.MdiParent = this;
             ncc.Dock = DockStyle.Fill;
@@ -106,6 +113,7 @@ namespace VangBacDaQuy
 
         private void dịchVụToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            closePeviousForm(dv);
             if (dv == null || dv.IsDisposed) dv = new frmDichVu();
             dv.MdiParent = this;
             dv.Dock = DockStyle.Fill;
@@ -114,10 +122,15 @@ namespace VangBacDaQuy
 
         private void loạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            closePeviousForm(lsp);
             if (lsp == null || lsp.IsDisposed) lsp = new frmLoaiSanPham();
             lsp.MdiParent = this;
             lsp.Dock = DockStyle.Fill;
             lsp.Show();
+        }
+        private void closePeviousForm(Form open)
+        {
+            foreach(Form form in this.MdiChildren) if(form != open )form.Close();
         }
     }
 }
