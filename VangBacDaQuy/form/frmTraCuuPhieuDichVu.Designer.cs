@@ -102,7 +102,7 @@
             this.cboMaKH.Name = "cboMaKH";
             this.cboMaKH.Size = new System.Drawing.Size(178, 28);
             this.cboMaKH.TabIndex = 1;
-            this.cboMaKH.TextChanged += new System.EventHandler(this.cboMaKH_TextChanged);
+            this.cboMaKH.SelectedIndexChanged += new System.EventHandler(this.cboMaKH_SelectedIndexChanged);
             this.cboMaKH.Click += new System.EventHandler(this.cboMaKH_Click);
             // 
             // cboSoPhieu

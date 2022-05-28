@@ -76,6 +76,17 @@ namespace VangBacDaQuy.form
             this.Close();
         }
 
+        private void cboMaKH_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string sql;
+            if (cboMaKH.Text == "")
+            {
+                txbTenKH.Text = "";
+            }
+            sql = "SELECT TENKH FROM KHACHHANG WHERE MAKH = '" + cboMaKH.SelectedValue + "'";
+            txbTenKH.Text = Class.Functions.GetFieldValues(sql);
+        }
+
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string sql;
@@ -197,20 +208,6 @@ namespace VangBacDaQuy.form
         private void dtmNgayLap_MouseEnter(object sender, EventArgs e)
         {
             btnXoaPhieu.Enabled = false;
-        }
-
-        private void cboMaKH_TextChanged(object sender, EventArgs e)
-        {
-            string sql;
-            if (cboMaKH.Text == "")
-            {
-                txbTenKH.Text = "";
-            }
-            else
-            {
-                sql = "SELECT TENKH FROM KHACHHANG WHERE MAKH = '" + cboMaKH.SelectedValue + "'";
-                txbTenKH.Text = Class.Functions.GetFieldValues(sql);
-            }
         }
     }
 }
