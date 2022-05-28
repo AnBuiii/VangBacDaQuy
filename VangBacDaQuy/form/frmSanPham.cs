@@ -50,17 +50,28 @@ namespace VangBacDaQuy.form
         }
         private void LoadDataPhieuBanHang(String masp)
         {
-            string sql = "SELECT PHIEUBANHANG.SOPHIEU, MAKH, NGAYLAP, SOLUONG FROM PHIEUBANHANG, CHITIETPHIEUBANHANG WHERE PHIEUBANHANG.SOPHIEU = CHITIETPHIEUBANHANG.SOPHIEU AND MASP = '" + masp + "'" ;
+            string sql = "SELECT PHIEUBANHANG.SOPHIEU, MAKH, convert(varchar, NGAYLAP, 103) AS NGAYLAP, SOLUONG FROM PHIEUBANHANG, CHITIETPHIEUBANHANG WHERE PHIEUBANHANG.SOPHIEU = CHITIETPHIEUBANHANG.SOPHIEU AND MASP = '" + masp + "'" ;
             dtPhieuBanHang = Class.Functions.GetDataToDataTable(sql);
             dgvPhieuBanHang.DataSource = dtPhieuBanHang;
-            dgvSanPham.DataSource = dtSanPham;
-            dgvSanPham.Columns[0].HeaderText = "Số phiếu";
-            dgvSanPham.Columns[1].HeaderText = "Mã khách hàng";
-            dgvSanPham.Columns[2].HeaderText = "Ngày lập";
-            dgvSanPham.Columns[3].HeaderText = "Số lượng";
+            dgvPhieuBanHang.Columns[0].HeaderText = "Số phiếu";
+            dgvPhieuBanHang.Columns[1].HeaderText = "Mã khách hàng";
+            dgvPhieuBanHang.Columns[2].HeaderText = "Ngày lập";
+            dgvPhieuBanHang.Columns[3].HeaderText = "Số lượng";
             dgvPhieuBanHang.AllowUserToAddRows=false;
             dgvPhieuBanHang.EditMode = DataGridViewEditMode.EditProgrammatically;
 
+        }
+        private void LoadDataPhieuMuaHang(String masp)
+        {
+            string sql = "SELECT PHIEUMUAHANG.SOPHIEU, MANCC, convert(varchar, NGAYLAP, 103) AS NGAYLAP, SOLUONG FROM PHIEUMUAHANG, CHITIETPHIEUMUAHANG WHERE PHIEUMUAHANG.SOPHIEU = CHITIETPHIEUMUAHANG.SOPHIEU AND MASP = '" + masp + "'";
+            dtPhieuMuaHang = Class.Functions.GetDataToDataTable(sql);
+            dgvPhieuMuaHang.DataSource = dtPhieuMuaHang;
+            dgvPhieuMuaHang.Columns[0].HeaderText = "Số phiếu";
+            dgvPhieuMuaHang.Columns[1].HeaderText = "Mã khách hàng";
+            dgvPhieuMuaHang.Columns[2].HeaderText = "Ngày lập";
+            dgvPhieuMuaHang.Columns[3].HeaderText = "Số lượng";
+            dgvPhieuMuaHang.AllowUserToAddRows = false;
+            dgvPhieuMuaHang.EditMode = DataGridViewEditMode.EditProgrammatically;
         }
 
         private void dgvSanPham_Click(object sender, EventArgs e)
@@ -86,6 +97,7 @@ namespace VangBacDaQuy.form
             btnXoa.Enabled = true;
             btnHuy.Enabled = true;
             LoadDataPhieuBanHang(txbMaSp.Text);
+            LoadDataPhieuMuaHang(txbMaSp.Text);
 
         }
 
