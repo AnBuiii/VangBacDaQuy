@@ -31,6 +31,8 @@ namespace VangBacDaQuy.form
             Class.Functions.FillCombo("SELECT SOPHIEU FROM PHIEUDICHVU", cboSoPhieu, "SOPHIEU", "SOPHIEU");
             cboMaKH.Text = "";
             cboSoPhieu.Text = "";
+            dtmNgayLap.ShowCheckBox = true;
+            dtmNgayLap.Checked = false;
             dgvTraCuuPhieuDichVu.DataSource = null;
         }
 
@@ -98,7 +100,7 @@ namespace VangBacDaQuy.form
 
             if (cboSoPhieu.Text != "")
                 sql = sql + " AND SOPHIEU like N'%" + cboSoPhieu.Text + "%'";
-            if (dtmNgayLap.Text != "")
+            if (dtmNgayLap.Checked == true)
             {
                 sql = sql + " AND YEAR(NGAYLAP) =" + dtmNgayLap.Value.Year;
                 sql = sql + " AND MONTH(NGAYLAP) =" + dtmNgayLap.Value.Month;
@@ -198,6 +200,12 @@ namespace VangBacDaQuy.form
         }
 
         private void dtmNgayLap_Enter(object sender, EventArgs e)
+        {
+            btnXoaPhieu.Enabled = false;
+            dtmNgayLap.Enabled = true;
+        }
+
+        private void dtmNgayLap_MouseEnter(object sender, EventArgs e)
         {
             btnXoaPhieu.Enabled = false;
         }

@@ -88,7 +88,8 @@
             this.dtmNgayLap.Format = System.Windows.Forms.DateTimePickerFormat.Short;
             this.dtmNgayLap.Location = new System.Drawing.Point(151, 101);
             this.dtmNgayLap.Name = "dtmNgayLap";
-            this.dtmNgayLap.Size = new System.Drawing.Size(178, 46);
+            this.dtmNgayLap.ShowCheckBox = true;
+            this.dtmNgayLap.Size = new System.Drawing.Size(178, 27);
             this.dtmNgayLap.TabIndex = 5;
             this.dtmNgayLap.Enter += new System.EventHandler(this.dtmNgayLap_Enter);
             // 
@@ -99,7 +100,7 @@
             this.cboMaKH.FormattingEnabled = true;
             this.cboMaKH.Location = new System.Drawing.Point(559, 54);
             this.cboMaKH.Name = "cboMaKH";
-            this.cboMaKH.Size = new System.Drawing.Size(178, 47);
+            this.cboMaKH.Size = new System.Drawing.Size(178, 28);
             this.cboMaKH.TabIndex = 1;
             this.cboMaKH.SelectedIndexChanged += new System.EventHandler(this.cboMaKH_SelectedIndexChanged);
             this.cboMaKH.Click += new System.EventHandler(this.cboMaKH_Click);
@@ -111,7 +112,7 @@
             this.cboSoPhieu.FormattingEnabled = true;
             this.cboSoPhieu.Location = new System.Drawing.Point(151, 54);
             this.cboSoPhieu.Name = "cboSoPhieu";
-            this.cboSoPhieu.Size = new System.Drawing.Size(178, 47);
+            this.cboSoPhieu.Size = new System.Drawing.Size(178, 28);
             this.cboSoPhieu.TabIndex = 0;
             this.cboSoPhieu.Click += new System.EventHandler(this.cboSoPhieu_Click);
             // 
@@ -121,7 +122,7 @@
             this.txbTenKH.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txbTenKH.Location = new System.Drawing.Point(559, 101);
             this.txbTenKH.Name = "txbTenKH";
-            this.txbTenKH.Size = new System.Drawing.Size(178, 46);
+            this.txbTenKH.Size = new System.Drawing.Size(178, 27);
             this.txbTenKH.TabIndex = 3;
             this.txbTenKH.Click += new System.EventHandler(this.txbTenKH_Click);
             // 
@@ -132,7 +133,7 @@
             this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label5.Location = new System.Drawing.Point(406, 104);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(270, 39);
+            this.label5.Size = new System.Drawing.Size(132, 20);
             this.label5.TabIndex = 4;
             this.label5.Text = "Tên khách hàng:";
             // 
@@ -143,7 +144,7 @@
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label4.Location = new System.Drawing.Point(406, 58);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(258, 39);
+            this.label4.Size = new System.Drawing.Size(127, 20);
             this.label4.TabIndex = 3;
             this.label4.Text = "Mã khách hàng:";
             // 
@@ -154,7 +155,7 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(58, 104);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(161, 39);
+            this.label3.Size = new System.Drawing.Size(79, 20);
             this.label3.TabIndex = 2;
             this.label3.Text = "Ngày lập:";
             // 
@@ -165,7 +166,7 @@
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(58, 58);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(161, 39);
+            this.label2.Size = new System.Drawing.Size(79, 20);
             this.label2.TabIndex = 1;
             this.label2.Text = "Số phiếu:";
             // 
@@ -239,7 +240,7 @@
             this.label6.ForeColor = System.Drawing.Color.Red;
             this.label6.Location = new System.Drawing.Point(22, 12);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(632, 32);
+            this.label6.Size = new System.Drawing.Size(295, 16);
             this.label6.TabIndex = 5;
             this.label6.Text = "Nháy đúp một dòng để xem chi tiết phiếu dịch vụ.";
             // 
