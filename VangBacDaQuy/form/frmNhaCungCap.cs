@@ -13,6 +13,7 @@ namespace VangBacDaQuy.form
     public partial class frmNhaCungCap : Form
     {
         DataTable dtNhaCungCap;
+        DataTable dtPhieuMuaHang;
         public frmNhaCungCap()
         {
             InitializeComponent();
@@ -41,6 +42,17 @@ namespace VangBacDaQuy.form
             dgvNhaCungCap.EditMode = DataGridViewEditMode.EditProgrammatically;
 
         }
+        private void LoadDataPhieuMuaHang(String mancc)
+        {
+            string sql = "SELECT SOPHIEU, convert(varchar, NGAYLAP, 103) AS NGAYLAP, TONGTIEN FROM PHIEUMUAHANG WHERE MANCC = '" + mancc + "'";
+            dtPhieuMuaHang = Class.Functions.GetDataToDataTable(sql);
+            dgvPhieuMuaHang.DataSource = dtPhieuMuaHang;
+            dgvPhieuMuaHang.Columns[0].HeaderText = "Số phiếu";
+            dgvPhieuMuaHang.Columns[1].HeaderText = "Ngày lập";
+            dgvPhieuMuaHang.Columns[2].HeaderText = "Tổng tiền";
+            dgvPhieuMuaHang.AllowUserToAddRows = false;
+            dgvPhieuMuaHang.EditMode = DataGridViewEditMode.EditProgrammatically;
+        }
 
         private void dgvNhaCungCap_Click(object sender, EventArgs e)
         {
@@ -62,6 +74,8 @@ namespace VangBacDaQuy.form
             btnSua.Enabled = true;
             btnXoa.Enabled = true;
             btnHuy.Enabled = true;
+
+            LoadDataPhieuMuaHang(txbMaNCC.Text);
         }
 
         private void btnThem_Click(object sender, EventArgs e)
@@ -193,6 +207,20 @@ namespace VangBacDaQuy.form
 
         private void btnDong_Click(object sender, EventArgs e)
         {
+            this.Close();
+        }
+
+        private void dgvPhieuMuaHang_DoubleClick(object sender, EventArgs e)
+        {
+            if (dtPhieuMuaHang.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            frmPhieuMuaHang frmPhieuMuaHang = new frmPhieuMuaHang(dgvPhieuMuaHang.CurrentRow.Cells["SOPHIEU"].Value.ToString());
+            frmPhieuMuaHang.MdiParent = this.ParentForm;
+            frmPhieuMuaHang.Dock = DockStyle.Fill;
+            frmPhieuMuaHang.Show();
             this.Close();
         }
     }

@@ -13,17 +13,16 @@ namespace VangBacDaQuy.form
 {
     public partial class frmPhieuBanHang : Form
     {
-        private string masp;
+
         DataTable dtChiTietPhieuBanHang;
         public frmPhieuBanHang()
         {
             InitializeComponent();
         }
-        public frmPhieuBanHang(String sophieu, String masp)
+        public frmPhieuBanHang(String sophieu)
         {
             InitializeComponent();
             txbSoPhieu.Text = sophieu;
-            this.masp = masp;
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -192,7 +191,6 @@ namespace VangBacDaQuy.form
             Class.Functions.FillCombo("SELECT MASP, TENSP FROM SANPHAM", cbMaSP, "MASP", "MASP");
             cbMaKH.SelectedIndex = -1;
             cbMaSP.SelectedIndex = -1;
-            cbMaSP.Text = masp;
             if (txbSoPhieu.Text != "")
             {
                 LoadInfoPhieu();

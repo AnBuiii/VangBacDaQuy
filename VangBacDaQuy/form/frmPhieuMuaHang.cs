@@ -15,7 +15,6 @@ namespace VangBacDaQuy.form
     {
         DataTable dtChiTietPhieuMuaHang;
         string sophieu;
-        string masp;
         public frmPhieuMuaHang()
         {
             this.MaximizeBox = false;
@@ -23,14 +22,13 @@ namespace VangBacDaQuy.form
             textBox_ProductName.ReadOnly=true;
             LoadDataGridView();
         }
-        public frmPhieuMuaHang(string sophieu, string masp)
+        public frmPhieuMuaHang(string sophieu)
         {
             this.MaximizeBox = false;
             InitializeComponent();
             textBox_ProductName.ReadOnly = true;
             LoadDataGridView();
             this.sophieu = sophieu;
-            this.masp = masp;
         }
         private void updateProductID()
         {

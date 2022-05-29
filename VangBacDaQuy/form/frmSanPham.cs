@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -269,7 +269,7 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            frmPhieuBanHang frmPhieuBanHang = new frmPhieuBanHang(dgvPhieuBanHang.CurrentRow.Cells["SOPHIEU"].Value.ToString(), txbMaSp.Text);
+            frmPhieuBanHang frmPhieuBanHang = new frmPhieuBanHang(dgvPhieuBanHang.CurrentRow.Cells["SOPHIEU"].Value.ToString());
             frmPhieuBanHang.MdiParent = this.ParentForm;
             frmPhieuBanHang.Dock = DockStyle.Fill;
             frmPhieuBanHang.Show();
@@ -283,7 +283,7 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
-            frmPhieuMuaHang frmPhieuMuaHang = new frmPhieuMuaHang(dgvPhieuMuaHang.CurrentRow.Cells["SOPHIEU"].Value.ToString(), txbMaSp.Text);
+            frmPhieuMuaHang frmPhieuMuaHang = new frmPhieuMuaHang(dgvPhieuMuaHang.CurrentRow.Cells["SOPHIEU"].Value.ToString());
             frmPhieuMuaHang.MdiParent = this.ParentForm;
             frmPhieuMuaHang.Dock = DockStyle.Fill;
             frmPhieuMuaHang.Show();

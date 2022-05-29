@@ -44,20 +44,25 @@
             this.btnLuu = new System.Windows.Forms.Button();
             this.btnSua = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.dgvPhieuBanHang = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKhachHang)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
+            this.panel3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuBanHang)).BeginInit();
             this.SuspendLayout();
             // 
             // dgvKhachHang
             // 
             this.dgvKhachHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvKhachHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvKhachHang.Location = new System.Drawing.Point(0, 179);
+            this.dgvKhachHang.Location = new System.Drawing.Point(0, 129);
             this.dgvKhachHang.Name = "dgvKhachHang";
             this.dgvKhachHang.RowHeadersWidth = 51;
             this.dgvKhachHang.RowTemplate.Height = 24;
-            this.dgvKhachHang.Size = new System.Drawing.Size(800, 181);
+            this.dgvKhachHang.Size = new System.Drawing.Size(840, 340);
             this.dgvKhachHang.TabIndex = 4;
             this.dgvKhachHang.Click += new System.EventHandler(this.dgvKhachHang_Click);
             // 
@@ -73,7 +78,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 179);
+            this.panel2.Size = new System.Drawing.Size(840, 129);
             this.panel2.TabIndex = 3;
             // 
             // txbSoDT
@@ -203,16 +208,50 @@
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnThem);
             this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 360);
+            this.panel1.Location = new System.Drawing.Point(0, 469);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 90);
+            this.panel1.Size = new System.Drawing.Size(840, 72);
             this.panel1.TabIndex = 5;
+            // 
+            // panel3
+            // 
+            this.panel3.Controls.Add(this.dgvPhieuBanHang);
+            this.panel3.Controls.Add(this.label5);
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(0, 322);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(840, 147);
+            this.panel3.TabIndex = 6;
+            // 
+            // dgvPhieuBanHang
+            // 
+            this.dgvPhieuBanHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhieuBanHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPhieuBanHang.Location = new System.Drawing.Point(0, 20);
+            this.dgvPhieuBanHang.Name = "dgvPhieuBanHang";
+            this.dgvPhieuBanHang.RowHeadersWidth = 51;
+            this.dgvPhieuBanHang.RowTemplate.Height = 24;
+            this.dgvPhieuBanHang.Size = new System.Drawing.Size(840, 127);
+            this.dgvPhieuBanHang.TabIndex = 1;
+            this.dgvPhieuBanHang.DoubleClick += new System.EventHandler(this.dgvPhieuBanHang_DoubleClick);
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
+            this.label5.Location = new System.Drawing.Point(0, 0);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(136, 20);
+            this.label5.TabIndex = 0;
+            this.label5.Text = "phiếu bán hàng";
             // 
             // frmKhachHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(840, 541);
+            this.Controls.Add(this.panel3);
             this.Controls.Add(this.dgvKhachHang);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -223,6 +262,9 @@
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
+            this.panel3.ResumeLayout(false);
+            this.panel3.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dgvPhieuBanHang)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -245,5 +287,8 @@
         private System.Windows.Forms.Button btnLuu;
         private System.Windows.Forms.Button btnSua;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.DataGridView dgvPhieuBanHang;
+        private System.Windows.Forms.Label label5;
     }
 }
