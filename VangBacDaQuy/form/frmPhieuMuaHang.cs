@@ -183,6 +183,9 @@ namespace VangBacDaQuy.form
             updateProductDetail();
             button_Save.Text = "Tạo phiếu";
             dataGridView_List.Refresh();
+            string sql;
+            sql = "select SOPHIEU from PHIEUMUAHANG";
+            Class.Functions.FillCombo(sql, textBox_SearchID, "SOPHIEU", "SOPHIEU");
         }
 
         private void textBox_ID_TextChanged(object sender, EventArgs e)
@@ -272,6 +275,11 @@ namespace VangBacDaQuy.form
         private void textBox_totalPrice_TextChanged(object sender, EventArgs e)
         {
             button_Save.Enabled = true;
+        }
+
+        private void button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }
