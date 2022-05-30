@@ -270,7 +270,7 @@ namespace VangBacDaQuy.form
             else
             {
                 txbThanhTien.Text = "0";
-                if(txbTraTruoc.Text != "0")
+                if(txbTraTruoc.Text != "")
                 {
                     txbConLai.Text = currencyFomat(decimal.Parse("0", NumberStyles.AllowThousands) - decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands));
                 }
