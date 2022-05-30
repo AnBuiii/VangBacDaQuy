@@ -395,14 +395,24 @@ namespace VangBacDaQuy.form
 
         void calSumMoney()
         {
-            decimal calValue; 
+            if(dtChiTietPhieuDichVu.Rows.Count > 0)
+            {
+                decimal calValue;
+
+                calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(THANHTIEN)", "").ToString());
+                txbTongTien.Text = currencyFomat(calValue);
+                calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(TIENTRATRUOC)", "").ToString());
+                txbTongTraTruoc.Text = currencyFomat(calValue);
+                calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(TIENCONLAI)", "").ToString());
+                txbTongConLai.Text = currencyFomat(calValue);
+            }
+            else
+            {
+                txbTongTien.Text = "0";
+                txbTongTraTruoc.Text = "0";
+                txbTongConLai.Text = "0";
+            }
             
-            calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(THANHTIEN)", "").ToString());
-            txbTongTien.Text = currencyFomat(calValue);
-            calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(TIENTRATRUOC)", "").ToString());
-            txbTongTraTruoc.Text = currencyFomat(calValue);
-            calValue = decimal.Parse(dtChiTietPhieuDichVu.Compute("Sum(TIENCONLAI)", "").ToString());
-            txbTongConLai.Text = currencyFomat(calValue);
         }
         private void buttonThem_Click(object sender, EventArgs e)
         {
