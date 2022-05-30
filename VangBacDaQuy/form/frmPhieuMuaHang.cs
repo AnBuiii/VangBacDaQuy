@@ -112,7 +112,8 @@ namespace VangBacDaQuy.form
                 comboBox_productType.Text = row.Cells[2].Value.ToString();
                 textBox_Price.Text = row.Cells[3].Value.ToString();
                 textBox_quantity.Text = row.Cells[4].Value.ToString();
-                textBox_totalPrice.Text = row.Cells[5].Value.ToString();
+                textBox_totalPrice.Text = row.Cells[5].Value.ToString().Remove(row.Cells[5].Value.ToString().Length -6, 5);
+                cMS_rightclick.Enabled = true;
             }
         }
 
@@ -132,9 +133,10 @@ namespace VangBacDaQuy.form
                     button_Save.Enabled = true;
                 TotalNew += Convert.ToInt32(textBox_totalPrice.Text);
                 textBox_Total.Text=Convert.ToString(TotalNew);
+                textBox_ID.Enabled = false;
             }
             else
-                MessageBox.Show("Phiếu đã tồn tại. Vui lòng thay đổi số phiếu.");
+                MessageBox.Show("Sản phẩm đã tồn tại.");
         }
 
         private void textBox_quantity_TextChanged(object sender, EventArgs e)
@@ -186,6 +188,7 @@ namespace VangBacDaQuy.form
             string sql;
             sql = "select SOPHIEU from PHIEUMUAHANG";
             Class.Functions.FillCombo(sql, textBox_SearchID, "SOPHIEU", "SOPHIEU");
+            cMS_rightclick.Enabled = false;
         }
 
         private void textBox_ID_TextChanged(object sender, EventArgs e)
@@ -198,8 +201,11 @@ namespace VangBacDaQuy.form
 
         private void button_Search_Click(object sender, EventArgs e)
         {
-            formReload(textBox_SearchID.Text);
-            
+            if (textBox_ID.Enabled == false)
+                MessageBox.Show("Vui lòng cập nhật phiếu trước.");
+            else
+                formReload(textBox_SearchID.Text);
+
         }
 
         private void comboBox_productType_TextChanged(object sender, EventArgs e)
@@ -243,6 +249,7 @@ namespace VangBacDaQuy.form
                 sql = "update PHIEUMUAHANG set TONGTIEN = " + textBox_Total.Text + " where SOPHIEU ='" + textBox_ID.Text + "'";
                 Class.Functions.RunSQL(sql);
                 button_Save.Enabled = false;
+                textBox_ID.Enabled = true;
             }
         }
 
@@ -252,7 +259,7 @@ namespace VangBacDaQuy.form
             if (Result == DialogResult.Yes)
             {
                 int sl, slxoa;
-                string sql = "SELECT MASP, SOLUONG FROM CHITIETPHIEUBANHANG WHERE SOPHIEU = '" + textBox_ID.Text + "'";
+                string sql = "SELECT MASP, SOLUONG FROM CHITIETPHIEUMUAHANG WHERE SOPHIEU = '" + textBox_ID.Text + "'";
                 DataTable tbSP = Class.Functions.GetDataToDataTable(sql);
                 for (int row = 0; row < tbSP.Rows.Count; row++)
                 {
@@ -280,6 +287,47 @@ namespace VangBacDaQuy.form
         private void button_Close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void cMS_rightclick_Opening(object sender, CancelEventArgs e)
+        {
+
+        }
+
+        private void item1_Click(object sender, EventArgs e)
+        {
+
+            string masp, sql;
+            Double ThanhTienxoa, tong;
+            int slXoa, sl;
+            if ((MessageBox.Show("Bạn có chắc chắn muốn xóa không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+            {
+                //Xóa hàng 
+                masp = dataGridView_List.CurrentRow.Cells["MASP"].Value.ToString();
+                slXoa = Convert.ToInt32(dataGridView_List.CurrentRow.Cells["SOLUONG"].Value.ToString());
+                ThanhTienxoa = Convert.ToDouble(textBox_totalPrice.Text);
+                sql = "DELETE CHITIETPHIEUMUAHANG WHERE SOPHIEU = '" + textBox_ID.Text + "' AND MASP = '" + masp + "'";
+                Class.Functions.RunSQL(sql);
+                // Cập nhật số lượng
+                sql = "SELECT SOLUONG FROM SANPHAM WHERE MASP = '" + masp + "'";
+                sl = Convert.ToInt32(Class.Functions.GetFieldValues(sql));
+                sl += slXoa;
+                sql = "UPDATE SANPHAM SET SOLUONG =" + sl + " WHERE MASP = '" + masp + "'";
+                Class.Functions.RunSQL(sql);
+                tong = Convert.ToDouble(textBox_Total.Text);
+                tong -= ThanhTienxoa;              
+                textBox_Total.Text = tong.ToString();
+                textBox_ID.Enabled = false;
+                button_Save.Enabled = true;
+                LoadDataGridView();
+                
+            }
+        }
+
+        private void textBox_quantity_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           if(!Char.IsDigit(e.KeyChar)&&!Char.IsControl(e.KeyChar))
+                e.Handled = true;
         }
     }
 }

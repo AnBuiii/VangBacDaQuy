@@ -28,7 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.textBox_SearchID = new System.Windows.Forms.ComboBox();
             this.button_Search = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
@@ -46,6 +48,8 @@
             this.label2 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView_List = new System.Windows.Forms.DataGridView();
+            this.cMS_rightclick = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.item1 = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel6 = new System.Windows.Forms.Panel();
@@ -60,9 +64,9 @@
             this.label14 = new System.Windows.Forms.Label();
             this.panel2 = new System.Windows.Forms.Panel();
             this.comboBox_productType = new System.Windows.Forms.ComboBox();
-            this.label15 = new System.Windows.Forms.Label();
             this.textBox_totalPrice = new System.Windows.Forms.TextBox();
             this.textBox_quantity = new System.Windows.Forms.TextBox();
+            this.label15 = new System.Windows.Forms.Label();
             this.textBox_Price = new System.Windows.Forms.TextBox();
             this.textBox_ProductName = new System.Windows.Forms.TextBox();
             this.comboBox_ProductID = new System.Windows.Forms.ComboBox();
@@ -71,7 +75,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label8 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
-            this.textBox_SearchID = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -80,6 +83,7 @@
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_List)).BeginInit();
+            this.cMS_rightclick.SuspendLayout();
             this.panel3.SuspendLayout();
             this.panel5.SuspendLayout();
             this.panel6.SuspendLayout();
@@ -89,20 +93,29 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.Controls.Add(this.textBox_SearchID);
             this.panel1.Controls.Add(this.button_Search);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 556);
-            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(717, 40);
             this.panel1.TabIndex = 0;
             // 
+            // textBox_SearchID
+            // 
+            this.textBox_SearchID.FormattingEnabled = true;
+            this.textBox_SearchID.Location = new System.Drawing.Point(97, 10);
+            this.textBox_SearchID.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_SearchID.Name = "textBox_SearchID";
+            this.textBox_SearchID.Size = new System.Drawing.Size(160, 21);
+            this.textBox_SearchID.TabIndex = 12;
+            // 
             // button_Search
             // 
             this.button_Search.Location = new System.Drawing.Point(277, 10);
-            this.button_Search.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Search.Margin = new System.Windows.Forms.Padding(2);
             this.button_Search.Name = "button_Search";
             this.button_Search.Size = new System.Drawing.Size(56, 19);
             this.button_Search.TabIndex = 2;
@@ -122,9 +135,9 @@
             // 
             // splitContainer1
             // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.splitContainer1.Margin = new System.Windows.Forms.Padding(2);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -137,12 +150,13 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox2);
             this.splitContainer1.Size = new System.Drawing.Size(717, 556);
-            this.splitContainer1.SplitterDistance = 136;
+            this.splitContainer1.SplitterDistance = 145;
             this.splitContainer1.SplitterWidth = 3;
             this.splitContainer1.TabIndex = 1;
             // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.textBox_NCC);
             this.groupBox1.Controls.Add(this.textBox_SDT);
             this.groupBox1.Controls.Add(this.label16);
@@ -153,11 +167,10 @@
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.label4);
             this.groupBox1.Controls.Add(this.label3);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox1.Location = new System.Drawing.Point(0, 45);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox1.Size = new System.Drawing.Size(717, 91);
             this.groupBox1.TabIndex = 1;
             this.groupBox1.TabStop = false;
@@ -167,7 +180,7 @@
             // 
             this.textBox_NCC.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_NCC.Location = new System.Drawing.Point(337, 26);
-            this.textBox_NCC.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_NCC.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_NCC.Name = "textBox_NCC";
             this.textBox_NCC.Size = new System.Drawing.Size(126, 20);
             this.textBox_NCC.TabIndex = 10;
@@ -177,7 +190,7 @@
             // 
             this.textBox_SDT.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_SDT.Location = new System.Drawing.Point(553, 26);
-            this.textBox_SDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_SDT.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_SDT.Name = "textBox_SDT";
             this.textBox_SDT.Size = new System.Drawing.Size(126, 20);
             this.textBox_SDT.TabIndex = 9;
@@ -196,7 +209,7 @@
             // 
             this.textBox_Address.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_Address.Location = new System.Drawing.Point(337, 58);
-            this.textBox_Address.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Address.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Address.Name = "textBox_Address";
             this.textBox_Address.Size = new System.Drawing.Size(342, 20);
             this.textBox_Address.TabIndex = 7;
@@ -206,7 +219,7 @@
             this.dateTimePicker_date.CustomFormat = "dd/MM/yyyy";
             this.dateTimePicker_date.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
             this.dateTimePicker_date.Location = new System.Drawing.Point(116, 58);
-            this.dateTimePicker_date.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dateTimePicker_date.Margin = new System.Windows.Forms.Padding(2);
             this.dateTimePicker_date.Name = "dateTimePicker_date";
             this.dateTimePicker_date.Size = new System.Drawing.Size(123, 20);
             this.dateTimePicker_date.TabIndex = 5;
@@ -215,7 +228,7 @@
             // 
             this.textBox_ID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_ID.Location = new System.Drawing.Point(117, 24);
-            this.textBox_ID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_ID.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_ID.Name = "textBox_ID";
             this.textBox_ID.Size = new System.Drawing.Size(122, 20);
             this.textBox_ID.TabIndex = 4;
@@ -263,6 +276,7 @@
             // 
             // label2
             // 
+            this.label2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
             this.label2.Location = new System.Drawing.Point(273, 7);
@@ -274,14 +288,14 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox2.Controls.Add(this.dataGridView_List);
             this.groupBox2.Controls.Add(this.panel3);
             this.groupBox2.Controls.Add(this.panel2);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox2.Location = new System.Drawing.Point(0, 0);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(2);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(2);
             this.groupBox2.Size = new System.Drawing.Size(717, 417);
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
@@ -291,10 +305,11 @@
             // 
             this.dataGridView_List.AllowUserToAddRows = false;
             this.dataGridView_List.AllowUserToDeleteRows = false;
+            this.dataGridView_List.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dataGridView_List.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView_List.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_List.ContextMenuStrip = this.cMS_rightclick;
             this.dataGridView_List.Location = new System.Drawing.Point(2, 91);
-            this.dataGridView_List.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.dataGridView_List.Margin = new System.Windows.Forms.Padding(2);
             this.dataGridView_List.MultiSelect = false;
             this.dataGridView_List.Name = "dataGridView_List";
             this.dataGridView_List.ReadOnly = true;
@@ -306,13 +321,27 @@
             this.dataGridView_List.TabIndex = 2;
             this.dataGridView_List.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_List_CellClick);
             // 
+            // cMS_rightclick
+            // 
+            this.cMS_rightclick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.item1});
+            this.cMS_rightclick.Name = "cMS_rightclick";
+            this.cMS_rightclick.Size = new System.Drawing.Size(95, 26);
+            this.cMS_rightclick.Text = "Xóa";
+            // 
+            // item1
+            // 
+            this.item1.Name = "item1";
+            this.item1.Size = new System.Drawing.Size(94, 22);
+            this.item1.Text = "Xóa";
+            this.item1.Click += new System.EventHandler(this.item1_Click);
+            // 
             // panel3
             // 
             this.panel3.Controls.Add(this.panel5);
             this.panel3.Controls.Add(this.panel4);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel3.Location = new System.Drawing.Point(2, 328);
-            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2);
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(713, 87);
             this.panel3.TabIndex = 1;
@@ -320,23 +349,22 @@
             // panel5
             // 
             this.panel5.Controls.Add(this.panel6);
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel5.Location = new System.Drawing.Point(0, 43);
-            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2);
             this.panel5.Name = "panel5";
             this.panel5.Size = new System.Drawing.Size(713, 44);
             this.panel5.TabIndex = 1;
             // 
             // panel6
             // 
+            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel6.Controls.Add(this.button_Delete);
             this.panel6.Controls.Add(this.button_Close);
             this.panel6.Controls.Add(this.button_Save);
             this.panel6.Controls.Add(this.button_Print);
             this.panel6.Controls.Add(this.button_Add);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel6.Location = new System.Drawing.Point(0, -28);
-            this.panel6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel6.Margin = new System.Windows.Forms.Padding(2);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(713, 72);
             this.panel6.TabIndex = 3;
@@ -344,7 +372,7 @@
             // button_Delete
             // 
             this.button_Delete.Location = new System.Drawing.Point(322, 41);
-            this.button_Delete.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Delete.Margin = new System.Windows.Forms.Padding(2);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(56, 19);
             this.button_Delete.TabIndex = 5;
@@ -355,7 +383,7 @@
             // button_Close
             // 
             this.button_Close.Location = new System.Drawing.Point(556, 41);
-            this.button_Close.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Close.Margin = new System.Windows.Forms.Padding(2);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(68, 19);
             this.button_Close.TabIndex = 4;
@@ -366,7 +394,7 @@
             // button_Save
             // 
             this.button_Save.Location = new System.Drawing.Point(62, 41);
-            this.button_Save.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Save.Margin = new System.Windows.Forms.Padding(2);
             this.button_Save.Name = "button_Save";
             this.button_Save.Size = new System.Drawing.Size(68, 19);
             this.button_Save.TabIndex = 3;
@@ -377,7 +405,7 @@
             // button_Print
             // 
             this.button_Print.Location = new System.Drawing.Point(437, 41);
-            this.button_Print.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Print.Margin = new System.Windows.Forms.Padding(2);
             this.button_Print.Name = "button_Print";
             this.button_Print.Size = new System.Drawing.Size(68, 19);
             this.button_Print.TabIndex = 2;
@@ -387,7 +415,7 @@
             // button_Add
             // 
             this.button_Add.Location = new System.Drawing.Point(187, 41);
-            this.button_Add.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.button_Add.Margin = new System.Windows.Forms.Padding(2);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(68, 19);
             this.button_Add.TabIndex = 0;
@@ -397,12 +425,12 @@
             // 
             // panel4
             // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.panel4.Controls.Add(this.label12);
             this.panel4.Controls.Add(this.textBox_Total);
             this.panel4.Controls.Add(this.label14);
-            this.panel4.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel4.Location = new System.Drawing.Point(0, 0);
-            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(713, 43);
             this.panel4.TabIndex = 0;
@@ -420,7 +448,7 @@
             // 
             this.textBox_Total.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_Total.Location = new System.Drawing.Point(493, 13);
-            this.textBox_Total.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Total.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Total.Name = "textBox_Total";
             this.textBox_Total.ReadOnly = true;
             this.textBox_Total.Size = new System.Drawing.Size(169, 20);
@@ -438,6 +466,7 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.Controls.Add(this.comboBox_productType);
             this.panel2.Controls.Add(this.textBox_totalPrice);
             this.panel2.Controls.Add(this.textBox_quantity);
@@ -450,9 +479,8 @@
             this.panel2.Controls.Add(this.label9);
             this.panel2.Controls.Add(this.label8);
             this.panel2.Controls.Add(this.label7);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(2, 15);
-            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(713, 76);
             this.panel2.TabIndex = 0;
@@ -461,11 +489,33 @@
             // 
             this.comboBox_productType.FormattingEnabled = true;
             this.comboBox_productType.Location = new System.Drawing.Point(120, 15);
-            this.comboBox_productType.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_productType.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_productType.Name = "comboBox_productType";
             this.comboBox_productType.Size = new System.Drawing.Size(110, 21);
             this.comboBox_productType.TabIndex = 11;
             this.comboBox_productType.TextChanged += new System.EventHandler(this.comboBox_productType_TextChanged);
+            // 
+            // textBox_totalPrice
+            // 
+            this.textBox_totalPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_totalPrice.Location = new System.Drawing.Point(569, 48);
+            this.textBox_totalPrice.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_totalPrice.Name = "textBox_totalPrice";
+            this.textBox_totalPrice.ReadOnly = true;
+            this.textBox_totalPrice.Size = new System.Drawing.Size(109, 20);
+            this.textBox_totalPrice.TabIndex = 9;
+            this.textBox_totalPrice.TextChanged += new System.EventHandler(this.textBox_totalPrice_TextChanged);
+            // 
+            // textBox_quantity
+            // 
+            this.textBox_quantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox_quantity.Location = new System.Drawing.Point(354, 43);
+            this.textBox_quantity.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_quantity.Name = "textBox_quantity";
+            this.textBox_quantity.Size = new System.Drawing.Size(121, 20);
+            this.textBox_quantity.TabIndex = 8;
+            this.textBox_quantity.TextChanged += new System.EventHandler(this.textBox_quantity_TextChanged);
+            this.textBox_quantity.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.textBox_quantity_KeyPress);
             // 
             // label15
             // 
@@ -477,32 +527,11 @@
             this.label15.TabIndex = 10;
             this.label15.Text = "Loại sản phẩm:";
             // 
-            // textBox_totalPrice
-            // 
-            this.textBox_totalPrice.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_totalPrice.Location = new System.Drawing.Point(569, 48);
-            this.textBox_totalPrice.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_totalPrice.Name = "textBox_totalPrice";
-            this.textBox_totalPrice.ReadOnly = true;
-            this.textBox_totalPrice.Size = new System.Drawing.Size(109, 20);
-            this.textBox_totalPrice.TabIndex = 9;
-            this.textBox_totalPrice.TextChanged += new System.EventHandler(this.textBox_totalPrice_TextChanged);
-            // 
-            // textBox_quantity
-            // 
-            this.textBox_quantity.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox_quantity.Location = new System.Drawing.Point(354, 43);
-            this.textBox_quantity.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
-            this.textBox_quantity.Name = "textBox_quantity";
-            this.textBox_quantity.Size = new System.Drawing.Size(121, 20);
-            this.textBox_quantity.TabIndex = 8;
-            this.textBox_quantity.TextChanged += new System.EventHandler(this.textBox_quantity_TextChanged);
-            // 
             // textBox_Price
             // 
             this.textBox_Price.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_Price.Location = new System.Drawing.Point(569, 13);
-            this.textBox_Price.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_Price.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_Price.Name = "textBox_Price";
             this.textBox_Price.ReadOnly = true;
             this.textBox_Price.Size = new System.Drawing.Size(109, 20);
@@ -512,7 +541,7 @@
             // 
             this.textBox_ProductName.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_ProductName.Location = new System.Drawing.Point(354, 13);
-            this.textBox_ProductName.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.textBox_ProductName.Margin = new System.Windows.Forms.Padding(2);
             this.textBox_ProductName.Name = "textBox_ProductName";
             this.textBox_ProductName.ReadOnly = true;
             this.textBox_ProductName.Size = new System.Drawing.Size(121, 20);
@@ -522,7 +551,7 @@
             // 
             this.comboBox_ProductID.FormattingEnabled = true;
             this.comboBox_ProductID.Location = new System.Drawing.Point(120, 42);
-            this.comboBox_ProductID.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.comboBox_ProductID.Margin = new System.Windows.Forms.Padding(2);
             this.comboBox_ProductID.Name = "comboBox_ProductID";
             this.comboBox_ProductID.Size = new System.Drawing.Size(110, 21);
             this.comboBox_ProductID.TabIndex = 5;
@@ -578,24 +607,16 @@
             this.label7.TabIndex = 0;
             this.label7.Text = "Mã sản phẩm:";
             // 
-            // textBox_SearchID
-            // 
-            this.textBox_SearchID.FormattingEnabled = true;
-            this.textBox_SearchID.Location = new System.Drawing.Point(97, 10);
-            this.textBox_SearchID.Margin = new System.Windows.Forms.Padding(2);
-            this.textBox_SearchID.Name = "textBox_SearchID";
-            this.textBox_SearchID.Size = new System.Drawing.Size(160, 21);
-            this.textBox_SearchID.TabIndex = 12;
-            // 
             // frmPhieuMuaHang
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(717, 596);
             this.Controls.Add(this.splitContainer1);
             this.Controls.Add(this.panel1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.Margin = new System.Windows.Forms.Padding(2);
             this.MaximizeBox = false;
             this.Name = "frmPhieuMuaHang";
             this.Text = "ThemPhieuBanHang";
@@ -611,6 +632,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_List)).EndInit();
+            this.cMS_rightclick.ResumeLayout(false);
             this.panel3.ResumeLayout(false);
             this.panel5.ResumeLayout(false);
             this.panel6.ResumeLayout(false);
@@ -668,5 +690,7 @@
         private System.Windows.Forms.TextBox textBox_NCC;
         private System.Windows.Forms.ComboBox comboBox_productType;
         private System.Windows.Forms.ComboBox textBox_SearchID;
+        private System.Windows.Forms.ContextMenuStrip cMS_rightclick;
+        private System.Windows.Forms.ToolStripMenuItem item1;
     }
 }
