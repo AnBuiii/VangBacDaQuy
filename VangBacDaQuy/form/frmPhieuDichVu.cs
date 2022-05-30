@@ -312,8 +312,13 @@ namespace VangBacDaQuy.form
                 txbTraTruoc.Text = currencyFomat(payedMoney);
                 txbTraTruoc.Select(txbTraTruoc.Text.Length, 0);
 
-                decimal totalMoney = decimal.Parse(txbThanhTien.Text, NumberStyles.AllowThousands) - payedMoney;
-                txbConLai.Text = currencyFomat(totalMoney);
+                if(txbThanhTien.Text != "")
+                {
+                    decimal totalMoney = decimal.Parse(txbThanhTien.Text, NumberStyles.AllowThousands) - payedMoney;
+                    txbConLai.Text = currencyFomat(totalMoney);
+                }
+            
+              
             }
             else
             {
