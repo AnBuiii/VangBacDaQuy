@@ -711,7 +711,8 @@ namespace VangBacDaQuy.form
                 if (MessageBox.Show("Bạn có muốn lưu phiếu không?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
                     if (savePhieu())
-                    {
+                    {   
+                        
                         this.Close();
                     }
                   

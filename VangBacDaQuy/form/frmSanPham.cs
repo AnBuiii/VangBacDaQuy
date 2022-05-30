@@ -273,7 +273,7 @@ namespace VangBacDaQuy.form
             frmPhieuBanHang.MdiParent = this.ParentForm;
             frmPhieuBanHang.Dock = DockStyle.Fill;
             frmPhieuBanHang.Show();
-            this.Close();
+          //  this.Close();
         }
 
         private void dgvPhieuMuaHang_DoubleClick(object sender, EventArgs e)
@@ -287,7 +287,7 @@ namespace VangBacDaQuy.form
             frmPhieuMuaHang.MdiParent = this.ParentForm;
             frmPhieuMuaHang.Dock = DockStyle.Fill;
             frmPhieuMuaHang.Show();
-            this.Close();
+           // this.Close();
         }
     }
 }

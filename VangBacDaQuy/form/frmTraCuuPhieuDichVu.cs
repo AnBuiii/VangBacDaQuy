@@ -124,8 +124,8 @@ namespace VangBacDaQuy.form
                 sophieu = dgvTraCuuPhieuDichVu.CurrentRow.Cells["SOPHIEU"].Value.ToString();
                 maKH = dgvTraCuuPhieuDichVu.CurrentRow.Cells["MAKH"].Value.ToString();
                 frmPhieuDichVu frm = new frmPhieuDichVu(maKH, sophieu); // chỗ này là cần đối số  
-                frm.StartPosition = FormStartPosition.WindowsDefaultBounds;
-                frm.Dock = this.Parent.Dock;
+                frm.MdiParent = this.MdiParent;
+                frm.Dock = DockStyle.Fill;
                 frm.Show();
 
             }
