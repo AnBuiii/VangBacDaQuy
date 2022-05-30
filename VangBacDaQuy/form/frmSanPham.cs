@@ -1,4 +1,4 @@
-﻿using System;
+﻿    using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -67,7 +67,7 @@ namespace VangBacDaQuy.form
             dtPhieuMuaHang = Class.Functions.GetDataToDataTable(sql);
             dgvPhieuMuaHang.DataSource = dtPhieuMuaHang;
             dgvPhieuMuaHang.Columns[0].HeaderText = "Số phiếu";
-            dgvPhieuMuaHang.Columns[1].HeaderText = "Mã khách hàng";
+            dgvPhieuMuaHang.Columns[1].HeaderText = "Mã nhà cung cấp";
             dgvPhieuMuaHang.Columns[2].HeaderText = "Ngày lập";
             dgvPhieuMuaHang.Columns[3].HeaderText = "Số lượng";
             dgvPhieuMuaHang.AllowUserToAddRows = false;
@@ -260,6 +260,34 @@ namespace VangBacDaQuy.form
             }
             sql = "SELECT TENLOAISP FROM LOAISANPHAM WHERE MALOAISP = '" + cbMaLoaiSp.SelectedValue + "'";
             txbTenLoaiSp.Text = Class.Functions.GetFieldValues(sql);
+        }
+
+        private void dgvPhieuBanHang_DoubleClick(object sender, EventArgs e)
+        {
+            if(dtPhieuBanHang.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            frmPhieuBanHang frmPhieuBanHang = new frmPhieuBanHang(dgvPhieuBanHang.CurrentRow.Cells["SOPHIEU"].Value.ToString());
+            frmPhieuBanHang.MdiParent = this.ParentForm;
+            frmPhieuBanHang.Dock = DockStyle.Fill;
+            frmPhieuBanHang.Show();
+            this.Close();
+        }
+
+        private void dgvPhieuMuaHang_DoubleClick(object sender, EventArgs e)
+        {
+            if (dtPhieuMuaHang.Rows.Count == 0)
+            {
+                MessageBox.Show("Không có dữ liệu!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            frmPhieuMuaHang frmPhieuMuaHang = new frmPhieuMuaHang(dgvPhieuMuaHang.CurrentRow.Cells["SOPHIEU"].Value.ToString());
+            frmPhieuMuaHang.MdiParent = this.ParentForm;
+            frmPhieuMuaHang.Dock = DockStyle.Fill;
+            frmPhieuMuaHang.Show();
+            this.Close();
         }
     }
 }

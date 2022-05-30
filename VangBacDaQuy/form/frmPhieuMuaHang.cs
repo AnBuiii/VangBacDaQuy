@@ -14,12 +14,21 @@ namespace VangBacDaQuy.form
     public partial class frmPhieuMuaHang : Form
     {
         DataTable dtChiTietPhieuMuaHang;
+        string sophieu;
         public frmPhieuMuaHang()
         {
             this.MaximizeBox = false;
             InitializeComponent();
             textBox_ProductName.ReadOnly=true;
             LoadDataGridView();
+        }
+        public frmPhieuMuaHang(string sophieu)
+        {
+            this.MaximizeBox = false;
+            InitializeComponent();
+            textBox_ProductName.ReadOnly = true;
+            LoadDataGridView();
+            this.sophieu = sophieu;
         }
         private void updateProductID()
         {
@@ -151,7 +160,8 @@ namespace VangBacDaQuy.form
         private void frmPhieuMuaHang_Load(object sender, EventArgs e)
         {
             ResetFormState();
-            textBox_ID.Text = "";
+            
+            textBox_ID.Text = sophieu;
         }
 
         private void ResetFormState()

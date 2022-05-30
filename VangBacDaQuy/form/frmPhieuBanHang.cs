@@ -13,10 +13,16 @@ namespace VangBacDaQuy.form
 {
     public partial class frmPhieuBanHang : Form
     {
+
         DataTable dtChiTietPhieuBanHang;
         public frmPhieuBanHang()
         {
             InitializeComponent();
+        }
+        public frmPhieuBanHang(String sophieu)
+        {
+            InitializeComponent();
+            txbSoPhieu.Text = sophieu;
         }
 
         private void btnDong_Click(object sender, EventArgs e)
@@ -36,12 +42,10 @@ namespace VangBacDaQuy.form
                     // Cập nhật số lượng
                     sql = "SELECT SOLUONG FROM SANPHAM WHERE MASP = '" + tbSP.Rows[row][0].ToString() + "'";
                     sl = Convert.ToInt32(Class.Functions.GetFieldValues(sql));
-                    MessageBox.Show("SELECT SL");
                     slxoa = Convert.ToInt32(tbSP.Rows[row][1].ToString());
                     sl += slxoa;
                     sql = "UPDATE SANPHAM SET SOLUONG = " + sl + " WHERE MASP = '" + tbSP.Rows[row][0].ToString() + "'";
                     Class.Functions.RunSQL(sql);
-                    MessageBox.Show("UPDATE SL");
                 }
 
                 //Xóa chi tiết phiếu
@@ -186,7 +190,7 @@ namespace VangBacDaQuy.form
             Class.Functions.FillCombo("SELECT MAKH, TENKH FROM KHACHHANG", cbMaKH, "MAKH", "MAKH");
             Class.Functions.FillCombo("SELECT MASP, TENSP FROM SANPHAM", cbMaSP, "MASP", "MASP");
             cbMaKH.SelectedIndex = -1;
-            cbMaSP.SelectedIndex = -1; 
+            cbMaSP.SelectedIndex = -1;
             if (txbSoPhieu.Text != "")
             {
                 LoadInfoPhieu();
