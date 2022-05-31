@@ -17,7 +17,13 @@ namespace VangBacDaQuy.Class
         public static void Connect()
         {
             con = new SqlConnection();
-            con.ConnectionString = Properties.Settings.Default.VBDQConnection;
+
+            string str = Application.StartupPath;
+            str = str.Substring(0, str.IndexOf("VangBacDaQuy")) + @"VangBacDaQuy\VBDQ.mdf";
+            
+            con.ConnectionString = @"Data Source=(LocalDB)\MSSQLLocalDB;AttachDbFilename="+str+";Integrated Security=True;Connect Timeout=30";
+            //con.ConnectionString = Properties.Settings.Default.VBDQConnection;
+
             if (con.State != ConnectionState.Open) { 
                 con.Open();
                 MessageBox.Show("Kết nối thành công");
@@ -25,7 +31,6 @@ namespace VangBacDaQuy.Class
             else
             {
                 MessageBox.Show("Kết nối không thành công");
-            
             }
         }
         //Ngắt kết nối cơ sở dữ liệu
