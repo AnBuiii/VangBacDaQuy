@@ -13,6 +13,9 @@ namespace VangBacDaQuy
 {
     public partial class Main : Form
     {
+        public static string user;
+        public static string manhom;
+        public static List<String> permission = new List<string>();
         frmPhieuMuaHang lpmh = null;
         frmPhieuBanHang lpbh = null;
         frmPhieuDichVu lpdv = null;
@@ -132,5 +135,42 @@ namespace VangBacDaQuy
         {
             foreach(Form form in this.MdiChildren) if(form != open )form.Close();
         }
+
+        private void btnDangNhap_Click(object sender, EventArgs e)
+        {
+            //string sql;
+            //sql = "SELECT * from NGUOIDUNG WHERE TENDANGNHAP = '" + txbUser.Text + "' AND MATKHAU = '" + txbPass.Text + "'";
+            /*if(!Class.Functions.CheckKey(sql))
+            {
+                return;
+            } else
+            {
+                DataTable dt = new DataTable();
+                sql  = "select PHANQUYEN.MACHUCNANG as MACHUCNANG from PHANQUYEN, NHOMNGUOIDUNG, NGUOIDUNG where NGUOIDUNG.MANHOM = NHOMNGUOIDUNG.MANHOM and NHOMNGUOIDUNG.MANHOM = PHANQUYEN.MANHOM and NGUOIDUNG.TENDANGNHAP =  '" + txbUser.Text + "'";
+                DataTable dtChucNang = Class.Functions.GetDataToDataTable(sql);
+                foreach(DataRow dr in dtChucNang.Rows)
+                {
+                    
+                    switch (dr["MACHUCNANG"].ToString())
+                    {
+                        case "MN00":
+                            // này chưa làm
+                            break;
+                        case "MN01":
+                            
+                            break ;
+                        case "MN02":
+                            break;
+                        case "MN03":
+                            break;
+                        case "MN04":
+                            break;
+                        case "MN05":
+                            break;
+                    }
+                }
+            }*/
+         
+        }
     }
-}
+}   
