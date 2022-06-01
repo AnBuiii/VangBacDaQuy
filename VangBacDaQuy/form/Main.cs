@@ -35,6 +35,9 @@ namespace VangBacDaQuy
         private void Main_Load(object sender, EventArgs e)
         {
             Class.Functions.Connect();
+            string sql = "EXEC dbo.TAOBAOCAO";
+            Class.Functions.RunSQL(sql);
+
         }
 
         private void thoátToolStripMenuItem_Click(object sender, EventArgs e)

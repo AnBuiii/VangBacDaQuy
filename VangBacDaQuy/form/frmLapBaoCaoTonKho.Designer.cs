@@ -30,8 +30,8 @@
         {
             this.dgvBaoCaoTonKho = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
+            this.cbonam = new System.Windows.Forms.ComboBox();
             this.cboThang = new System.Windows.Forms.ComboBox();
-            this.txbNam = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
@@ -58,8 +58,8 @@
             // panel2
             // 
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.cbonam);
             this.panel2.Controls.Add(this.cboThang);
-            this.panel2.Controls.Add(this.txbNam);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
@@ -68,6 +68,16 @@
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 111);
             this.panel2.TabIndex = 0;
+            // 
+            // cbonam
+            // 
+            this.cbonam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.cbonam.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cbonam.FormattingEnabled = true;
+            this.cbonam.Location = new System.Drawing.Point(516, 60);
+            this.cbonam.Name = "cbonam";
+            this.cbonam.Size = new System.Drawing.Size(141, 28);
+            this.cbonam.TabIndex = 4;
             // 
             // cboThang
             // 
@@ -91,15 +101,6 @@
             this.cboThang.Name = "cboThang";
             this.cboThang.Size = new System.Drawing.Size(143, 28);
             this.cboThang.TabIndex = 1;
-            // 
-            // txbNam
-            // 
-            this.txbNam.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
-            this.txbNam.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbNam.Location = new System.Drawing.Point(504, 61);
-            this.txbNam.Name = "txbNam";
-            this.txbNam.Size = new System.Drawing.Size(143, 27);
-            this.txbNam.TabIndex = 2;
             // 
             // label4
             // 
@@ -207,7 +208,6 @@
 
         private System.Windows.Forms.DataGridView dgvBaoCaoTonKho;
         private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.TextBox txbNam;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
@@ -216,5 +216,6 @@
         private System.Windows.Forms.Button btnInBaoCao;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.ComboBox cboThang;
+        private System.Windows.Forms.ComboBox cbonam;
     }
 }

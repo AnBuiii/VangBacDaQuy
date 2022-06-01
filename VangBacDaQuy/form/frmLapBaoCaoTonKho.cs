@@ -23,12 +23,14 @@ namespace VangBacDaQuy.form
         {
             btnInBaoCao.Enabled = false;
             dgvBaoCaoTonKho.DataSource = null;
+            Class.Functions.FillCombo("SELECT distinct NAM FROM PHIEUBAOCAOTONKHO", cbonam, "NAM", "NAM");
+            Class.Functions.FillCombo("SELECT distinct THANG FROM PHIEUBAOCAOTONKHO", cboThang, "THANG", "THANG");
         }
 
         private void btnXuatBaoCao_Click(object sender, EventArgs e)
         {
             string sql;
-            if ((cboThang.Text=="") || (txbNam.Text == ""))
+            if ((cboThang.Text=="") || (cbonam.Text == ""))
             {
                 MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yêu cầu ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -38,8 +40,8 @@ namespace VangBacDaQuy.form
 
             if (cboThang.Text != "")
                 sql = sql + " AND THANG =" + cboThang.Text;
-            if (txbNam.Text != "")
-                sql = sql + " AND NAM =" + txbNam.Text;
+            if (cbonam.Text != "")
+                sql = sql + " AND NAM =" + cbonam.Text;
 
             dtTonKho = Class.Functions.GetDataToDataTable(sql);
             if (dtTonKho.Rows.Count == 0)
@@ -47,7 +49,7 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("Có " + dtTonKho.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                MessageBox.Show("Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             dgvBaoCaoTonKho.DataSource = dtTonKho;
             LoadDataGridView();
         }
@@ -95,7 +97,7 @@ namespace VangBacDaQuy.form
             exRange.Range["C2:E2"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
             exRange.Range["C2:E2"].Value = "PHIẾU BÁO CÁO TỒN KHO";
 
-            sql = "SELECT * FROM PHIEUBAOCAOTONKHO as a WHERE a.THANG = N'" + cboThang.Text + "' AND a.NAM = N'" + txbNam.Text + "'";
+            sql = "SELECT * FROM PHIEUBAOCAOTONKHO as a WHERE a.THANG = N'" + cboThang.Text + "' AND a.NAM = N'" + cbonam.Text + "'";
             tbchung = Class.Functions.GetDataToDataTable(sql);
             exRange.Range["B4:E6"].Font.Size = 12;
             exRange.Range["B4:E6"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignLeft;
@@ -112,7 +114,7 @@ namespace VangBacDaQuy.form
             exRange.Range["C6:E6"].MergeCells = true;
             exRange.Range["C6:E6"].Value = tbchung.Rows[0][2].ToString();
 
-            sql = "SELECT TENSP, TONDAU, SLMUA, SLBAN, TONCUOI, DONVITINH FROM PHIEUBAOCAOTONKHO as a, CHITIETPHIEUBAOCAOTONKHO, SANPHAM, LOAISANPHAM WHERE CHITIETPHIEUBAOCAOTONKHO.SOPHIEU = a.SOPHIEU AND CHITIETPHIEUBAOCAOTONKHO.MASP = SANPHAM.MASP AND a.THANG = N'" + cboThang.Text + "' AND a.NAM = N'" + txbNam.Text + "' AND SANPHAM.MALOAISP = LOAISANPHAM.MALOAISP";
+            sql = "SELECT TENSP, TONDAU, SLMUA, SLBAN, TONCUOI, DONVITINH FROM PHIEUBAOCAOTONKHO as a, CHITIETPHIEUBAOCAOTONKHO, SANPHAM, LOAISANPHAM WHERE CHITIETPHIEUBAOCAOTONKHO.SOPHIEU = a.SOPHIEU AND CHITIETPHIEUBAOCAOTONKHO.MASP = SANPHAM.MASP AND a.THANG = N'" + cboThang.Text + "' AND a.NAM = N'" + cbonam.Text + "' AND SANPHAM.MALOAISP = LOAISANPHAM.MALOAISP";
             tbchitiet = Class.Functions.GetDataToDataTable(sql); 
             exRange.Range["A8:G8"].Font.Bold = true;
             exRange.Range["A8:G8"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
