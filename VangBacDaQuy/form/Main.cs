@@ -35,7 +35,7 @@ namespace VangBacDaQuy
         private void Main_Load(object sender, EventArgs e)
         {
             Class.Functions.Connect();
-            string sql = "EXEC dbo.TAOBAOCAO";
+            string sql = "declare @THANG INT = MONTH(GETDATE()) declare @NAM INT = YEAR(GETDATE()) EXEC DBO.TAOBAOCAO @THANG, @NAM" ;
             Class.Functions.RunSQL(sql);
 
         }
