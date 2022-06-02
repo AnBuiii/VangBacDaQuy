@@ -27,17 +27,19 @@ namespace VangBacDaQuy
         frmLoaiSanPham lsp = null;
 
         public Main()
-        {
-            
+        {          
             InitializeComponent();
         }
         
 
         private void Main_Load(object sender, EventArgs e)
         {
+            Class.Functions.User = "";
             Class.Functions.Connect();
             frmDangNhap login = new frmDangNhap();
             login.ShowDialog();
+
+           loadMainPanel();
             string sql = "declare @THANG INT = MONTH(GETDATE()) declare @NAM INT = YEAR(GETDATE()) EXEC DBO.TAOBAOCAO @THANG, @NAM" ;
             Class.Functions.RunSQL(sql);
 
@@ -60,7 +62,11 @@ namespace VangBacDaQuy
             lpmh.MdiParent = this;
             lpmh.Dock = DockStyle.Fill;
             lpmh.Show();
+            lpmh.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
+        
+        
 
         private void phiếuBánHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -74,6 +80,8 @@ namespace VangBacDaQuy
             lpbh.MdiParent = this;
             lpbh.Dock = DockStyle.Fill;
             lpbh.Show();
+            lpbh.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
 
         private void phiếuDịchVụToolStripMenuItem_Click(object sender, EventArgs e)
@@ -88,6 +96,8 @@ namespace VangBacDaQuy
             lpdv.MdiParent = this;
             lpdv.Dock = DockStyle.Fill;
             lpdv.Show();
+            lpbh.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
 
         private void tồnKhoToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -102,6 +112,8 @@ namespace VangBacDaQuy
             lbctk.MdiParent = this;
             lbctk.Dock = DockStyle.Fill;
             lbctk.Show();
+            lbctk.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
 
         private void phiếuDịchVụToolStripMenuItem1_Click(object sender, EventArgs e)
@@ -111,6 +123,8 @@ namespace VangBacDaQuy
             tcpdv.MdiParent = this;
             tcpdv.Dock = DockStyle.Fill;
             tcpdv.Show();
+            tcpdv.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
 
         private void sảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
@@ -120,6 +134,8 @@ namespace VangBacDaQuy
             sp.MdiParent = this;
             sp.Dock = DockStyle.Fill;
             sp.Show();
+            sp.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
 
         private void kháchHàngToolStripMenuItem_Click(object sender, EventArgs e)
@@ -129,6 +145,8 @@ namespace VangBacDaQuy
             kh.MdiParent = this;
             kh.Dock = DockStyle.Fill;
             kh.Show();
+            kh.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
 
         private void nhàCungCấpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -138,6 +156,8 @@ namespace VangBacDaQuy
             ncc.MdiParent = this;
             ncc.Dock = DockStyle.Fill;
             ncc.Show();
+            ncc.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
 
         private void dịchVụToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,6 +167,8 @@ namespace VangBacDaQuy
             dv.MdiParent = this;
             dv.Dock = DockStyle.Fill;
             dv.Show();
+            dv.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
         }
 
         private void loạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
@@ -157,6 +179,9 @@ namespace VangBacDaQuy
             lsp.MdiParent = this;
             lsp.Dock = DockStyle.Fill;
             lsp.Show();
+            lsp.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
+
         }
         private void closePeviousForm(Form open)
         {
@@ -190,7 +215,38 @@ namespace VangBacDaQuy
 
         private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            foreach (Form form in this.MdiChildren) form.Close();
+            Class.Functions.User = "";
+            loadMainPanel();
+            frmDangNhap login = new frmDangNhap();
+            login.ShowDialog();
+            loadMainPanel();
             
+            
+        }
+        public void loadMainPanel()
+        {
+            lbTenDangNhap.Text = Class.Functions.User;
+            if(lbTenDangNhap.Text == "")
+            {
+                đăngXuấtToolStripMenuItem.Text = "Đăng nhập";
+                lbMessage.Text = "Hãy đăng nhập";
+            } else
+            {
+                đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
+                lbMessage.Text = "Xin chào";
+            }
+            mainPanel.Visible = true;
+            
+        }
+        private void mdiChildClose(object sender, EventArgs e)
+        {
+            loadMainPanel();
+        }
+
+        private void Main_ControlRemoved(object sender, ControlEventArgs e)
+        {
+            MessageBox.Show("asd");
         }
     }
 }   

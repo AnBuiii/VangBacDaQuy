@@ -25,7 +25,7 @@ namespace VangBacDaQuy.form
             sql = "SELECT * from NGUOIDUNG WHERE TENDANGNHAP = '" + txbTenDangNhap.Text + "' AND MATKHAU = '" + txbMatKhau.Text + "'";
             if (!Class.Functions.CheckKey(sql))
             {
-                //
+                MessageBox.Show("Thông tin đăng nhập không đúng");
                 return;
             }
             Class.Functions.User = txbTenDangNhap.Text;
