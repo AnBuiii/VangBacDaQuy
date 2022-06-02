@@ -51,20 +51,21 @@
             // 
             // dgvTraCuuPhieuDichVu
             // 
+            this.dgvTraCuuPhieuDichVu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvTraCuuPhieuDichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvTraCuuPhieuDichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTraCuuPhieuDichVu.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvTraCuuPhieuDichVu.Location = new System.Drawing.Point(0, 152);
             this.dgvTraCuuPhieuDichVu.Name = "dgvTraCuuPhieuDichVu";
             this.dgvTraCuuPhieuDichVu.RowHeadersWidth = 51;
             this.dgvTraCuuPhieuDichVu.RowTemplate.Height = 24;
-            this.dgvTraCuuPhieuDichVu.Size = new System.Drawing.Size(800, 184);
+            this.dgvTraCuuPhieuDichVu.Size = new System.Drawing.Size(800, 328);
             this.dgvTraCuuPhieuDichVu.TabIndex = 4;
             this.dgvTraCuuPhieuDichVu.Click += new System.EventHandler(this.dgvTraCuuPhieuDichVu_Click);
             this.dgvTraCuuPhieuDichVu.DoubleClick += new System.EventHandler(this.dgvTraCuuPhieuDichVu_DoubleClick);
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.dtmNgayLap);
             this.panel2.Controls.Add(this.cboMaKH);
@@ -75,7 +76,6 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 152);
@@ -210,13 +210,13 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.btnXoaPhieu);
             this.panel1.Controls.Add(this.label6);
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnTimKiem);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 336);
+            this.panel1.Location = new System.Drawing.Point(0, 486);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 114);
             this.panel1.TabIndex = 1;
@@ -247,8 +247,9 @@
             // frmTraCuuPhieuDichVu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
+            this.AutoScroll = true;
             this.AutoValidate = System.Windows.Forms.AutoValidate.EnablePreventFocusChange;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(800, 600);
             this.Controls.Add(this.dgvTraCuuPhieuDichVu);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

@@ -46,24 +46,24 @@
             // 
             // dgvBaoCaoTonKho
             // 
+            this.dgvBaoCaoTonKho.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvBaoCaoTonKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBaoCaoTonKho.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvBaoCaoTonKho.Location = new System.Drawing.Point(0, 111);
             this.dgvBaoCaoTonKho.Name = "dgvBaoCaoTonKho";
             this.dgvBaoCaoTonKho.RowHeadersWidth = 51;
             this.dgvBaoCaoTonKho.RowTemplate.Height = 24;
-            this.dgvBaoCaoTonKho.Size = new System.Drawing.Size(800, 249);
+            this.dgvBaoCaoTonKho.Size = new System.Drawing.Size(800, 316);
             this.dgvBaoCaoTonKho.TabIndex = 4;
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.cbonam);
             this.panel2.Controls.Add(this.cboThang);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 111);
@@ -174,12 +174,12 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnInBaoCao);
             this.panel1.Controls.Add(this.btnXuatBaoCao);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 360);
+            this.panel1.Location = new System.Drawing.Point(0, 453);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 90);
             this.panel1.TabIndex = 5;
@@ -188,7 +188,8 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(800, 581);
             this.Controls.Add(this.dgvBaoCaoTonKho);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);

@@ -45,8 +45,8 @@
             this.btnThem = new System.Windows.Forms.Button();
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.label5 = new System.Windows.Forms.Label();
             this.dgvPhieuMuaHang = new System.Windows.Forms.DataGridView();
+            this.label5 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNhaCungCap)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -56,18 +56,19 @@
             // 
             // dgvNhaCungCap
             // 
+            this.dgvNhaCungCap.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvNhaCungCap.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvNhaCungCap.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvNhaCungCap.Location = new System.Drawing.Point(0, 130);
+            this.dgvNhaCungCap.Location = new System.Drawing.Point(0, 136);
             this.dgvNhaCungCap.Name = "dgvNhaCungCap";
             this.dgvNhaCungCap.RowHeadersWidth = 51;
             this.dgvNhaCungCap.RowTemplate.Height = 24;
-            this.dgvNhaCungCap.Size = new System.Drawing.Size(895, 339);
+            this.dgvNhaCungCap.Size = new System.Drawing.Size(895, 229);
             this.dgvNhaCungCap.TabIndex = 7;
             this.dgvNhaCungCap.Click += new System.EventHandler(this.dgvNhaCungCap_Click);
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.Controls.Add(this.txbSoDT);
             this.panel2.Controls.Add(this.txbDiaChi);
             this.panel2.Controls.Add(this.txbMaNCC);
@@ -75,7 +76,6 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(895, 130);
@@ -90,14 +90,14 @@
             // 
             // txbDiaChi
             // 
-            this.txbDiaChi.Location = new System.Drawing.Point(172, 88);
+            this.txbDiaChi.Location = new System.Drawing.Point(193, 88);
             this.txbDiaChi.Name = "txbDiaChi";
-            this.txbDiaChi.Size = new System.Drawing.Size(550, 22);
+            this.txbDiaChi.Size = new System.Drawing.Size(529, 22);
             this.txbDiaChi.TabIndex = 1;
             // 
             // txbMaNCC
             // 
-            this.txbMaNCC.Location = new System.Drawing.Point(172, 41);
+            this.txbMaNCC.Location = new System.Drawing.Point(193, 44);
             this.txbMaNCC.Name = "txbMaNCC";
             this.txbMaNCC.Size = new System.Drawing.Size(178, 22);
             this.txbMaNCC.TabIndex = 0;
@@ -105,7 +105,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(398, 47);
+            this.label4.Location = new System.Drawing.Point(429, 47);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(85, 16);
             this.label4.TabIndex = 3;
@@ -201,27 +201,39 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.Controls.Add(this.btnHuy);
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnLuu);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnThem);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 469);
+            this.panel1.Location = new System.Drawing.Point(0, 552);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(895, 66);
+            this.panel1.Size = new System.Drawing.Size(895, 65);
             this.panel1.TabIndex = 8;
             // 
             // panel3
             // 
+            this.panel3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel3.Controls.Add(this.dgvPhieuMuaHang);
             this.panel3.Controls.Add(this.label5);
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(0, 348);
+            this.panel3.Location = new System.Drawing.Point(0, 371);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(895, 121);
+            this.panel3.Size = new System.Drawing.Size(895, 175);
             this.panel3.TabIndex = 9;
+            // 
+            // dgvPhieuMuaHang
+            // 
+            this.dgvPhieuMuaHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvPhieuMuaHang.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvPhieuMuaHang.Location = new System.Drawing.Point(0, 20);
+            this.dgvPhieuMuaHang.Name = "dgvPhieuMuaHang";
+            this.dgvPhieuMuaHang.RowHeadersWidth = 51;
+            this.dgvPhieuMuaHang.RowTemplate.Height = 24;
+            this.dgvPhieuMuaHang.Size = new System.Drawing.Size(895, 155);
+            this.dgvPhieuMuaHang.TabIndex = 1;
+            this.dgvPhieuMuaHang.DoubleClick += new System.EventHandler(this.dgvPhieuMuaHang_DoubleClick);
             // 
             // label5
             // 
@@ -234,27 +246,17 @@
             this.label5.TabIndex = 0;
             this.label5.Text = "phiếu mua hàng";
             // 
-            // dgvPhieuMuaHang
-            // 
-            this.dgvPhieuMuaHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhieuMuaHang.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvPhieuMuaHang.Location = new System.Drawing.Point(0, 20);
-            this.dgvPhieuMuaHang.Name = "dgvPhieuMuaHang";
-            this.dgvPhieuMuaHang.RowHeadersWidth = 51;
-            this.dgvPhieuMuaHang.RowTemplate.Height = 24;
-            this.dgvPhieuMuaHang.Size = new System.Drawing.Size(895, 101);
-            this.dgvPhieuMuaHang.TabIndex = 1;
-            this.dgvPhieuMuaHang.DoubleClick += new System.EventHandler(this.dgvPhieuMuaHang_DoubleClick);
-            // 
             // frmNhaCungCap
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(895, 535);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(895, 617);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.dgvNhaCungCap);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmNhaCungCap";
             this.Text = "frmNhaCungCap";
             this.Load += new System.EventHandler(this.frmNHACUNGCAP_Load);
