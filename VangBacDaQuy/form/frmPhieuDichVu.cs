@@ -74,7 +74,7 @@ namespace VangBacDaQuy.form
                 dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(decimal));
-                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(DateTime));
+                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("TINHTRANG", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("GHICHU", typeof(string));
                 
@@ -242,7 +242,7 @@ namespace VangBacDaQuy.form
         {
             if (txbGiaDuocTinh.Text != "")
             {
-                decimal caledMoney = decimal.Parse(txbGiaDuocTinh.Text, NumberStyles.AllowThousands);
+                decimal caledMoney = decimal.Parse(txbGiaDuocTinh.Text, this.culture);
                 txbGiaDuocTinh.Text = currencyFomat(caledMoney);
                 txbGiaDuocTinh.Select(txbGiaDuocTinh.Text.Length, 0);
                 if ( txbSoLuong.Text != "")
@@ -253,7 +253,7 @@ namespace VangBacDaQuy.form
 
                     if (txbTraTruoc.Text != "")
                     {
-                        decimal leftMoney = totalMoney - decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands);
+                        decimal leftMoney = totalMoney - decimal.Parse(txbTraTruoc.Text, this.culture);
                         txbConLai.Text = currencyFomat(leftMoney);
                     }
                     else
@@ -272,7 +272,7 @@ namespace VangBacDaQuy.form
                 txbThanhTien.Text = "0";
                 if(txbTraTruoc.Text != "")
                 {
-                    txbConLai.Text = currencyFomat(decimal.Parse("0", NumberStyles.AllowThousands) - decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands));
+                    txbConLai.Text = currencyFomat(decimal.Parse("0", this.culture) - decimal.Parse(txbTraTruoc.Text, this.culture));
                 }
               
             }
@@ -283,17 +283,17 @@ namespace VangBacDaQuy.form
         {
             if (txbGiaDuocTinh.Text != "" && txbSoLuong.Text != "")
             {
-                decimal totalMoney = decimal.Parse(txbGiaDuocTinh.Text, NumberStyles.AllowThousands) * decimal.Parse(txbSoLuong.Text, NumberStyles.Integer);
+                decimal totalMoney = decimal.Parse(txbGiaDuocTinh.Text, this.culture) * decimal.Parse(txbSoLuong.Text, NumberStyles.Integer);
                 txbThanhTien.Text = currencyFomat(totalMoney);
  
                 if (txbTraTruoc.Text != "")
                 {
-                    decimal leftMoney = totalMoney - decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands);
+                    decimal leftMoney = totalMoney - decimal.Parse(txbTraTruoc.Text, this.culture);
                     txbConLai.Text = currencyFomat(leftMoney);
                 }
                 else
                 {
-                    txbConLai.Text = currencyFomat(decimal.Parse(txbThanhTien.Text, NumberStyles.AllowThousands));
+                    txbConLai.Text = currencyFomat(decimal.Parse(txbThanhTien.Text, this.culture));
                 }
             }
             else
@@ -308,13 +308,13 @@ namespace VangBacDaQuy.form
         {
             if(txbTraTruoc.Text != "")
             {
-                decimal payedMoney = decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands);
+                decimal payedMoney = decimal.Parse(txbTraTruoc.Text, this.culture);
                 txbTraTruoc.Text = currencyFomat(payedMoney);
                 txbTraTruoc.Select(txbTraTruoc.Text.Length, 0);
 
                 if(txbThanhTien.Text != "")
                 {
-                    decimal totalMoney = decimal.Parse(txbThanhTien.Text, NumberStyles.AllowThousands) - payedMoney;
+                    decimal totalMoney = decimal.Parse(txbThanhTien.Text, this.culture) - payedMoney;
                     txbConLai.Text = currencyFomat(totalMoney);
                 }
             
@@ -364,8 +364,8 @@ namespace VangBacDaQuy.form
             //lấy tham số là phần trăm tiền trả trước từ bảng tham số
             String sql = "SELECT PhanTramTienTraTruoc FROM THAMSO";
             decimal ptTraTruoc = decimal.Parse(Class.Functions.GetFieldValues(sql), NumberStyles.Float);
-            decimal traTruoc = decimal.Parse(txbTraTruoc.Text, NumberStyles.AllowThousands);
-            decimal thanhTien = decimal.Parse(txbThanhTien.Text, NumberStyles.AllowThousands);
+            decimal traTruoc = decimal.Parse(txbTraTruoc.Text, this.culture);
+            decimal thanhTien = decimal.Parse(txbThanhTien.Text, this.culture);
             if (traTruoc < thanhTien * ptTraTruoc) // Số tiền trả trước của từng loại dịch vụ phải >= (%TienTraTruoc x Thành tiền) của loại dịch vụ đó. 
             {
                 MessageBox.Show("Số tiền trả của từng loại dịch vụ phải >= (" +  (ptTraTruoc * 100).ToString() + "% x Thành tiền) của loại dịch vụ đó");
@@ -423,8 +423,8 @@ namespace VangBacDaQuy.form
         {
             if (checkFieldChitTietPhieu())// kiểm tra các text box nhập vào đã hợp lệ chưa
             {
-                object[] newRowData = new object[] {dtChiTietPhieuDichVu.Rows.Count + 1, cmbxLoaiDichVu.SelectedValue, cmbxLoaiDichVu.Text, txbDonGia.Text,  txbGiaDuocTinh.Text, txbSoLuong.Text
-                                                     , txbThanhTien.Text, txbTraTruoc.Text, txbConLai.Text  , dtpNgayGiao.Text, combxTinhTrang.Text, richtxbGhiChu.Text
+                object[] newRowData = new object[] {dtChiTietPhieuDichVu.Rows.Count + 1, cmbxLoaiDichVu.SelectedValue, cmbxLoaiDichVu.Text, txbDonGia.Text,  decimal.Parse(txbGiaDuocTinh.Text, this.culture), txbSoLuong.Text
+                                                     , decimal.Parse(txbThanhTien.Text, this.culture), decimal.Parse(txbTraTruoc.Text, this.culture), decimal.Parse(txbConLai.Text, this.culture)  , dtpNgayGiao.Text, combxTinhTrang.Text, richtxbGhiChu.Text
                                                     };
 
                 DataRow newRow = dtChiTietPhieuDichVu.NewRow();
@@ -541,7 +541,7 @@ namespace VangBacDaQuy.form
                      + ", '" + row["THANHTIEN"].ToString()
                      + "', '" + row["TIENTRATRUOC"].ToString()
                      + "', '" + row["TIENCONLAI"].ToString()
-                     + "', CONVERT(DATETIME, '" + row["NGAYGIAO"].ToString() + "', 103)"
+                     + "', CONVERT(DATETIME, '" + string.Format(row["NGAYGIAO"].ToString(), "dd/MM/yyyy") + "', 103)"
                      + ", N'" + row["TINHTRANG"].ToString()
                       + "', N'" + row["GHICHU"].ToString().Trim() + "')";
                 //MessageBox.Show(sql);
