@@ -42,3 +42,4 @@ C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.
 C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.csproj.CoreCompileInputs.cache
 C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.exe
 C:\DaiHoc\NMCNPM\DoAn\CodeDoAn\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.pdb
+C:\Users\buile\Documents\GitHub\VangBacDaQuy\VangBacDaQuy\obj\Debug\VangBacDaQuy.form.frmDangNhap.resources

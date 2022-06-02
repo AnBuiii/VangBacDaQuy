@@ -12,7 +12,7 @@ namespace VangBacDaQuy.Class
     internal class Functions
     {
         public static SqlConnection con;
-
+        public static string User; 
         //Kết nối cơ sở dữ liệu
         public static void Connect()
         {
@@ -67,6 +67,16 @@ namespace VangBacDaQuy.Class
             }
             cmd.Dispose();
             cmd = null;
+        }
+        //Kiểm tra quyền hạn
+        public static bool CheckPermission(String maChucNang)
+        {
+            String sql = "select PHANQUYEN.MACHUCNANG as MACHUCNANG from PHANQUYEN, NHOMNGUOIDUNG, NGUOIDUNG where NGUOIDUNG.MANHOM = NHOMNGUOIDUNG.MANHOM and NHOMNGUOIDUNG.MANHOM = PHANQUYEN.MANHOM and NGUOIDUNG.TENDANGNHAP =  '" + User + "' and MACHUCNANG = '" + maChucNang +"'" ;
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+            DataTable dt = new DataTable();
+            adapter.Fill(dt);
+            if (dt.Rows.Count > 0) return true;
+            else return false;
         }
         //Kiểm tra khóa chính
         public static bool CheckKey(string sql)

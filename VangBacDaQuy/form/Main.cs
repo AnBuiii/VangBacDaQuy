@@ -13,8 +13,7 @@ namespace VangBacDaQuy
 {
     public partial class Main : Form
     {
-        public static string user;
-        public static string manhom;
+        
         public static List<String> permission = new List<string>();
         frmPhieuMuaHang lpmh = null;
         frmPhieuBanHang lpbh = null;
@@ -29,12 +28,16 @@ namespace VangBacDaQuy
 
         public Main()
         {
+            
             InitializeComponent();
         }
+        
 
         private void Main_Load(object sender, EventArgs e)
         {
             Class.Functions.Connect();
+            frmDangNhap login = new frmDangNhap();
+            login.ShowDialog();
             string sql = "declare @THANG INT = MONTH(GETDATE()) declare @NAM INT = YEAR(GETDATE()) EXEC DBO.TAOBAOCAO @THANG, @NAM" ;
             Class.Functions.RunSQL(sql);
 
@@ -47,6 +50,11 @@ namespace VangBacDaQuy
         }
         private void phiếuMuaHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Class.Functions.CheckPermission("CN02"))
+            {
+                MessageBox.Show("Bạn không có quyền");
+                return;
+            }
             closePeviousForm(lpmh);
             if (lpmh == null || lpmh.IsDisposed) lpmh = new frmPhieuMuaHang();
             lpmh.MdiParent = this;
@@ -56,6 +64,11 @@ namespace VangBacDaQuy
 
         private void phiếuBánHàngToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Class.Functions.CheckPermission("CN01"))
+            {
+                MessageBox.Show("Bạn không có quyền");
+                return;
+            }
             closePeviousForm(lpbh);
             if (lpbh == null || lpbh.IsDisposed) lpbh = new frmPhieuBanHang();
             lpbh.MdiParent = this;
@@ -65,6 +78,11 @@ namespace VangBacDaQuy
 
         private void phiếuDịchVụToolStripMenuItem_Click(object sender, EventArgs e)
         {
+            if (!Class.Functions.CheckPermission("CN03"))
+            {
+                MessageBox.Show("Bạn không có quyền");
+                return;
+            }
             closePeviousForm(lpdv);
             if (lpdv == null || lpdv.IsDisposed) lpdv = new frmPhieuDichVu();
             lpdv.MdiParent = this;
@@ -74,6 +92,11 @@ namespace VangBacDaQuy
 
         private void tồnKhoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
+            if (!Class.Functions.CheckPermission("CN05"))
+            {
+                MessageBox.Show("Bạn không có quyền");
+                return;
+            }
             closePeviousForm(lbctk);
             if (lbctk == null || lbctk.IsDisposed) lbctk = new frmLapBaoCaoTonKho();
             lbctk.MdiParent = this;
@@ -128,6 +151,7 @@ namespace VangBacDaQuy
 
         private void loạiSảnPhẩmToolStripMenuItem_Click(object sender, EventArgs e)
         {
+
             closePeviousForm(lsp);
             if (lsp == null || lsp.IsDisposed) lsp = new frmLoaiSanPham();
             lsp.MdiParent = this;
@@ -139,41 +163,34 @@ namespace VangBacDaQuy
             foreach(Form form in this.MdiChildren) if(form != open )form.Close();
         }
 
-        private void btnDangNhap_Click(object sender, EventArgs e)
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
         {
-            //string sql;
-            //sql = "SELECT * from NGUOIDUNG WHERE TENDANGNHAP = '" + txbUser.Text + "' AND MATKHAU = '" + txbPass.Text + "'";
-            /*if(!Class.Functions.CheckKey(sql))
+            Application.Exit();
+        }
+
+        private void quảnLýTàiKhoảnToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Class.Functions.CheckPermission("CN00"))
             {
+                MessageBox.Show("Bạn không có quyền");
                 return;
-            } else
+            }
+        }
+
+        private void lậpBáoCáoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            if (!Class.Functions.CheckPermission("CN04"))
             {
-                DataTable dt = new DataTable();
-                sql  = "select PHANQUYEN.MACHUCNANG as MACHUCNANG from PHANQUYEN, NHOMNGUOIDUNG, NGUOIDUNG where NGUOIDUNG.MANHOM = NHOMNGUOIDUNG.MANHOM and NHOMNGUOIDUNG.MANHOM = PHANQUYEN.MANHOM and NGUOIDUNG.TENDANGNHAP =  '" + txbUser.Text + "'";
-                DataTable dtChucNang = Class.Functions.GetDataToDataTable(sql);
-                foreach(DataRow dr in dtChucNang.Rows)
-                {
-                    
-                    switch (dr["MACHUCNANG"].ToString())
-                    {
-                        case "MN00":
-                            // này chưa làm
-                            break;
-                        case "MN01":
-                            
-                            break ;
-                        case "MN02":
-                            break;
-                        case "MN03":
-                            break;
-                        case "MN04":
-                            break;
-                        case "MN05":
-                            break;
-                    }
-                }
-            }*/
-         
+                lậpBáoCáoToolStripMenuItem.HideDropDown();
+                MessageBox.Show("Bạn không có quyền");              
+                return;
+            }
+            
+        }
+
+        private void đăngXuấtToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            
         }
     }
 }   
