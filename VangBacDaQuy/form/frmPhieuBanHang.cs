@@ -177,6 +177,7 @@ namespace VangBacDaQuy.form
 
         private void frmPhieuBanHang_Load(object sender, EventArgs e)
         {
+            btnThem.Select();
             btnThem.Enabled = true;
             btnLuu.Enabled = false;
             btnXoa.Enabled = false;

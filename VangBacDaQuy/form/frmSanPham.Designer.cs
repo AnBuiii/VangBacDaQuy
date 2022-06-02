@@ -75,13 +75,13 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.Controls.Add(this.btnHuy);
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnLuu);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnThem);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.panel1.Location = new System.Drawing.Point(0, 604);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(1094, 67);
@@ -148,6 +148,7 @@
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.Controls.Add(this.cbMaLoaiSp);
             this.panel2.Controls.Add(this.txbTenLoaiSp);
             this.panel2.Controls.Add(this.label7);
@@ -161,7 +162,6 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(1094, 179);
@@ -270,7 +270,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(163)));
-            this.label1.Location = new System.Drawing.Point(261, 0);
+            this.label1.Location = new System.Drawing.Point(384, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(286, 29);
             this.label1.TabIndex = 0;
@@ -278,8 +278,8 @@
             // 
             // dgvSanPham
             // 
+            this.dgvSanPham.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvSanPham.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvSanPham.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvSanPham.Location = new System.Drawing.Point(0, 179);
             this.dgvSanPham.Name = "dgvSanPham";
             this.dgvSanPham.RowHeadersWidth = 51;
@@ -290,12 +290,12 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Controls.Add(this.panel4, 0, 0);
             this.tableLayoutPanel1.Controls.Add(this.panel3, 0, 0);
-            this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.tableLayoutPanel1.Location = new System.Drawing.Point(0, 426);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -315,9 +315,9 @@
             // 
             // panel6
             // 
+            this.panel6.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel6.Controls.Add(this.dgvPhieuMuaHang);
             this.panel6.Controls.Add(this.label11);
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel6.Location = new System.Drawing.Point(0, 0);
             this.panel6.Name = "panel6";
             this.panel6.Size = new System.Drawing.Size(541, 172);
@@ -325,8 +325,8 @@
             // 
             // dgvPhieuMuaHang
             // 
+            this.dgvPhieuMuaHang.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvPhieuMuaHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhieuMuaHang.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPhieuMuaHang.Location = new System.Drawing.Point(0, 20);
             this.dgvPhieuMuaHang.Name = "dgvPhieuMuaHang";
             this.dgvPhieuMuaHang.RowHeadersWidth = 51;
@@ -377,8 +377,8 @@
             // 
             // dgvPhieuBanHang
             // 
+            this.dgvPhieuBanHang.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvPhieuBanHang.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvPhieuBanHang.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvPhieuBanHang.Location = new System.Drawing.Point(0, 20);
             this.dgvPhieuBanHang.Name = "dgvPhieuBanHang";
             this.dgvPhieuBanHang.RowHeadersWidth = 51;
@@ -412,11 +412,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(1094, 671);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.dgvSanPham);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmSanPham";
             this.Text = "frmSanPham";
             this.Load += new System.EventHandler(this.frmSanPham_Load);

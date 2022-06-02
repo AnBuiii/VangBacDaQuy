@@ -96,7 +96,7 @@ namespace VangBacDaQuy
             lpdv.MdiParent = this;
             lpdv.Dock = DockStyle.Fill;
             lpdv.Show();
-            lpbh.FormClosing += mdiChildClose;
+            lpdv.FormClosing += mdiChildClose;
             mainPanel.Visible = false;
         }
 

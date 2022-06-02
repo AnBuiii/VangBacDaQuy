@@ -168,6 +168,7 @@ namespace VangBacDaQuy.form
 
         private void ResetFormState()
         {
+            textBox_ID.Select();
             dateTimePicker_date.Value = DateTime.Now;
             textBox_SDT.Text = "";
             textBox_Address.Text = "";

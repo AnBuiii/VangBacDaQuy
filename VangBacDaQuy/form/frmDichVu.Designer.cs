@@ -51,18 +51,20 @@
             // 
             // dgvDichVu
             // 
+            this.dgvDichVu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvDichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvDichVu.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvDichVu.Location = new System.Drawing.Point(0, 158);
+            this.dgvDichVu.Location = new System.Drawing.Point(0, 164);
             this.dgvDichVu.Name = "dgvDichVu";
             this.dgvDichVu.RowHeadersWidth = 51;
             this.dgvDichVu.RowTemplate.Height = 24;
-            this.dgvDichVu.Size = new System.Drawing.Size(800, 202);
+            this.dgvDichVu.Size = new System.Drawing.Size(800, 291);
             this.dgvDichVu.TabIndex = 7;
             this.dgvDichVu.Click += new System.EventHandler(this.dgvDichVu_Click);
             // 
             // panel2
             // 
+            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel2.AutoScroll = true;
             this.panel2.Controls.Add(this.txbDonGia);
             this.panel2.Controls.Add(this.txbTenDV);
             this.panel2.Controls.Add(this.txbMaDV);
@@ -70,7 +72,6 @@
             this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(800, 158);
@@ -78,21 +79,21 @@
             // 
             // txbDonGia
             // 
-            this.txbDonGia.Location = new System.Drawing.Point(530, 44);
+            this.txbDonGia.Location = new System.Drawing.Point(536, 57);
             this.txbDonGia.Name = "txbDonGia";
             this.txbDonGia.Size = new System.Drawing.Size(192, 22);
             this.txbDonGia.TabIndex = 2;
             // 
             // txbTenDV
             // 
-            this.txbTenDV.Location = new System.Drawing.Point(172, 94);
+            this.txbTenDV.Location = new System.Drawing.Point(178, 107);
             this.txbTenDV.Name = "txbTenDV";
             this.txbTenDV.Size = new System.Drawing.Size(178, 22);
             this.txbTenDV.TabIndex = 1;
             // 
             // txbMaDV
             // 
-            this.txbMaDV.Location = new System.Drawing.Point(172, 41);
+            this.txbMaDV.Location = new System.Drawing.Point(178, 54);
             this.txbMaDV.Name = "txbMaDV";
             this.txbMaDV.Size = new System.Drawing.Size(178, 22);
             this.txbMaDV.TabIndex = 0;
@@ -100,7 +101,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(395, 50);
+            this.label4.Location = new System.Drawing.Point(401, 63);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 16);
             this.label4.TabIndex = 3;
@@ -109,7 +110,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(63, 94);
+            this.label3.Location = new System.Drawing.Point(69, 107);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(76, 16);
             this.label3.TabIndex = 2;
@@ -118,7 +119,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(60, 41);
+            this.label2.Location = new System.Drawing.Point(66, 54);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(71, 16);
             this.label2.TabIndex = 1;
@@ -196,26 +197,28 @@
             // 
             // panel1
             // 
+            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.Controls.Add(this.btnHuy);
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnLuu);
             this.panel1.Controls.Add(this.btnSua);
             this.panel1.Controls.Add(this.btnXoa);
             this.panel1.Controls.Add(this.btnThem);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel1.Location = new System.Drawing.Point(0, 360);
+            this.panel1.Location = new System.Drawing.Point(0, 452);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(800, 90);
+            this.panel1.Size = new System.Drawing.Size(800, 118);
             this.panel1.TabIndex = 8;
             // 
             // frmDichVu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.AutoScroll = true;
+            this.ClientSize = new System.Drawing.Size(800, 582);
             this.Controls.Add(this.dgvDichVu);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmDichVu";
             this.Text = "frmDichVu";
             this.Load += new System.EventHandler(this.frmDichVu_Load);
