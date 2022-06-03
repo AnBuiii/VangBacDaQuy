@@ -113,7 +113,6 @@ namespace VangBacDaQuy.form
         {
             
             txbSoPhieu.ReadOnly = true;
-            dtpNgaylap.Enabled = false;
             txbDonGia.ReadOnly = true;
            
             txbConLai.ReadOnly = true;
@@ -133,6 +132,7 @@ namespace VangBacDaQuy.form
                 txbSoPhieu.Text = Class.Functions.GetFieldValues(sql);
                 butChinhSua.Enabled = false;
                 btnLuu.Enabled = true;
+                dtpNgaylap.Enabled = true;
             } 
             else // nếu là phiếu cũ
             {
@@ -161,9 +161,13 @@ namespace VangBacDaQuy.form
                 money = decimal.Parse(Class.Functions.GetFieldValues(sql));
                 txbTongConLai.Text = currencyFomat(money);
 
+                sql = "SELECT NGAYLAP FROM PHIEUDICHVU WHERE SOPHIEU = '" + this.idPH + "'";
+                dtpNgaylap.Text = Class.Functions.GetFieldValues(sql);
+
                 txbSDT.ReadOnly = true;
                 btnLuu.Enabled = false;
                 butChinhSua.Enabled = true;
+                dtpNgaylap.Enabled = false;
             }    
           
 
@@ -344,11 +348,11 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Vui lòng nhập số lượng");
                 return false;
             }
-            if (dtpNgayGiao.Value < dtpNgaylap.Value)
+           /* if (dtpNgayGiao.Value < dtpNgaylap.Value)
             {
                 MessageBox.Show("Ngày giao hàng phải bằng hoặc sau ngày lập phiếu!");
                 return false;
-            }
+            }*/
             if (txbTraTruoc.Text == "")
             {
                 MessageBox.Show("Vui lòng nhập tiền trả trước");
@@ -563,7 +567,7 @@ namespace VangBacDaQuy.form
             }
 
             String sql = "UPDATE PHIEUDICHVU SET TONGTIEN = '" + txbTongTien.Text + "', TIENTRATRUOC = '" + txbTongTraTruoc.Text
-                    + "', TIENCONLAI = '" + txbTongConLai.Text + "', TINHTRANG = N'" + tinhTrang
+                    + "', TIENCONLAI = '" + txbTongConLai.Text + "', NGAYLAP = '" + dtpNgaylap.Value.ToString("dd/MM/yyyy")   +  "', TINHTRANG = N'" + tinhTrang 
                     + "' WHERE SOPHIEU = '" + this.idPH + "'";
                     Class.Functions.RunSQL(sql);
         }
@@ -609,6 +613,7 @@ namespace VangBacDaQuy.form
         void blockField()
         {           
             txbKhachHang.ReadOnly = true;
+            dtpNgaylap.Enabled = false;
             txbSDT.ReadOnly = true;
             cmbxLoaiDichVu.Enabled = false;
             txbGiaDuocTinh.Enabled = false;
@@ -627,6 +632,7 @@ namespace VangBacDaQuy.form
         {
             txbKhachHang.ReadOnly = false;
             txbSDT.ReadOnly = false;
+            dtpNgaylap.Enabled = true;
             cmbxLoaiDichVu.Enabled = true;
             txbGiaDuocTinh.Enabled = true;
             txbSoLuong.Enabled = true;
