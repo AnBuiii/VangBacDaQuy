@@ -104,10 +104,12 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("Có " + dtTraCuu.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            dgvTraCuuPhieuDichVu.DataSource = dtTraCuu;
-            LoadDataGridView();
-            Reset();
+            {
+                //MessageBox.Show("Có " + dtTraCuu.Rows.Count + " bản ghi thỏa mãn điều kiện!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvTraCuuPhieuDichVu.DataSource = dtTraCuu;
+                LoadDataGridView();
+            }
+            //Reset();
         }
 
         private void dgvTraCuuPhieuDichVu_DoubleClick(object sender, EventArgs e)

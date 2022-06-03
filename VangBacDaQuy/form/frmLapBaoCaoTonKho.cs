@@ -49,9 +49,11 @@ namespace VangBacDaQuy.form
                 MessageBox.Show("Không có bản ghi thỏa mãn điều kiện!!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             else
-                MessageBox.Show("Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            dgvBaoCaoTonKho.DataSource = dtTonKho;
-            LoadDataGridView();
+            {
+                //MessageBox.Show("Xuất báo cáo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                dgvBaoCaoTonKho.DataSource = dtTonKho;
+                LoadDataGridView();
+            }
         }
 
         private void LoadDataGridView()
@@ -105,11 +107,11 @@ namespace VangBacDaQuy.form
             exRange.Range["B4:B4"].Value = "Số phiêu:";
             exRange.Range["C4:E4"].MergeCells = true;
             exRange.Range["C4:E4"].Value = tbchung.Rows[0][0].ToString();
-            exRange.Range["B5:B5"].Value = "Thang:";
+            exRange.Range["B5:B5"].Value = "Tháng:";
             exRange.Range["B5:B5"].Font.Bold = true;
             exRange.Range["C5:E5"].MergeCells = true;
             exRange.Range["C5:E5"].Value = tbchung.Rows[0][1].ToString();
-            exRange.Range["B6:B6"].Value = "Nam:";
+            exRange.Range["B6:B6"].Value = "Năm:";
             exRange.Range["B6:B6"].Font.Bold = true;
             exRange.Range["C6:E6"].MergeCells = true;
             exRange.Range["C6:E6"].Value = tbchung.Rows[0][2].ToString();
@@ -134,7 +136,7 @@ namespace VangBacDaQuy.form
                 //Điền thông tin hàng từ cột thứ 2, dòng 9
                 {
                     exSheet.Cells[cot + 2][hang + 9] = tbchitiet.Rows[hang][cot].ToString();
-                    if (cot == 3) exSheet.Cells[cot + 2][hang + 9] = tbchitiet.Rows[hang][cot].ToString() + "%";
+                    if (cot == 3) exSheet.Cells[cot + 2][hang + 9] = tbchitiet.Rows[hang][cot].ToString();
                 }
             }
 
