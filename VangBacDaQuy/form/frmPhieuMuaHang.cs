@@ -162,8 +162,10 @@ namespace VangBacDaQuy.form
         private void frmPhieuMuaHang_Load(object sender, EventArgs e)
         {
             ResetFormState();
-            
-            textBox_ID.Text = sophieu;
+            String sql = "SELECT [dbo].autoKey_PHIEUMUAHANG()";
+            textBox_ID.Text = Class.Functions.GetFieldValues(sql);
+            //textBox_ID.Text = sophieu;
+
         }
 
         private void ResetFormState()

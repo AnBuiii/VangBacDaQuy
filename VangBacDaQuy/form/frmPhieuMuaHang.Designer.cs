@@ -229,6 +229,7 @@
             this.textBox_ID.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.textBox_ID.Location = new System.Drawing.Point(117, 24);
             this.textBox_ID.Margin = new System.Windows.Forms.Padding(2);
+            this.textBox_ID.MaxLength = 5;
             this.textBox_ID.Name = "textBox_ID";
             this.textBox_ID.Size = new System.Drawing.Size(122, 20);
             this.textBox_ID.TabIndex = 4;
