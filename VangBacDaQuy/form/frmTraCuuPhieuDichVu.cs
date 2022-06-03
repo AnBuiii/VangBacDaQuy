@@ -79,7 +79,7 @@ namespace VangBacDaQuy.form
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             string sql;
-            if ((cboSoPhieu.Text == "") && (cboMaKH.Text == "") && dtmNgayLap.Text == "")
+            if ((cboSoPhieu.Text == "") && (cboMaKH.Text == "") && (dtmNgayLap.Checked == false))
             {
                 MessageBox.Show("Hãy nhập một điều kiện tìm kiếm!!!", "Yêu cầu ...", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
