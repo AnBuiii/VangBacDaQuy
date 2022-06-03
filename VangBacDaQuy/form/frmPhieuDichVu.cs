@@ -61,6 +61,8 @@ namespace VangBacDaQuy.form
                 dtChiTietPhieuDichVu.Columns["TIENCONLAI"].DataType = typeof(CurrencyManager);
                 dtChiTietPhieuDichVu.Columns["NGAYGIAO"].DataType = typeof (DateTime);*/
                 autoIDRows();
+               
+
 
             }
             else // nếu chưa lưu, tạo table mới
@@ -74,7 +76,7 @@ namespace VangBacDaQuy.form
                 dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(decimal));
-                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(string));
+                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(DateTime));
                 dtChiTietPhieuDichVu.Columns.Add("TINHTRANG", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("GHICHU", typeof(string));
                 
@@ -125,6 +127,7 @@ namespace VangBacDaQuy.form
             txbTongTien.Text = "0";
             txbTongTraTruoc.Text = "0";
             txbTongConLai.Text = "0";
+            dtpNgaylap.CustomFormat = "dd/MM/yyyy";
 
             if (!isSaved)// nếu đây là phiếu chưa được lưu
             {
@@ -859,39 +862,52 @@ namespace VangBacDaQuy.form
             exRange.Range["B4:B4"].Value = "Số phiếu:";
             exRange.Range["C4:E4"].MergeCells = true;
             exRange.Range["C4:E4"].Value = txbSoPhieu.Text;
-            exRange.Range["B5:B5"].Value = "Khách hàng:";
+            exRange.Range["B5:B5"].Value = "Ngày lập:";
             exRange.Range["C5:E5"].MergeCells = true;
-            exRange.Range["C5:E5"].Value = txbKhachHang.Text;
-           
+            exRange.Range["C5:E5"].Value = dtpNgaylap.Text;
+            exRange.Range["C6:E6"].MergeCells = true;
+            exRange.Range["B6:B6"].Value = "Khách hàng:";
+            exRange.Range["C6:E6"].Value = txbKhachHang.Text;
+            exRange.Range["C7:E7"].MergeCells = true;
+            exRange.Range["B7:B7"].Value = "Số điện thoại:";
+            exRange.Range["C7:E7"].Value = txbSDT.Text.Trim();
+
+
 
             // sql = "SELECT TENSP, TENLOAISP,  CHITIETPHIEUBANHANG.SOLUONG, DONGIA, CHITIETPHIEUBANHANG.SOLUONG * DONGIA FROM SANPHAM, LOAISANPHAM, CHITIETPHIEUBANHANG WHERE SANPHAM.MALOAISP = LOAISANPHAM.MALOAISP AND SANPHAM.MASP = CHITIETPHIEUBANHANG.MASP AND CHITIETPHIEUBANHANG.SOPHIEU =  '" + txbSoPhieu.Text + "'";
             // tbSP = Class.Functions.GetDataToDataTable(sql); //Tạo dòng tiêu đề bảng
-            exRange.Range["A8:L8"].Font.Bold = true;
-            exRange.Range["A8:L8"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
-            exRange.Range["C8:L8"].ColumnWidth = DataGridViewAutoSizeColumnMode.Fill;
-            exRange.Range["A8:A8"].Value = "STT";
-            exRange.Range["B8:B8"].Value = "Mã dịch vụ";
-            exRange.Range["C8:C8"].Value = "Loại dịch vụ";
-            exRange.Range["D8:D8"].Value = "Đơn giá dịch vụ";
-            exRange.Range["E8:E8"].Value = "Đơn giá được tính";
-            exRange.Range["F8:F8"].Value = "Số lượng";
-            exRange.Range["G8:G8"].Value = "Thành tiền";
-            exRange.Range["H8:H8"].Value = "Trả trước";
-            exRange.Range["I8:I8"].Value = "Còn lại";
-            exRange.Range["J8:J8"].Value = "Ngày giao";
-            exRange.Range["K8:K8"].Value = "Tình trạng";
-            exRange.Range["L8:L8"].Value = "Ghi chú";
+            exRange.Range["A10:L10"].Font.Bold = true;
+            exRange.Range["A10:L10"].HorizontalAlignment = COMExcel.XlHAlign.xlHAlignCenter;
+            exRange.Range["C10:L10"].ColumnWidth = DataGridViewAutoSizeColumnMode.Fill;
+            exRange.Range["A10:A10"].Value = "STT";
+            exRange.Range["B10:B10"].Value = "Mã dịch vụ";
+            exRange.Range["C10:C10"].Value = "Loại dịch vụ";
+            exRange.Range["D10:D10"].Value = "Đơn giá dịch vụ";
+            exRange.Range["E10:E10"].Value = "Đơn giá được tính";
+            exRange.Range["F10:F10"].Value = "Số lượng";
+            exRange.Range["G10:G10"].Value = "Thành tiền";
+            exRange.Range["H10:H10"].Value = "Trả trước";
+            exRange.Range["I10:I10"].Value = "Còn lại";
+            exRange.Range["J10:J10"].Value = "Ngày giao";
+            exRange.Range["K10:K10"].Value = "Tình trạng";
+            exRange.Range["L10:L10"].Value = "Ghi chú";
 
-           /*for (row = 0; row < tbSP.Rows.Count; row++)
+           for (int row = 0; row < dtChiTietPhieuDichVu.Rows.Count; row++)
             {
                 //Điền số thứ tự vào cột 1 từ dòng 12
-                exSheet.Cells[1][row + 9] = row + 1;
-                for (column = 0; column < tbSP.Columns.Count; column++)
+               // exSheet.Cells[1][row + 11] = row + 1;
+                for (int column = 0; column < dtChiTietPhieuDichVu.Columns.Count; column++)
                 //Điền thông tin hàng từ cột thứ 2, dòng 12
-                {
-                    exSheet.Cells[column + 2][row + 9] = tbSP.Rows[row][column].ToString();
+
+                {   
+                    if(column == 9)
+                    {
+                        DateTime dateTime = (DateTime)dtChiTietPhieuDichVu.Rows[row][column];
+                        exSheet.Cells[column + 1][row + 11] = dateTime.ToString("dd/MM/yyyy");
+                    }
+                    exSheet.Cells[column + 1][row + 11] = dtChiTietPhieuDichVu.Rows[row][column].ToString();
                 }
-            }*/
+            }
           
           /* exRange = exSheet.Cells[column][row + 11];
             exRange.Font.Bold = true;
