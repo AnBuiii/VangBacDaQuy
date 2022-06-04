@@ -25,6 +25,7 @@ namespace VangBacDaQuy
         frmKhachHang kh = null;
         frmNhaCungCap ncc = null;
         frmLoaiSanPham lsp = null;
+        frmTaiKhoan tk = null;
 
         public Main()
         {          
@@ -39,9 +40,12 @@ namespace VangBacDaQuy
             frmDangNhap login = new frmDangNhap();
             login.ShowDialog();
 
-           loadMainPanel();
+            loadMainPanel();
             string sql = "declare @THANG INT = MONTH(GETDATE()) declare @NAM INT = YEAR(GETDATE()) EXEC DBO.TAOBAOCAO @THANG, @NAM" ;
             Class.Functions.RunSQL(sql);
+            chart1.Titles.Add("Thống kê sản phẩm bán ra tháng này");
+            chart2.Titles.Add("Thống kê sản phẩm mua vào tháng này");
+
 
         }
 
@@ -200,6 +204,14 @@ namespace VangBacDaQuy
                 MessageBox.Show("Bạn không có quyền");
                 return;
             }
+            closePeviousForm(tk);
+            if (tk == null || tk.IsDisposed) tk = new frmTaiKhoan();
+            tk.MdiParent = this;
+            tk.Dock = DockStyle.Fill;
+            tk.Show();
+            tk.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
+
         }
 
         private void lậpBáoCáoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -236,6 +248,7 @@ namespace VangBacDaQuy
                 đăngXuấtToolStripMenuItem.Text = "Đăng xuất";
                 lbMessage.Text = "Xin chào";
             }
+            loadChart();
             mainPanel.Visible = true;
             
         }
@@ -247,6 +260,18 @@ namespace VangBacDaQuy
         private void Main_ControlRemoved(object sender, ControlEventArgs e)
         {
             MessageBox.Show("asd");
+        }
+        private void loadChart()
+        {
+            String sql;
+            sql = "select tensp, sum(CHITIETPHIEUBANHANG.SOLUONG) as soluong from SANPHAM, CHITIETPHIEUBANHANG, PHIEUBANHANG where SANPHAM.MASP = CHITIETPHIEUBANHANG.MASP AND CHITIETPHIEUBANHANG.SOPHIEU = PHIEUBANHANG.SOPHIEU and month(PHIEUBANHANG.NGAYLAP) = month(getdate()) and year(PHIEUBANHANG.NGAYLAP) = year(getdate()) GROUP BY TENSP";
+            chart1 = Class.Functions.GetDataToChart(sql, chart1,"TENSP", "SOLUONG", false);
+            
+
+            sql = "select tensp, sum(CHITIETPHIEUMUAHANG.SOLUONG) as soluong from SANPHAM, CHITIETPHIEUMUAHANG, PHIEUMUAHANG where SANPHAM.MASP = CHITIETPHIEUMUAHANG.MASP AND CHITIETPHIEUMUAHANG.SOPHIEU = PHIEUMUAHANG.SOPHIEU and month(PHIEUMUAHANG.NGAYLAP) = month(getdate()) and year(PHIEUMUAHANG.NGAYLAP) = year(getdate()) GROUP BY TENSP";
+            chart2 = Class.Functions.GetDataToChart(sql, chart2, "TENSP", "SOLUONG", false);
+            
+
         }
     }
 }   

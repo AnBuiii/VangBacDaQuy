@@ -289,5 +289,10 @@ namespace VangBacDaQuy.form
             frmPhieuMuaHang.Show();
            // this.Close();
         }
+
+        private void btnDong_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
     }
 }

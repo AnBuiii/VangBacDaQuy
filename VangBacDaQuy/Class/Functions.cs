@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data;
 using System.Data.SqlClient;
 using System.Windows.Forms;
+using System.Windows.Forms.DataVisualization.Charting;
 
 namespace VangBacDaQuy.Class
 {
@@ -26,7 +27,7 @@ namespace VangBacDaQuy.Class
 
             if (con.State != ConnectionState.Open) { 
                 con.Open();
-                MessageBox.Show("Kết nối thành công");
+                //MessageBox.Show("Kết nối thành công");
             }
             else
             {
@@ -50,6 +51,19 @@ namespace VangBacDaQuy.Class
             SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
             adapter.Fill(dt);
             return dt;
+        }
+        public static Chart GetDataToChart(string sql, Chart ct, string xValue, string yValue, bool isRound)
+        {
+            
+            SqlDataAdapter adapter = new SqlDataAdapter(sql, con);
+            DataSet ds = new DataSet();
+            adapter.Fill(ds);
+            ct.DataSource = ds;
+            ct.Series[yValue].XValueMember = xValue;
+            ct.Series[yValue].YValueMembers = yValue;
+            if(isRound) ct.Series[0].ChartType = SeriesChartType.Pie;
+            return ct;
+            
         }
 
         //Insert, Update, Delete

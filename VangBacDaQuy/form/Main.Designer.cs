@@ -28,6 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea1 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend1 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series1 = new System.Windows.Forms.DataVisualization.Charting.Series();
+            System.Windows.Forms.DataVisualization.Charting.ChartArea chartArea2 = new System.Windows.Forms.DataVisualization.Charting.ChartArea();
+            System.Windows.Forms.DataVisualization.Charting.Legend legend2 = new System.Windows.Forms.DataVisualization.Charting.Legend();
+            System.Windows.Forms.DataVisualization.Charting.Series series2 = new System.Windows.Forms.DataVisualization.Charting.Series();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.tệpTinToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.đăngXuấtToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -48,10 +54,14 @@
             this.quảnLýTàiKhoảnToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.traCứuToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.mainPanel = new System.Windows.Forms.Panel();
-            this.lbMessage = new System.Windows.Forms.Label();
+            this.chart2 = new System.Windows.Forms.DataVisualization.Charting.Chart();
+            this.chart1 = new System.Windows.Forms.DataVisualization.Charting.Chart();
             this.lbTenDangNhap = new System.Windows.Forms.Label();
+            this.lbMessage = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.mainPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).BeginInit();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -66,7 +76,7 @@
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(5, 2, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(1261, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(1261, 30);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -82,14 +92,14 @@
             // đăngXuấtToolStripMenuItem
             // 
             this.đăngXuấtToolStripMenuItem.Name = "đăngXuấtToolStripMenuItem";
-            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.đăngXuấtToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.đăngXuấtToolStripMenuItem.Text = "Đăng nhập";
             this.đăngXuấtToolStripMenuItem.Click += new System.EventHandler(this.đăngXuấtToolStripMenuItem_Click);
             // 
             // thoátToolStripMenuItem
             // 
             this.thoátToolStripMenuItem.Name = "thoátToolStripMenuItem";
-            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(224, 26);
+            this.thoátToolStripMenuItem.Size = new System.Drawing.Size(165, 26);
             this.thoátToolStripMenuItem.Text = "Thoát";
             this.thoátToolStripMenuItem.Click += new System.EventHandler(this.thoátToolStripMenuItem_Click);
             // 
@@ -210,31 +220,67 @@
             // 
             // mainPanel
             // 
+            this.mainPanel.Controls.Add(this.chart2);
+            this.mainPanel.Controls.Add(this.chart1);
             this.mainPanel.Controls.Add(this.lbTenDangNhap);
             this.mainPanel.Controls.Add(this.lbMessage);
             this.mainPanel.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.mainPanel.Location = new System.Drawing.Point(0, 28);
+            this.mainPanel.Location = new System.Drawing.Point(0, 30);
             this.mainPanel.Name = "mainPanel";
-            this.mainPanel.Size = new System.Drawing.Size(1261, 645);
+            this.mainPanel.Size = new System.Drawing.Size(1261, 643);
             this.mainPanel.TabIndex = 3;
             // 
-            // lbMessage
+            // chart2
             // 
-            this.lbMessage.AutoSize = true;
-            this.lbMessage.Location = new System.Drawing.Point(318, 137);
-            this.lbMessage.Name = "lbMessage";
-            this.lbMessage.Size = new System.Drawing.Size(58, 16);
-            this.lbMessage.TabIndex = 0;
-            this.lbMessage.Text = "Xin chào";
+            this.chart2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            chartArea1.Name = "ChartArea1";
+            this.chart2.ChartAreas.Add(chartArea1);
+            legend1.Name = "Legend1";
+            this.chart2.Legends.Add(legend1);
+            this.chart2.Location = new System.Drawing.Point(638, 42);
+            this.chart2.Name = "chart2";
+            series1.ChartArea = "ChartArea1";
+            series1.Legend = "Legend1";
+            series1.Name = "SOLUONG";
+            this.chart2.Series.Add(series1);
+            this.chart2.Size = new System.Drawing.Size(620, 414);
+            this.chart2.TabIndex = 1;
+            this.chart2.Text = "sđâsd";
+            // 
+            // chart1
+            // 
+            this.chart1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            chartArea2.Name = "ChartArea1";
+            this.chart1.ChartAreas.Add(chartArea2);
+            legend2.Name = "Legend1";
+            this.chart1.Legends.Add(legend2);
+            this.chart1.Location = new System.Drawing.Point(12, 42);
+            this.chart1.Name = "chart1";
+            series2.ChartArea = "ChartArea1";
+            series2.Legend = "Legend1";
+            series2.Name = "SOLUONG";
+            this.chart1.Series.Add(series2);
+            this.chart1.Size = new System.Drawing.Size(620, 414);
+            this.chart1.TabIndex = 1;
+            this.chart1.Text = "sđâsd";
             // 
             // lbTenDangNhap
             // 
             this.lbTenDangNhap.AutoSize = true;
-            this.lbTenDangNhap.Location = new System.Drawing.Point(318, 229);
+            this.lbTenDangNhap.Location = new System.Drawing.Point(76, 0);
             this.lbTenDangNhap.Name = "lbTenDangNhap";
             this.lbTenDangNhap.Size = new System.Drawing.Size(92, 16);
             this.lbTenDangNhap.TabIndex = 0;
             this.lbTenDangNhap.Text = "tên đăng nhập";
+            // 
+            // lbMessage
+            // 
+            this.lbMessage.AutoSize = true;
+            this.lbMessage.Location = new System.Drawing.Point(12, 0);
+            this.lbMessage.Name = "lbMessage";
+            this.lbMessage.Size = new System.Drawing.Size(58, 16);
+            this.lbMessage.TabIndex = 0;
+            this.lbMessage.Text = "Xin chào";
             // 
             // Main
             // 
@@ -256,6 +302,8 @@
             this.menuStrip1.PerformLayout();
             this.mainPanel.ResumeLayout(false);
             this.mainPanel.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.chart2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.chart1)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -285,6 +333,8 @@
         private System.Windows.Forms.Panel mainPanel;
         private System.Windows.Forms.Label lbTenDangNhap;
         private System.Windows.Forms.Label lbMessage;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart1;
+        private System.Windows.Forms.DataVisualization.Charting.Chart chart2;
     }
 }
 
