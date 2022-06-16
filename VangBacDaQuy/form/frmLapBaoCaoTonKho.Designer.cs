@@ -47,27 +47,28 @@
             // 
             // dgvBaoCaoTonKho
             // 
-            this.dgvBaoCaoTonKho.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvBaoCaoTonKho.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvBaoCaoTonKho.Location = new System.Drawing.Point(0, 147);
+            this.dgvBaoCaoTonKho.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvBaoCaoTonKho.Location = new System.Drawing.Point(0, 138);
             this.dgvBaoCaoTonKho.Name = "dgvBaoCaoTonKho";
             this.dgvBaoCaoTonKho.RowHeadersWidth = 51;
             this.dgvBaoCaoTonKho.RowTemplate.Height = 24;
-            this.dgvBaoCaoTonKho.Size = new System.Drawing.Size(800, 280);
+            this.dgvBaoCaoTonKho.Size = new System.Drawing.Size(800, 353);
             this.dgvBaoCaoTonKho.TabIndex = 4;
             // 
             // panel2
             // 
-            this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.label3);
             this.panel2.Controls.Add(this.cbonam);
             this.panel2.Controls.Add(this.cboThang);
             this.panel2.Controls.Add(this.label4);
             this.panel2.Controls.Add(this.label2);
             this.panel2.Controls.Add(this.label1);
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 111);
+            this.panel2.Size = new System.Drawing.Size(800, 138);
             this.panel2.TabIndex = 0;
             // 
             // cbonam
@@ -141,7 +142,7 @@
             // 
             this.btnXuatBaoCao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnXuatBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnXuatBaoCao.Location = new System.Drawing.Point(104, 32);
+            this.btnXuatBaoCao.Location = new System.Drawing.Point(94, 26);
             this.btnXuatBaoCao.Name = "btnXuatBaoCao";
             this.btnXuatBaoCao.Size = new System.Drawing.Size(156, 34);
             this.btnXuatBaoCao.TabIndex = 0;
@@ -153,7 +154,7 @@
             // 
             this.btnDong.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnDong.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDong.Location = new System.Drawing.Point(541, 32);
+            this.btnDong.Location = new System.Drawing.Point(550, 26);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(156, 34);
             this.btnDong.TabIndex = 4;
@@ -165,7 +166,7 @@
             // 
             this.btnInBaoCao.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
             this.btnInBaoCao.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnInBaoCao.Location = new System.Drawing.Point(329, 32);
+            this.btnInBaoCao.Location = new System.Drawing.Point(322, 26);
             this.btnInBaoCao.Name = "btnInBaoCao";
             this.btnInBaoCao.Size = new System.Drawing.Size(156, 34);
             this.btnInBaoCao.TabIndex = 3;
@@ -175,22 +176,23 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel1.AutoScroll = true;
             this.panel1.Controls.Add(this.btnDong);
             this.panel1.Controls.Add(this.btnInBaoCao);
             this.panel1.Controls.Add(this.btnXuatBaoCao);
-            this.panel1.Location = new System.Drawing.Point(0, 453);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel1.Location = new System.Drawing.Point(0, 491);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(800, 90);
             this.panel1.TabIndex = 5;
             // 
             // label3
             // 
-            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label3.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(12, 114);
+            this.label3.Location = new System.Drawing.Point(12, 105);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(135, 20);
             this.label3.TabIndex = 6;
@@ -202,7 +204,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(800, 581);
-            this.Controls.Add(this.label3);
             this.Controls.Add(this.dgvBaoCaoTonKho);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
@@ -215,7 +216,6 @@
             this.panel2.PerformLayout();
             this.panel1.ResumeLayout(false);
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
