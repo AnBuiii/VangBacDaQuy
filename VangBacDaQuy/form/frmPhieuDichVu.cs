@@ -727,6 +727,7 @@ namespace VangBacDaQuy.form
             butChinhSua.Enabled = false;
             btnLuu.Enabled = true;
             isSaveChanges = false;
+            combxTinhTrang.Text = "Chưa giao";
             unlockField();
         }
 
