@@ -27,21 +27,20 @@ namespace VangBacDaQuy.form
             butHuy.Enabled = false;
         }
 
-    
         private void txbPhanTramTraTruoc_KeyPress(object sender, KeyPressEventArgs e)
         {
             if (((e.KeyChar >= '0') && (e.KeyChar <= '9')) || (Convert.ToInt32(e.KeyChar) == 8))
             {
-               
+
                 if (txbPhanTramTraTruoc.TextLength > 0 && float.Parse(txbPhanTramTraTruoc.Text) > 100)
                 {
                     txbPhanTramTraTruoc.Text = "";
                     MessageBox.Show("Chỉ từ 0 - 100%");
-                   
+
                 }
                 e.Handled = false;
             }
-                
+
             else e.Handled = true;
         }
 
@@ -98,13 +97,13 @@ namespace VangBacDaQuy.form
         {
             if (!butChinhSua.Enabled)
             {
-                if((MessageBox.Show("Bạn có muốn những thay đổi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
+                if ((MessageBox.Show("Bạn có muốn những thay đổi?", "Thông báo", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes))
                 {
-                   if(saveData())
+                    if (saveData())
                     {
                         this.Close();
                     }
-                    
+
                 }
             }
             else

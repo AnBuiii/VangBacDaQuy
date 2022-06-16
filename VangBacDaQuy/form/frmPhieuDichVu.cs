@@ -76,7 +76,7 @@ namespace VangBacDaQuy.form
                 dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(decimal));
-                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(DateTime));
+                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(String));
                 dtChiTietPhieuDichVu.Columns.Add("TINHTRANG", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("GHICHU", typeof(string));
                 
@@ -625,7 +625,7 @@ namespace VangBacDaQuy.form
             txbTraTruoc.Enabled = false;
             combxTinhTrang.Enabled = false;
             richtxbGhiChu.Enabled = false;
-            buttonThem.Enabled = false;
+            btnThem.Enabled = false;
             btnLuu.Enabled = false;           
         }
 
@@ -643,7 +643,7 @@ namespace VangBacDaQuy.form
             txbTraTruoc.Enabled = true;
             combxTinhTrang.Enabled = true;
             richtxbGhiChu.Enabled = true;
-            buttonThem.Enabled = true;
+            btnThem.Enabled = true;
             btnLuu.Enabled = true;
         }
    
