@@ -52,9 +52,6 @@
             // 
             // panel1
             // 
-            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
             this.panel1.Controls.Add(this.butClose);
             this.panel1.Controls.Add(this.butHuy);
             this.panel1.Controls.Add(this.label2);
@@ -62,9 +59,10 @@
             this.panel1.Controls.Add(this.butLuu);
             this.panel1.Controls.Add(this.butChinhSua);
             this.panel1.Controls.Add(this.label1);
-            this.panel1.Location = new System.Drawing.Point(12, 67);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(376, 193);
+            this.panel1.Size = new System.Drawing.Size(417, 291);
             this.panel1.TabIndex = 1;
             // 
             // butClose
@@ -149,7 +147,7 @@
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.lbNameFrn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
-            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
+            this.Margin = new System.Windows.Forms.Padding(1);
             this.Name = "frmQuyDinh";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
