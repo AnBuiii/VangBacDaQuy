@@ -26,6 +26,7 @@ namespace VangBacDaQuy
         frmNhaCungCap ncc = null;
         frmLoaiSanPham lsp = null;
         frmTaiKhoan tk = null;
+        frmQuyDinh qD = null;
 
         public Main()
         {          
@@ -236,6 +237,17 @@ namespace VangBacDaQuy
             
             
         }
+
+        private void quyĐịnhToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            closePeviousForm(qD);
+            if (qD == null || qD.IsDisposed) qD = new frmQuyDinh();
+            qD.MdiParent = this;
+            qD.Dock = DockStyle.Fill;
+            qD.Show();
+            qD.FormClosing += mdiChildClose;
+            mainPanel.Visible = false;
+        }
         public void loadMainPanel()
         {
             lbTenDangNhap.Text = Class.Functions.User;
@@ -273,5 +285,7 @@ namespace VangBacDaQuy
             
 
         }
+
+      
     }
 }   
