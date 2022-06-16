@@ -76,7 +76,7 @@ namespace VangBacDaQuy.form
                 dtChiTietPhieuDichVu.Columns.Add("THANHTIEN", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("TIENTRATRUOC", typeof(decimal));
                 dtChiTietPhieuDichVu.Columns.Add("TIENCONLAI", typeof(decimal));
-                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(String));
+                dtChiTietPhieuDichVu.Columns.Add("NGAYGIAO", typeof(DateTime));
                 dtChiTietPhieuDichVu.Columns.Add("TINHTRANG", typeof(string));
                 dtChiTietPhieuDichVu.Columns.Add("GHICHU", typeof(string));
                 
@@ -131,11 +131,13 @@ namespace VangBacDaQuy.form
 
             if (!isSaved)// nếu đây là phiếu chưa được lưu
             {
+
                 String sql = "SELECT [dbo].autoKey_PHIEUDICHVU()";
                 txbSoPhieu.Text = Class.Functions.GetFieldValues(sql);
                 butChinhSua.Enabled = false;
                 btnLuu.Enabled = true;
                 dtpNgaylap.Enabled = true;
+                combxTinhTrang.Text = "Chưa giao";
             } 
             else // nếu là phiếu cũ
             {
