@@ -44,6 +44,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnXoaPhieu = new System.Windows.Forms.Button();
             this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.dgvTraCuuPhieuDichVu)).BeginInit();
             this.panel2.SuspendLayout();
             this.panel1.SuspendLayout();
@@ -54,11 +55,11 @@
             this.dgvTraCuuPhieuDichVu.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dgvTraCuuPhieuDichVu.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.ColumnHeader;
             this.dgvTraCuuPhieuDichVu.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvTraCuuPhieuDichVu.Location = new System.Drawing.Point(0, 152);
+            this.dgvTraCuuPhieuDichVu.Location = new System.Drawing.Point(0, 183);
             this.dgvTraCuuPhieuDichVu.Name = "dgvTraCuuPhieuDichVu";
             this.dgvTraCuuPhieuDichVu.RowHeadersWidth = 51;
             this.dgvTraCuuPhieuDichVu.RowTemplate.Height = 24;
-            this.dgvTraCuuPhieuDichVu.Size = new System.Drawing.Size(800, 328);
+            this.dgvTraCuuPhieuDichVu.Size = new System.Drawing.Size(800, 297);
             this.dgvTraCuuPhieuDichVu.TabIndex = 4;
             this.dgvTraCuuPhieuDichVu.Click += new System.EventHandler(this.dgvTraCuuPhieuDichVu_Click);
             this.dgvTraCuuPhieuDichVu.DoubleClick += new System.EventHandler(this.dgvTraCuuPhieuDichVu_DoubleClick);
@@ -67,6 +68,7 @@
             // 
             this.panel2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.panel2.AutoScroll = true;
+            this.panel2.Controls.Add(this.label7);
             this.panel2.Controls.Add(this.dtmNgayLap);
             this.panel2.Controls.Add(this.cboMaKH);
             this.panel2.Controls.Add(this.cboSoPhieu);
@@ -78,7 +80,7 @@
             this.panel2.Controls.Add(this.label1);
             this.panel2.Location = new System.Drawing.Point(0, 0);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(800, 152);
+            this.panel2.Size = new System.Drawing.Size(800, 177);
             this.panel2.TabIndex = 0;
             // 
             // dtmNgayLap
@@ -178,7 +180,7 @@
             this.label1.ForeColor = System.Drawing.SystemColors.HotTrack;
             this.label1.Location = new System.Drawing.Point(215, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(383, 32);
+            this.label1.Size = new System.Drawing.Size(383, 57);
             this.label1.TabIndex = 0;
             this.label1.Text = "TRA CỨU PHIẾU DỊCH VỤ";
             // 
@@ -244,6 +246,17 @@
             this.label6.TabIndex = 5;
             this.label6.Text = "Nháy đúp một dòng để xem chi tiết phiếu dịch vụ.";
             // 
+            // label7
+            // 
+            this.label7.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)));
+            this.label7.AutoSize = true;
+            this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label7.Location = new System.Drawing.Point(3, 157);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(230, 20);
+            this.label7.TabIndex = 6;
+            this.label7.Text = "Danh sách các phiếu dịch vụ:";
+            // 
             // frmTraCuuPhieuDichVu
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
@@ -284,5 +297,6 @@
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Button btnXoaPhieu;
         private System.Windows.Forms.DateTimePicker dtmNgayLap;
+        private System.Windows.Forms.Label label7;
     }
 }

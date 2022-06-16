@@ -27,7 +27,7 @@ namespace VangBacDaQuy.form
         {
             txbTenKH.ReadOnly = true;
             btnXoaPhieu.Enabled = false;
-            Class.Functions.FillCombo("SELECT MAKH, TENKH FROM KHACHHANG", cboMaKH, "MAKH", "MAKH");
+            Class.Functions.FillCombo("SELECT DISTINCT MAKH FROM PHIEUDICHVU", cboMaKH, "MAKH", "MAKH");
             Class.Functions.FillCombo("SELECT SOPHIEU FROM PHIEUDICHVU", cboSoPhieu, "SOPHIEU", "SOPHIEU");
             cboMaKH.Text = "";
             cboSoPhieu.Text = "";
@@ -109,7 +109,7 @@ namespace VangBacDaQuy.form
                 dgvTraCuuPhieuDichVu.DataSource = dtTraCuu;
                 LoadDataGridView();
             }
-            //Reset();
+            Reset();
         }
 
         private void dgvTraCuuPhieuDichVu_DoubleClick(object sender, EventArgs e)
@@ -173,6 +173,7 @@ namespace VangBacDaQuy.form
             cboSoPhieu.Text = "";
             txbTenKH.Text = "";
             btnXoaPhieu.Enabled = false;
+            dtmNgayLap.Checked = false;
         }
 
         private void txbTenKH_Click(object sender, EventArgs e)
