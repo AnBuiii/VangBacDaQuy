@@ -28,105 +28,135 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.butChinhSua = new System.Windows.Forms.Button();
-            this.butLuu = new System.Windows.Forms.Button();
-            this.txbPhanTramTraTruoc = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.butHuy = new System.Windows.Forms.Button();
+            this.lbNameFrn = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
             this.butClose = new System.Windows.Forms.Button();
+            this.butHuy = new System.Windows.Forms.Button();
+            this.label2 = new System.Windows.Forms.Label();
+            this.txbPhanTramTraTruoc = new System.Windows.Forms.TextBox();
+            this.butLuu = new System.Windows.Forms.Button();
+            this.butChinhSua = new System.Windows.Forms.Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lbNameFrn
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(40, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(759, 32);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Phần trăm tiền phải trả trước cho từng loại dịch vụ (0-100%)";
+            this.lbNameFrn.AutoSize = true;
+            this.lbNameFrn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbNameFrn.Location = new System.Drawing.Point(156, 22);
+            this.lbNameFrn.Name = "lbNameFrn";
+            this.lbNameFrn.Size = new System.Drawing.Size(109, 25);
+            this.lbNameFrn.TabIndex = 0;
+            this.lbNameFrn.Text = "Quy Định";
             // 
-            // butChinhSua
+            // panel1
             // 
-            this.butChinhSua.AutoSize = true;
-            this.butChinhSua.Location = new System.Drawing.Point(445, 166);
-            this.butChinhSua.Name = "butChinhSua";
-            this.butChinhSua.Size = new System.Drawing.Size(120, 42);
-            this.butChinhSua.TabIndex = 1;
-            this.butChinhSua.Text = "Sửa";
-            this.butChinhSua.UseVisualStyleBackColor = true;
-            this.butChinhSua.Click += new System.EventHandler(this.butChinhSua_Click);
+            this.panel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel1.Controls.Add(this.butClose);
+            this.panel1.Controls.Add(this.butHuy);
+            this.panel1.Controls.Add(this.label2);
+            this.panel1.Controls.Add(this.txbPhanTramTraTruoc);
+            this.panel1.Controls.Add(this.butLuu);
+            this.panel1.Controls.Add(this.butChinhSua);
+            this.panel1.Controls.Add(this.label1);
+            this.panel1.Location = new System.Drawing.Point(12, 67);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(376, 193);
+            this.panel1.TabIndex = 1;
             // 
-            // butLuu
+            // butClose
             // 
-            this.butLuu.AutoSize = true;
-            this.butLuu.Location = new System.Drawing.Point(133, 281);
-            this.butLuu.Name = "butLuu";
-            this.butLuu.Size = new System.Drawing.Size(75, 42);
-            this.butLuu.TabIndex = 2;
-            this.butLuu.Text = "Lưu";
-            this.butLuu.UseVisualStyleBackColor = true;
-            this.butLuu.Click += new System.EventHandler(this.butLuu_Click);
-            // 
-            // txbPhanTramTraTruoc
-            // 
-            this.txbPhanTramTraTruoc.Location = new System.Drawing.Point(133, 166);
-            this.txbPhanTramTraTruoc.Name = "txbPhanTramTraTruoc";
-            this.txbPhanTramTraTruoc.Size = new System.Drawing.Size(224, 38);
-            this.txbPhanTramTraTruoc.TabIndex = 3;
-            this.txbPhanTramTraTruoc.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.txbPhanTramTraTruoc_KeyPress);
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(363, 172);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(39, 32);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "%";
-            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            this.butClose.AutoSize = true;
+            this.butClose.Location = new System.Drawing.Point(236, 129);
+            this.butClose.Margin = new System.Windows.Forms.Padding(1);
+            this.butClose.Name = "butClose";
+            this.butClose.Size = new System.Drawing.Size(45, 23);
+            this.butClose.TabIndex = 13;
+            this.butClose.Text = "Đóng";
+            this.butClose.UseVisualStyleBackColor = true;
             // 
             // butHuy
             // 
             this.butHuy.AutoSize = true;
             this.butHuy.ForeColor = System.Drawing.Color.Coral;
-            this.butHuy.Location = new System.Drawing.Point(342, 281);
+            this.butHuy.Location = new System.Drawing.Point(171, 129);
+            this.butHuy.Margin = new System.Windows.Forms.Padding(1);
             this.butHuy.Name = "butHuy";
-            this.butHuy.Size = new System.Drawing.Size(75, 42);
-            this.butHuy.TabIndex = 5;
+            this.butHuy.Size = new System.Drawing.Size(36, 23);
+            this.butHuy.TabIndex = 12;
             this.butHuy.Text = "Hủy";
             this.butHuy.UseVisualStyleBackColor = true;
-            this.butHuy.Click += new System.EventHandler(this.butHuy_Click);
             // 
-            // butClose
+            // label2
             // 
-            this.butClose.AutoSize = true;
-            this.butClose.Location = new System.Drawing.Point(515, 281);
-            this.butClose.Name = "butClose";
-            this.butClose.Size = new System.Drawing.Size(120, 42);
-            this.butClose.TabIndex = 6;
-            this.butClose.Text = "Đóng";
-            this.butClose.UseVisualStyleBackColor = true;
-            this.butClose.Click += new System.EventHandler(this.butClose_Click);
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(179, 83);
+            this.label2.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(15, 13);
+            this.label2.TabIndex = 11;
+            this.label2.Text = "%";
+            this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
+            // txbPhanTramTraTruoc
+            // 
+            this.txbPhanTramTraTruoc.Location = new System.Drawing.Point(93, 81);
+            this.txbPhanTramTraTruoc.Margin = new System.Windows.Forms.Padding(1);
+            this.txbPhanTramTraTruoc.Name = "txbPhanTramTraTruoc";
+            this.txbPhanTramTraTruoc.Size = new System.Drawing.Size(86, 20);
+            this.txbPhanTramTraTruoc.TabIndex = 10;
+            // 
+            // butLuu
+            // 
+            this.butLuu.AutoSize = true;
+            this.butLuu.Location = new System.Drawing.Point(93, 129);
+            this.butLuu.Margin = new System.Windows.Forms.Padding(1);
+            this.butLuu.Name = "butLuu";
+            this.butLuu.Size = new System.Drawing.Size(35, 23);
+            this.butLuu.TabIndex = 9;
+            this.butLuu.Text = "Lưu";
+            this.butLuu.UseVisualStyleBackColor = true;
+            // 
+            // butChinhSua
+            // 
+            this.butChinhSua.AutoSize = true;
+            this.butChinhSua.Location = new System.Drawing.Point(210, 81);
+            this.butChinhSua.Margin = new System.Windows.Forms.Padding(1);
+            this.butChinhSua.Name = "butChinhSua";
+            this.butChinhSua.Size = new System.Drawing.Size(45, 23);
+            this.butChinhSua.TabIndex = 8;
+            this.butChinhSua.Text = "Sửa";
+            this.butChinhSua.UseVisualStyleBackColor = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(58, 40);
+            this.label1.Margin = new System.Windows.Forms.Padding(1, 0, 1, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(286, 13);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Phần trăm tiền phải trả trước cho từng loại dịch vụ (0-100%)";
             // 
             // frmQuyDinh
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.butClose);
-            this.Controls.Add(this.butHuy);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txbPhanTramTraTruoc);
-            this.Controls.Add(this.butLuu);
-            this.Controls.Add(this.butChinhSua);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(417, 291);
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.lbNameFrn);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.Margin = new System.Windows.Forms.Padding(1, 1, 1, 1);
             this.Name = "frmQuyDinh";
             this.ShowInTaskbar = false;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmQuyDinh";
             this.Load += new System.EventHandler(this.frmQuyDinh_Load);
+            this.panel1.ResumeLayout(false);
+            this.panel1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -134,12 +164,14 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button butChinhSua;
-        private System.Windows.Forms.Button butLuu;
-        private System.Windows.Forms.TextBox txbPhanTramTraTruoc;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button butHuy;
+        private System.Windows.Forms.Label lbNameFrn;
+        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button butClose;
+        private System.Windows.Forms.Button butHuy;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox txbPhanTramTraTruoc;
+        private System.Windows.Forms.Button butLuu;
+        private System.Windows.Forms.Button butChinhSua;
+        private System.Windows.Forms.Label label1;
     }
 }
