@@ -49,6 +49,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dgvPhieuDichVu = new System.Windows.Forms.DataGridView();
             this.panel = new System.Windows.Forms.Panel();
+            this.lbTenBang = new System.Windows.Forms.Label();
             this.txbTongConLai = new System.Windows.Forms.TextBox();
             this.lbTongConLai = new System.Windows.Forms.Label();
             this.txbTongTraTruoc = new System.Windows.Forms.TextBox();
@@ -87,7 +88,6 @@
             this.contextMenuStripRightClick = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.deleteRowToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.panel3 = new System.Windows.Forms.Panel();
-            this.lbTenBang = new System.Windows.Forms.Label();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
@@ -366,6 +366,17 @@
             this.panel.Size = new System.Drawing.Size(2936, 101);
             this.panel.TabIndex = 0;
             // 
+            // lbTenBang
+            // 
+            this.lbTenBang.AutoSize = true;
+            this.lbTenBang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lbTenBang.ForeColor = System.Drawing.Color.Blue;
+            this.lbTenBang.Location = new System.Drawing.Point(3, 4);
+            this.lbTenBang.Name = "lbTenBang";
+            this.lbTenBang.Size = new System.Drawing.Size(659, 36);
+            this.lbTenBang.TabIndex = 7;
+            this.lbTenBang.Text = "Bảng hiển thị thông tin các dịch vụ được đăng ký";
+            // 
             // txbTongConLai
             // 
             this.txbTongConLai.Location = new System.Drawing.Point(2350, 37);
@@ -436,10 +447,10 @@
             // butChinhSua
             // 
             this.butChinhSua.AutoSize = true;
-            this.butChinhSua.Location = new System.Drawing.Point(948, 21);
+            this.butChinhSua.Location = new System.Drawing.Point(920, 14);
             this.butChinhSua.Margin = new System.Windows.Forms.Padding(6);
             this.butChinhSua.Name = "butChinhSua";
-            this.butChinhSua.Size = new System.Drawing.Size(304, 81);
+            this.butChinhSua.Size = new System.Drawing.Size(178, 81);
             this.butChinhSua.TabIndex = 4;
             this.butChinhSua.Text = "Chỉnh sửa";
             this.butChinhSua.UseVisualStyleBackColor = true;
@@ -448,7 +459,7 @@
             // btnDong
             // 
             this.btnDong.AutoSize = true;
-            this.btnDong.Location = new System.Drawing.Point(1268, 21);
+            this.btnDong.Location = new System.Drawing.Point(1211, 15);
             this.btnDong.Margin = new System.Windows.Forms.Padding(8);
             this.btnDong.Name = "btnDong";
             this.btnDong.Size = new System.Drawing.Size(184, 81);
@@ -460,10 +471,10 @@
             // btnIn
             // 
             this.btnIn.AutoSize = true;
-            this.btnIn.Location = new System.Drawing.Point(674, 16);
+            this.btnIn.Location = new System.Drawing.Point(629, 15);
             this.btnIn.Margin = new System.Windows.Forms.Padding(4);
             this.btnIn.Name = "btnIn";
-            this.btnIn.Size = new System.Drawing.Size(120, 81);
+            this.btnIn.Size = new System.Drawing.Size(166, 81);
             this.btnIn.TabIndex = 2;
             this.btnIn.Text = "In";
             this.btnIn.UseVisualStyleBackColor = true;
@@ -472,10 +483,10 @@
             // btnLuu
             // 
             this.btnLuu.AutoSize = true;
-            this.btnLuu.Location = new System.Drawing.Point(376, 19);
+            this.btnLuu.Location = new System.Drawing.Point(351, 15);
             this.btnLuu.Margin = new System.Windows.Forms.Padding(4);
             this.btnLuu.Name = "btnLuu";
-            this.btnLuu.Size = new System.Drawing.Size(144, 81);
+            this.btnLuu.Size = new System.Drawing.Size(153, 81);
             this.btnLuu.TabIndex = 1;
             this.btnLuu.Text = "Lưu";
             this.btnLuu.UseVisualStyleBackColor = true;
@@ -783,12 +794,12 @@
             this.contextMenuStripRightClick.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.deleteRowToolStripMenuItem});
             this.contextMenuStripRightClick.Name = "contextMenuStripRightClick";
-            this.contextMenuStripRightClick.Size = new System.Drawing.Size(361, 107);
+            this.contextMenuStripRightClick.Size = new System.Drawing.Size(241, 52);
             // 
             // deleteRowToolStripMenuItem
             // 
             this.deleteRowToolStripMenuItem.Name = "deleteRowToolStripMenuItem";
-            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(360, 48);
+            this.deleteRowToolStripMenuItem.Size = new System.Drawing.Size(240, 48);
             this.deleteRowToolStripMenuItem.Text = "Delete row";
             this.deleteRowToolStripMenuItem.Click += new System.EventHandler(this.deleteRowToolStripMenuItem_Click);
             // 
@@ -800,17 +811,6 @@
             this.panel3.Name = "panel3";
             this.panel3.Size = new System.Drawing.Size(2946, 78);
             this.panel3.TabIndex = 2;
-            // 
-            // lbTenBang
-            // 
-            this.lbTenBang.AutoSize = true;
-            this.lbTenBang.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lbTenBang.ForeColor = System.Drawing.Color.Blue;
-            this.lbTenBang.Location = new System.Drawing.Point(3, 4);
-            this.lbTenBang.Name = "lbTenBang";
-            this.lbTenBang.Size = new System.Drawing.Size(659, 36);
-            this.lbTenBang.TabIndex = 7;
-            this.lbTenBang.Text = "Bảng hiển thị thông tin các dịch vụ được đăng ký";
             // 
             // frmPhieuDichVu
             // 

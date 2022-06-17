@@ -50,16 +50,18 @@ namespace VangBacDaQuy.form
 
             if (isSaved) // nếu mà phiếu đã được lưu
             {
+
+              //  dtChiTietPhieuDichVu.Clear();
+                //dtChiTietPhieuDichVu.Columns.Clear();
+
+             
                 String sql = "SELECT CTPDV.MADV, TENDV, DONGIA, DONGIADUOCTINH, SOLUONG, THANHTIEN, CTPDV.TIENTRATRUOC, CTPDV.TIENCONLAI, NGAYGIAO, CTPDV.TINHTRANG, GHICHU "
                               + "FROM CHITIETPHIEUDICHVU CTPDV, DICHVU DV, PHIEUDICHVU PDV "
                                + " WHERE CTPDV.SOPHIEU = PDV.SOPHIEU AND CTPDV.MADV = DV.MADV AND PDV.SOPHIEU = '" + idPH + "'";
                 // đọc dữ liệu từ database
                 dtChiTietPhieuDichVu.Columns.Add("STT", typeof(int)); // thêm cột STT vào                  
                 dtChiTietPhieuDichVu.Merge(Class.Functions.GetDataToDataTable(sql)); //thêm table sau cột STT;
-                /*dtChiTietPhieuDichVu.Columns["THANHTIEN"].DataType = typeof(CurrencyManager);
-                dtChiTietPhieuDichVu.Columns["TIENTRATRUOC"].DataType = typeof(CurrencyManager);
-                dtChiTietPhieuDichVu.Columns["TIENCONLAI"].DataType = typeof(CurrencyManager);
-                dtChiTietPhieuDichVu.Columns["NGAYGIAO"].DataType = typeof (DateTime);*/
+             
                 autoIDRows();
                
 
@@ -403,7 +405,7 @@ namespace VangBacDaQuy.form
             dtpNgayGiao.Text = "";
             txbTraTruoc.Text = "";
             txbConLai.Text = "";
-            combxTinhTrang.Text = "";
+            combxTinhTrang.Text = "Chưa giao";
             richtxbGhiChu.Clear();
         }
 
@@ -433,7 +435,7 @@ namespace VangBacDaQuy.form
             if (checkFieldChitTietPhieu())// kiểm tra các text box nhập vào đã hợp lệ chưa
             {
                 object[] newRowData = new object[] {dtChiTietPhieuDichVu.Rows.Count + 1, cmbxLoaiDichVu.SelectedValue, cmbxLoaiDichVu.Text, txbDonGia.Text,  decimal.Parse(txbGiaDuocTinh.Text, this.culture), txbSoLuong.Text
-                                                     , decimal.Parse(txbThanhTien.Text, this.culture), decimal.Parse(txbTraTruoc.Text, this.culture), decimal.Parse(txbConLai.Text, this.culture)  , dtpNgayGiao.Text, combxTinhTrang.Text, richtxbGhiChu.Text
+                                                     , decimal.Parse(txbThanhTien.Text, this.culture), decimal.Parse(txbTraTruoc.Text, this.culture), decimal.Parse(txbConLai.Text, this.culture)  , dtpNgayGiao.Text, combxTinhTrang.Text.Trim(), richtxbGhiChu.Text
                                                     };
 
                 DataRow newRow = dtChiTietPhieuDichVu.NewRow();
@@ -493,6 +495,7 @@ namespace VangBacDaQuy.form
             String sql;
             sql = "INSERT INTO KHACHHANG VALUES([dbo].autoKey_KHACHHANG(), N'" + txbKhachHang.Text.Trim() + "', '" + txbSDT.Text.Trim() + "')";
             Class.Functions.RunSQL(sql);
+            this.idKH = takeIDKH();
 
         }
 
@@ -527,7 +530,7 @@ namespace VangBacDaQuy.form
             }
 
             //lưu lại số phiếu muốn save, tí có muốn chỉnh sửa lại thì xài
-            this.idKH = takeIDKH();
+           
             this.idPH = txbSoPhieu.Text;
 
             String sql = "INSERT INTO PHIEUDICHVU VALUES('" + idPH + "', CONVERT(DATETIME, '" + dtpNgaylap.Value.ToString("dd/MM/yyyy") + "', 103), '"
@@ -572,8 +575,9 @@ namespace VangBacDaQuy.form
             }
 
             String sql = "UPDATE PHIEUDICHVU SET TONGTIEN = '" + txbTongTien.Text + "', TIENTRATRUOC = '" + txbTongTraTruoc.Text
-                    + "', TIENCONLAI = '" + txbTongConLai.Text + "', NGAYLAP = '" + dtpNgaylap.Value.ToString("dd/MM/yyyy")   +  "', TINHTRANG = N'" + tinhTrang 
+                    + "', TIENCONLAI = '" + txbTongConLai.Text + "', NGAYLAP = CONVERT(DATETIME, '" + dtpNgaylap.Value.ToString("dd / MM / yyyy") + "', 103)"  +  ", TINHTRANG = N'" + tinhTrang 
                     + "' WHERE SOPHIEU = '" + this.idPH + "'";
+           
                     Class.Functions.RunSQL(sql);
         }
 
@@ -591,16 +595,17 @@ namespace VangBacDaQuy.form
             foreach (DataRow row in rowsInserted)
             {
                 sql = "INSERT INTO CHITIETPHIEUDICHVU VALUES('"
-                     + row["MADV"].ToString()
+                     + row["MADV"].ToString().Trim()
                      + "', '" + idPH
                      + "', '" + row["DONGIADUOCTINH"].ToString()
                      + "',  " + row["SOLUONG"].ToString() // int nên k có dấu "'"
                      + ", '" + row["THANHTIEN"].ToString()
                      + "', '" + row["TIENTRATRUOC"].ToString()
                      + "', '" + row["TIENCONLAI"].ToString()
+                    // + ", CAST('" + row["NGAYGIAO"].ToString() + "' AS DATETIME)"
                      + "', CONVERT(DATETIME, '" + row["NGAYGIAO"].ToString() + "', 103)"
-                     + ", N'" + row["TINHTRANG"].ToString()
-                      + "', N'" + row["GHICHU"].ToString().Trim() + "')";
+                     + ", N'" + row["TINHTRANG"].ToString().Trim()
+                     + "', N'" + row["GHICHU"].ToString().Trim() + "')";
                 
                 Class.Functions.RunSQL(sql);
             }
@@ -610,7 +615,7 @@ namespace VangBacDaQuy.form
             String sql;
             foreach (DataRow row in rowsDeleted)
             {
-                sql = "DELETE FROM CHITIETPHIEUDICHVU WHERE MADV = '" + row["MADV"].ToString() + "' AND SOPHIEU = '" + this.idPH + "'";              
+                sql = "DELETE FROM CHITIETPHIEUDICHVU WHERE MADV = '" + row["MADV"].ToString().Trim() + "' AND SOPHIEU = '" + this.idPH + "'";              
                 Class.Functions.RunSQL(sql);
             }
         }
@@ -692,7 +697,7 @@ namespace VangBacDaQuy.form
                 else // nếu phiếu đã được lưu, hay được mở từ form thống kê số phiếu(tức là phiếu có sẵn) thì viết code update ở đây
                 {
                     try
-                    {
+                    {  
                         updateKHACHHANG();
                         deleteCHITIETPHIEUDICHVU(); //phải delete trước mới insert được, lỡ xóa MADV rồi add lại cùng MADV thì sao :> 
                         insertCHITIETPHIEUDICHVU();              
@@ -724,6 +729,7 @@ namespace VangBacDaQuy.form
 
         private void butChinhSua_Click(object sender, EventArgs e)
         {
+            //LoadDataGridView();
             butChinhSua.Enabled = false;
             btnLuu.Enabled = true;
             isSaveChanges = false;
