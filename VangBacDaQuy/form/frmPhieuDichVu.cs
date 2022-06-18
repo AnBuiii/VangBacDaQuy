@@ -434,7 +434,7 @@ namespace VangBacDaQuy.form
         {
             if (checkFieldChitTietPhieu())// kiểm tra các text box nhập vào đã hợp lệ chưa
             {
-                object[] newRowData = new object[] {dtChiTietPhieuDichVu.Rows.Count + 1, cmbxLoaiDichVu.SelectedValue, cmbxLoaiDichVu.Text, txbDonGia.Text,  decimal.Parse(txbGiaDuocTinh.Text, this.culture), txbSoLuong.Text
+                object[] newRowData = new object[] {dtChiTietPhieuDichVu.Rows.Count + 1, cmbxLoaiDichVu.SelectedValue, cmbxLoaiDichVu.Text, decimal.Parse(txbDonGia.Text, this.culture),  decimal.Parse(txbGiaDuocTinh.Text, this.culture), txbSoLuong.Text
                                                      , decimal.Parse(txbThanhTien.Text, this.culture), decimal.Parse(txbTraTruoc.Text, this.culture), decimal.Parse(txbConLai.Text, this.culture)  , dtpNgayGiao.Text, combxTinhTrang.Text.Trim(), richtxbGhiChu.Text
                                                     };
 
